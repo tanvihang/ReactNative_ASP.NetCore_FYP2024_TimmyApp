@@ -1,0 +1,27 @@
+{
+    "apple": [
+      "ipad pro 12.9-inch",
+      "ipad pro 11-inch",
+      "ipad air 4",
+      "ipad 10.2-inch"
+    ],
+    "samsung": [
+      "galaxy tab s7+",
+      "galaxy tab s7",
+      "galaxy tab s6 lite",
+      "galaxy tab a7"
+    ],
+    "huawei": [
+      "matepad pro",
+      "matepad 10.4",
+      "matepad t8",
+      "mediapad m6",
+      "mediapad t5"
+    ],
+    "amazon": [
+      "fire hd 10",
+      "fire hd 8",
+      "fire 7"
+    ]
+  }
+  

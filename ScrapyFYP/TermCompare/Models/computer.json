@@ -1,0 +1,57 @@
+{
+    "apple": {
+      "macbook":[
+        "macbook pro 16 inch",
+        "macbook pro 13 inch",
+        "macbook air"
+      ]
+    },
+    "asus":{
+      "asus":[
+        "rog strix scar 15",
+        "rog strix scar 17",
+        "rog zephyrus g14",
+        "zenbook duo",
+        "zenbook flip"
+      ]
+    } ,
+    "lenovo": {
+      "lenovo":[
+        "thinkpad x1 carbon",
+        "thinkpad t14s",
+        "thinkpad e15",
+        "ideapad flex 5",
+        "ideapad slim 7",
+        "ideapad 3"
+      ]
+    },
+    "hp":{
+      "hp":[
+        "pavilion x360",
+        "pavilion 15",
+        "pavilion gaming laptop",
+        "envy x360",
+        "envy 13",
+        "envy 15"
+      ]
+    } ,
+    "dell":{
+      "dell":[
+        "xps 15",
+        "xps 13",
+        "inspiron 15",
+        "inspiron 14",
+        "alienware m15"
+      ]
+    },
+    "acer":{
+      "acer":[
+        "veriton",
+        "aspire 3",
+        "nitro 5",
+        "swift",
+        "predator"
+      ]
+    }  
+  }
+  
