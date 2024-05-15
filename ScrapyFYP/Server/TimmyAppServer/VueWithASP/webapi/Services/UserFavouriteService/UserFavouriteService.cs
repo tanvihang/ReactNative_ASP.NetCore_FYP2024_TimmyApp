@@ -49,6 +49,13 @@ namespace webapi.Services.UserFavouriteService
 			
 		}
 
+		public async Task<List<string>> GetUserFavouriteIdList(string userId)
+		{
+			List<string> ids = await _userFavouriteDAO.GetUserFavouriteProductList(userId);
+
+			return ids;
+		}
+
 		public async Task<UserFavourite> UnFavouriteProduct(string userId, string productUniqueId)
 		{
 			UserFavourite userFavourite = await _userFavouriteDAO.UnFavouriteProduct(userId, productUniqueId);

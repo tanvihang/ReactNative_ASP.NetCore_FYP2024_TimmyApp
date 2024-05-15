@@ -10,6 +10,7 @@ namespace webapi.Services.TimmyProductService
 		Task<TimmyProduct> DeleteTimmyProduct(TimmyProductEssentialDTO timmyProductEssentialDTO);
 		Task<TimmyProductData> GetAllAdoptedTimmyProductDict();
 		Task<TimmyProductData> GetAllUnAdoptedTimmyProductDict();
+		Task<List<string>> GetAllUnAdoptedTimmyProductName();
 		Task<Boolean> AdoptTimmyProduct(TimmyProductEssentialDTO timmyProductEssentialDTO);
 		Task<CategoryListAndRespondingBrandListDTO> GetCategoryBrandList();
 		Task<List<TimmyProduct>> GetAllAdoptedProductList();

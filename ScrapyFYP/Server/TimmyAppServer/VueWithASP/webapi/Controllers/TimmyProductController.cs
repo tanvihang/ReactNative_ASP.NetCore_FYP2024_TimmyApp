@@ -131,5 +131,24 @@ namespace webapi.Controllers
 				return ResponseData<CategoryListAndRespondingBrandListDTO>.Failure(ex.Message);
 			}
 		}
+
+		[HttpGet("GetUnAdoptedTimmyProductName")]
+		public async Task<ResponseData<List<string>>> GetUnAdoptedTimmyProductName()
+		{
+			try
+			{
+				List<string> names = await _timmyProductService.GetAllUnAdoptedTimmyProductName();
+				
+				if(names.Count > 0)
+				{
+					return ResponseData<List<string>>.Success(names);
+				}
+				return ResponseData<List<string>>.Success("No UnAdopted Product");
+
+			}
+			catch(Exception ex) { 
+				return ResponseData<List<string>>.Failure(ex.Message);
+			}
+		}
 	}
 }

@@ -8,5 +8,6 @@ namespace webapi.Services.UserFavouriteService
 		Task<Boolean> FavouriteProduct(string userId, string productUniqueId);
 		Task<UserFavourite> UnFavouriteProduct(string userId, string productUniqueId);
 		Task<List<ElasticProductDTO>> GetUserFavourite(string userId);
+		Task<List<string>> GetUserFavouriteIdList(string userId);
 	}
 }

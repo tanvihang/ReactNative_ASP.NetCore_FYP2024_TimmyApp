@@ -10,6 +10,11 @@ import logout from "../assets/icons/logout.png";
 import eyeHide from "../assets/icons/eye-hide.png";
 import eye from "../assets/icons/eye.png";
 import play from "../assets/icons/play.png";
+import settings from "../assets/icons/settings.png"
+import upgrade from "../assets/icons/upgrade.png"
+import favourite from "../assets/icons/favourite.png"
+import about from "../assets/icons/about.png"
+import remove from "../assets/icons/remove.png"
 
 export default {
   play,
@@ -24,4 +29,9 @@ export default {
   logout,
   eyeHide,
   eye,
+  settings,
+  upgrade,
+  favourite,
+  about,
+  remove
 };

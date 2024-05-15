@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
-
+import normalApiCall from "../hooks/normalApiCall";
+import useFetch from "../hooks/useFetch";
 const GlobalContext = createContext()
 export const useGlobalContext = () => useContext(GlobalContext);
 
@@ -14,11 +15,62 @@ const GlobalProvider = ({children}) => {
     const [categoryBrand, setCategoryBrand] = useState(null)
     const [modelDictionary, setModelDictionary] = useState(null)
     const [spiders, setSpiders] = useState([])
+    const [condition, setCondition] = useState([])
+    const [userFavourite, setUserFavourite] = useState([])
+    const [searchParams, setSearchParams] = useState({
+      productSearchTerm: {
+        category: "",
+        brand: "",
+        model: "",
+        description: "",
+        highest_price: 0,
+        lowest_price: 0,
+        country: "",
+        state: "",
+        condition: "",
+        spider: [
+          
+        ],
+        sort: "priceasc",
+        isTest: 0
+      },
+      pageDTO: {
+        pageSize: 10,
+        currentPage: 1
+      }
+    })
+    const [subscribeParams, setSubscribeParams] = useState({
+      subscription_notification_method: "",
+      subscription_notification_time: 0,
+      category: "",
+      brand: "",
+      model: "",
+      description: "",
+      highest_price: 0,
+      lowest_price: 0,
+      country: "",
+      state: "",
+      condition: "",
+      spider: [
+        
+      ]
+    })
+
+    const getUserFavouriteIds = async (jwtToken) => {
+      try{
+        const data = await normalApiCall("UserFavourite/GetUserFavouriteIdList","POST",{},{jwtToken:jwtToken})
+        setUserFavourite(data.data)
+      }
+      catch(error){
+        console.log(error)
+      }
+    }
 
     useEffect(() => {
+
         // check the use log in info, now just set it to no value, gonna check out how to get data from the mobile(like cookie)
         setUser("Angus Tan")
-        setJwtToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJVX2NlOWRlOWNkLWMxODMtNDA0ZS05MDBjLWQ3MmRhNGUxN2FhNSIsInVuaXF1ZV9uYW1lIjoidHZoIiwibmJmIjoxNzE0MDEwMDcxLCJleHAiOjE3MTQ2MTQ4NzEsImlhdCI6MTcxNDAxMDA3MX0.oBEKdwroZ-AMKyGVJBt5cTMRlw8ZKakezkaunwRcc10")
+        setJwtToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJVX2NlOWRlOWNkLWMxODMtNDA0ZS05MDBjLWQ3MmRhNGUxN2FhNSIsInVuaXF1ZV9uYW1lIjoidHZoIiwibmJmIjoxNzE1MzEwODIwLCJleHAiOjE3MTU5MTU2MjAsImlhdCI6MTcxNTMxMDgyMH0.LBgJqAtlziz-_gfb8ly2iIctcY5gIicVOuDMNREddrg")
     
         // TODO replace this to api call when on dev
         setCategoryBrand({
@@ -169,8 +221,12 @@ const GlobalProvider = ({children}) => {
             }
           })
         setSpiders(["mudah", "aihuishou"])
+        setCondition(["new", "mint", "used"])
         
-    
+        const jwtTokens = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJVX2NlOWRlOWNkLWMxODMtNDA0ZS05MDBjLWQ3MmRhNGUxN2FhNSIsInVuaXF1ZV9uYW1lIjoidHZoIiwibmJmIjoxNzE1MzEwODIwLCJleHAiOjE3MTU5MTU2MjAsImlhdCI6MTcxNTMxMDgyMH0.LBgJqAtlziz-_gfb8ly2iIctcY5gIicVOuDMNREddrg"
+        getUserFavouriteIds(jwtTokens)
+        
+
     }, [])
 
     return (
@@ -185,7 +241,14 @@ const GlobalProvider = ({children}) => {
                 modelDictionary,
                 categoryBrand,
                 spiders,
-                isLoading
+                condition,
+                userFavourite,
+                setUserFavourite,
+                isLoading,
+                searchParams,
+                setSearchParams,
+                subscribeParams,
+                setSubscribeParams
             }}
         >
             {children}

@@ -2,8 +2,11 @@ import { View, Text, Image, TouchableOpacity, SafeAreaView } from 'react-native'
 import React from 'react'
 import { images, icons } from "../constants"
 import { router } from 'expo-router'
+import { useGlobalContext } from '../context/GlobalProvider'
 
 const HomeHero = ({user}) => {
+
+  const {jwtToken} = useGlobalContext()
 
     return (
         <SafeAreaView className = "mx-3 mt-7">
@@ -44,7 +47,7 @@ const HomeHero = ({user}) => {
         <View className = " h-40 mt-5 flex flex-row w-full items-center justify-around rounded-2xl">
             <TouchableOpacity 
                 onPress={() =>
-                router.push("/search")}
+                router.push(`/favourite/${jwtToken}`)}
                 className = "h-40 basis-2/6"
             >
                 <View className = "bg-black-100 h-40 flex items-center justify-center rounded-2xl">
@@ -54,7 +57,7 @@ const HomeHero = ({user}) => {
     
             <TouchableOpacity 
                 onPress={() =>
-                router.push("/search")}
+                router.push("/subscribe")}
                 className = "h-40 basis-3/6"
             >
               <View className = "bg-black-100 h-40 flex items-center justify-center rounded-2xl">

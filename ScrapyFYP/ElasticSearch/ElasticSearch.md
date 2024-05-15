@@ -20,7 +20,7 @@ Tutorial: https://www.elastic.co/guide/en/elasticsearch/reference/current/docker
 | is_test            | keyword |
 | model              | keyword |
 | price              | float   |
-| price_CNY          | keyword |
+| price_CNY          | float   |
 | product_detail_url | text    |
 | product_image      | text    |
 | product_url        | text    |

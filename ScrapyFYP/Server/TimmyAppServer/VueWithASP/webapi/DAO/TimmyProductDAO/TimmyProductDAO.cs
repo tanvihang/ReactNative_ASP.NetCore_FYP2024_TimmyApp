@@ -85,6 +85,14 @@ namespace webapi.DAO.TimmyProductDAO
 			return tpl;
 		}
 
+		public async Task<List<string>> GetAllUnAdoptedTimmyProductName()
+		{
+			List<TimmyProduct> tpl = await _context.TimmyProducts.Where(tp => tp.TimmyProductAdopted == 0).ToListAsync();
+
+			List<string> productName = tpl.Select(tp => tp.TimmyProductFullName).ToList();
+			return productName;
+		}
+
 		public async Task<List<string>> GetBrandList(string category)
 		{
 			try

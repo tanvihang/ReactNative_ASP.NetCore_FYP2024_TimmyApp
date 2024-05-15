@@ -50,5 +50,19 @@ namespace webapi.Controllers
 				return ResponseData<UserSubscriptionProduct>.Failure(ex.Message);
 			}
 		}
+
+		[HttpPost("GetUserSubscriptionProductsByUserSubscriptionId")]
+		public async Task<ResponseData<List<UserSubscriptionProduct>>> GetUserSubscriptionProductsByUserSubscriptionId(string userSubscriptionId)
+		{
+			try
+			{
+				List<UserSubscriptionProduct> list = await _userSubscriptionProductService.GetUserSubscriptionProductsByUserSubscriptionId(userSubscriptionId);
+				return ResponseData<List<UserSubscriptionProduct>>.Success(list);
+			}
+			catch(Exception ex) 
+			{
+				return ResponseData<List<UserSubscriptionProduct>>.Failure(ex.Message);
+			}
+		}
 	}
 }

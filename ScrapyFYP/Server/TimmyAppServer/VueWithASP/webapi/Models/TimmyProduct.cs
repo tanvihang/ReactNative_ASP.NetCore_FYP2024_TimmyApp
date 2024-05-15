@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
 namespace webapi.Models;
@@ -34,5 +35,6 @@ public partial class TimmyProduct
     public int? TimmyProductAdopted { get; set; }
 
     [InverseProperty("TimmyProductFullNameNavigation")]
+    [JsonIgnore]
     public virtual ICollection<PriceHistory> PriceHistories { get; set; } = new List<PriceHistory>();
 }

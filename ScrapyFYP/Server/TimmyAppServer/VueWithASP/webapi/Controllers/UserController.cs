@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using webapi.Models;
 using webapi.Models.DTO;
 using webapi.Models.Response;
+using webapi.Services.JwtService;
 using webapi.Services.UserService;
 
 namespace webapi.Controllers
@@ -12,10 +13,12 @@ namespace webapi.Controllers
 	public class UserController : ControllerBase
 	{
         IUserService _userService;
+        IJwtService _jwtService;
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, IJwtService jwtService)
         {
             _userService = userService;
+            _jwtService = jwtService;
         }
 
         [HttpPost("Register")]
@@ -54,7 +57,7 @@ namespace webapi.Controllers
         }
 
         [HttpPost("ResetPassword")]
-        public async Task<ResponseData<string>> Register(ResetPasswordDTO resetPasswordDTO)
+        public async Task<ResponseData<string>> ResetPassword(ResetPasswordDTO resetPasswordDTO)
         {
             try
             {
@@ -74,5 +77,24 @@ namespace webapi.Controllers
 				return ResponseData<string>.Failure(ex.Message);
 			}
         }
-    }
+
+        [HttpPost("GetUserInfo")]
+		public async Task<ResponseData<PublicUserDTO>> GetUserInfo(string jwtToken)
+        {
+            try
+            {
+                //1. get id by token
+                string userId = _jwtService.ParseJwtToUserId(jwtToken);
+
+                PublicUserDTO user = await _userService.GetUserInfo(userId);
+
+
+                return ResponseData<PublicUserDTO>.Success(user);
+            }
+            catch(Exception ex) 
+            {
+                return ResponseData<PublicUserDTO>.Failure(ex.Message);       
+            }
+        }
+	}
 }

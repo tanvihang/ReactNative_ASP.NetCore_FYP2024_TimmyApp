@@ -3,46 +3,31 @@ import {React,  useEffect,  useState } from 'react'
 import useFetch from '../../hooks/useFetch'
 import { useGlobalContext } from '../../context/GlobalProvider'
 import ProductModels from '../../components/ProductModels'
-import SearchHero from '../../components/SearchHero'
-import SearchFooter from '../../components/SearchFooter'
+import SearchHero from '../../components/Search/SearchHero'
+import SearchFooter from '../../components/Search/SearchFooter'
+import { router } from 'expo-router'
 
 const Search = () => {
 
-  const {modelDictionary, categoryBrand} = useGlobalContext();
-  const {form, setForm} = useState({
-    productSearchTerm: {
-      category: "",
-      brand: "",
-      model: "",
-      description: "",
-      highest_price: 0,
-      lowest_price: 0,
-      country: "",
-      state: "",
-      condition: "",
-      spider: [
-        
-      ],
-      sort: "",
-      isTest: 0
-    },
-    pageDTO: {
-      pageSize: 10,
-      currentPage: 1
-    }
-  })
+  const {categoryBrand} = useGlobalContext();
+
+  const [selectCategory, setSelectCategory] = useState("")
+  const [selectProduct, setSelectProduct] = useState("")
+  const [selectBrand, setSelectBrand] = useState("")
+
+
 
   return (
     <SafeAreaView>
 
         <FlatList
           data = {categoryBrand.data.categories}
-          renderItem={({item}) => <ProductModels category = {item}/>}
+          renderItem={({item}) => <ProductModels category = {item} selectCategory = {selectCategory} setSelectCategory = {setSelectCategory} selectProduct = {selectProduct} setSelectProduct = {setSelectProduct} selectBrand = {selectBrand} setSelectBrand = {setSelectBrand} />}
           keyExtractor={item => item}
           className = "mt-7 mx-3"
-        
+
           ListHeaderComponent={() => <SearchHero/>}
-          ListFooterComponent={() => <SearchFooter form = {form} setForm = {setForm}/>}
+          ListFooterComponent={() => <SearchFooter/>}
         ></FlatList>
 
     </SafeAreaView>

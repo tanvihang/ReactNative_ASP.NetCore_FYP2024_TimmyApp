@@ -31,7 +31,7 @@ const SignIn = () => {
       const data = await normalApiCall("User/Login","POST",{
         userPassword:form.password,
         userToken: form.userToken
-      });
+      },{});
   
       if(data.statusCode == 200){
         setIsLoggedIn(true)

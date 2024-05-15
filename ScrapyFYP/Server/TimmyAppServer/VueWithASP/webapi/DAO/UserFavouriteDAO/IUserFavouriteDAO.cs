@@ -8,5 +8,6 @@ namespace webapi.DAO.UserFavouriteDAO
 		Task<Boolean> FavouriteProduct(string userId, string productUniqueId);
 		Task<UserFavourite> UnFavouriteProduct(string userId, string productUniqueId);
 		Task<List<string>> GetUserFavouriteProductList(string userId);
+
 	}
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
 namespace webapi.Models;
@@ -82,8 +83,10 @@ public partial class UserSubscription
 
     [ForeignKey("UserId")]
     [InverseProperty("UserSubscriptions")]
+    [JsonIgnore]
     public virtual UserT? User { get; set; }
 
     [InverseProperty("UserSubscription")]
+    [JsonIgnore]
     public virtual ICollection<UserSubscriptionProduct> UserSubscriptionProducts { get; set; } = new List<UserSubscriptionProduct>();
 }

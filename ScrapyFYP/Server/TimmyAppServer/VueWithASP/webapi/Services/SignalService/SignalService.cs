@@ -89,7 +89,16 @@ namespace webapi.Services.SignalService
 
 		public async Task<bool> ExecuteScrapeSubscribedProduct(int level)
 		{
-			return await _scraperService.ScrapeSubscribedProduct(level);
+			try
+			{
+                await Console.Out.WriteLineAsync("Scrapingggg");
+                await _scraperService.ScrapeSubscribedProduct(level);
+
+				return true;
+			}catch(Exception ex)
+			{
+				throw new Exception(ex.Message);
+			}
 		}
 
 		public async Task<Dictionary<string,int>> ExecuteSearchBestUserSubscribedProduct(int time)

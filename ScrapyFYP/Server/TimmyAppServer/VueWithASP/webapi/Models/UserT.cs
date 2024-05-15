@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
 namespace webapi.Models;
@@ -39,17 +40,22 @@ public partial class UserT
     public string? UserPhoneNo { get; set; }
 
     [InverseProperty("User")]
-    public virtual ICollection<Notification> Notifications { get; set; } = new List<Notification>();
+	[JsonIgnore]
+	public virtual ICollection<Notification> Notifications { get; set; } = new List<Notification>();
 
     [InverseProperty("User")]
-    public virtual ICollection<UserFavourite> UserFavourites { get; set; } = new List<UserFavourite>();
+	[JsonIgnore]
+	public virtual ICollection<UserFavourite> UserFavourites { get; set; } = new List<UserFavourite>();
 
     [InverseProperty("User")]
-    public virtual ICollection<UserSearchHistory> UserSearchHistories { get; set; } = new List<UserSearchHistory>();
+	[JsonIgnore]
+	public virtual ICollection<UserSearchHistory> UserSearchHistories { get; set; } = new List<UserSearchHistory>();
 
     [InverseProperty("User")]
-    public virtual ICollection<UserSubscription> UserSubscriptions { get; set; } = new List<UserSubscription>();
+	[JsonIgnore]
+	public virtual ICollection<UserSubscription> UserSubscriptions { get; set; } = new List<UserSubscription>();
 
     [InverseProperty("User")]
+    [JsonIgnore]
     public virtual ICollection<UserVerificationCode> UserVerificationCodes { get; set; } = new List<UserVerificationCode>();
 }

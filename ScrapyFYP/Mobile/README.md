@@ -5,34 +5,28 @@ https://docs.expo.dev/router/installation/
 https://www.nativewind.dev/quick-starts/expo
 - also setup for react native web
 - use *NativeWind* to do styling
+- use *react-native-reanimated* for animation
 
 ---
+
 # Folders
-### app
-Contains the implementation of every page view in *js*, for example: home page, search page etc.
+## app
+Contains the pages in the application for example: home, profile page etc.
 
-### assets
-Contains the assets of Mobile App for decoration including: Fonts, Images, Icons.
+## assets
+Contains icons, images, font for the application
 
-### components
-Contains the implementation of components, which is used often by app for using *js*.
+## components
+Often used components like buttons, selector, header, footer stored in here.
 
-### constants
-Contains the export of assets like Images and Icons.
+## constants
+Store the assets path, to use it easily in app and components
 
-### context
-Contains the global state of React Native for global data storing and using using *js*.
+## context
+A folder that store global state, for example, user info after logging in
 
-### hooks
-Contains the implementation of custom hooks for React Native *js*.
+## hooks
+Custom react native hook like fetching api
 
-### test
-Contains the test file Mobile module.
-
----
-
-# How to use
-```bash
-npx expo start -c # clear cache
-npx expo start # without clearing cache
-```
+## test
+A folder that contain test code during development state

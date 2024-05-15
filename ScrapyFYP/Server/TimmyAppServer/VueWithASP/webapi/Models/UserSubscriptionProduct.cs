@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
 namespace webapi.Models;
@@ -63,5 +64,6 @@ public partial class UserSubscriptionProduct
 
     [ForeignKey("UserSubscriptionId")]
     [InverseProperty("UserSubscriptionProducts")]
+    [JsonIgnore]
     public virtual UserSubscription? UserSubscription { get; set; }
 }

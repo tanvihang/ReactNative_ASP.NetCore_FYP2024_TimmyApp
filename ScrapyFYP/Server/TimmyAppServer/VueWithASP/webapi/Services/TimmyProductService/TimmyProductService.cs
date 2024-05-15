@@ -186,5 +186,11 @@ namespace webapi.Services.TimmyProductService
 		
 			return strings;
 		}
+
+		public async Task<List<string>> GetAllUnAdoptedTimmyProductName()
+		{
+			List<string> listOfName = await _timmyProductDAO.GetAllUnAdoptedTimmyProductName();
+			return listOfName;
+		}
 	}
 }

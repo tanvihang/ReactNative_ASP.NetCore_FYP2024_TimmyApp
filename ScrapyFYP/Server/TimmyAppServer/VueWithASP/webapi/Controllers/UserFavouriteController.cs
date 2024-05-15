@@ -29,7 +29,7 @@ namespace webapi.Controllers
 				
                 Boolean isAdded = await _userFavouriteService.FavouriteProduct(userId, addFavouriteProductDTO.productUniqueId!);
 
-                return ResponseData<Boolean>.Success(isAdded);
+                return ResponseData<Boolean>.Success(isAdded, "Favourited item");
             }
             catch (Exception ex)
             {
@@ -46,7 +46,7 @@ namespace webapi.Controllers
 
 				UserFavourite userFavourite = await _userFavouriteService.UnFavouriteProduct(userId, addFavouriteProductDTO.productUniqueId!);
 
-				return ResponseData<UserFavourite>.Success(userFavourite);
+				return ResponseData<UserFavourite>.Success(userFavourite, "UnFavourited item");
 			}
 			catch (Exception ex)
 			{
@@ -74,6 +74,28 @@ namespace webapi.Controllers
 			catch (Exception ex)
 			{
 				return ResponseData<List<ElasticProductDTO>>.Failure(ex.Message);
+			}
+		}
+
+		[HttpPost("GetUserFavouriteIdList")]
+		public async Task<ResponseData<List<string>>> GetUserFavouriteIdList(string jwtToken)
+		{
+			try
+			{
+				string userId = _jwtService.ParseJwtToUserId(jwtToken);
+
+				List<string> ids = await _userFavouriteService.GetUserFavouriteIdList(userId);
+
+				if (ids.Count == 0)
+				{
+					return ResponseData<List<string>>.Failure($"User {userId} no favourite item");
+				}
+
+				return ResponseData<List<string>>.Success(ids);
+			}
+			catch (Exception ex)
+			{
+				return ResponseData<List<string>>.Failure(ex.Message);
 			}
 		}
 	}

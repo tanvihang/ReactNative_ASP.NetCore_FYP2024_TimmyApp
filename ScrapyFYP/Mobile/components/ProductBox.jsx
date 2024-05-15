@@ -1,33 +1,45 @@
-import { View, Text, TouchableOpacity, Image } from 'react-native'
+import { View, Text, TouchableOpacity, Image, Alert } from 'react-native'
 import React from 'react'
-import {images} from '../constants'
+import {images, icons} from '../constants'
+import * as Linking from 'expo-linking'
+import FavouriteButton from './Favourite/FavouriteButton'
 
 const ProductBox = ({data}) => {
+
   return (
     <View>
 
       <TouchableOpacity 
             onPress={() =>
-            {}}
+            {Linking.openURL(data.product_url)}}
             className = "h-40 mt-3 mx-3"
         >
 
-            <View className = "bg-black-100 h-40 rounded-2xl flex flex-row items-center justify-between px-7">
+            <View className = "border-2 border-black-200 focus:bg-slate-300 h-40 rounded-2xl flex flex-row items-center justify-between px-7 ">
                
                 {/* Product information */}
-                <View className = "text-white basis-3/6 flex flex-col gap-1">
-                    <Text className = "text-white">{data.title}</Text>
+                <View className = " basis-3/6 flex flex-col gap-1">
+                    <Text className = "">{data.title}</Text>
                     
                     <View className = "flex flex-row">
-                        <Text className = "text-white">RMB {data.price_CNY} - </Text>
-                        <Text className = "text-white">{data.condition}</Text>
+                        <Text className = "">RMB {data.price_CNY} - </Text>
+                        <Text className = "">{data.condition}</Text>
                     </View>
 
-                    <Image
-                        source={data.spider === "aihuishou" ? images.aihuishou : images.mudah}
-                        resizeMode='contain'
-                        className = 'w-8 h-8'
-                    />
+                    <View className = "flex flex-row">
+                        <Image
+                            source={data.spider === "aihuishou" ? images.aihuishou : images.mudah}
+                            resizeMode='contain'
+                            className = 'w-8 h-8'
+                        />
+
+                        {/* User Favourite */}
+                        <FavouriteButton
+                            productId={data.unique_id}
+                        />
+                    </View>
+                
+
                 </View>
 
                 {/* Product Image */}
@@ -36,6 +48,8 @@ const ProductBox = ({data}) => {
                     resizeMode='contain'
                     className = 'w-32 h-32 rounded-2xl'
                 />
+
+
 
             </View>
 

@@ -10,6 +10,7 @@ namespace webapi.DAO.TimmyProductDAO
 		Task<List<CategoryBrandDTO>> GetCategoryBrandList();
 		Task<List<TimmyProduct>> GetAllAdoptedTimmyProduct();
 		Task<List<TimmyProduct>> GetAllUnAdoptedTimmyProduct();
+		Task<List<string>> GetAllUnAdoptedTimmyProductName();
 		Task<bool> AdoptTimmyProduct(string productFullName);
 		Task<List<TimmyProduct>> GetAllProductList();
 		Task<TimmyProduct> GetTimmyProductByName(string fullName);
