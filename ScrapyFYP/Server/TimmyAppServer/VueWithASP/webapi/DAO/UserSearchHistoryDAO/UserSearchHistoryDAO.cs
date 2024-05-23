@@ -13,6 +13,34 @@ namespace webapi.DAO.UserSearchHistoryDAO
             _context = timmyDbContext;
         }
 
+		public async Task<bool> ClearUserSearchHistory(string userId)
+		{
+			try
+			{
+				List<UserSearchHistory> list = await _context.UserSearchHistories.Where(ush => ush.UserId == userId).ToListAsync();
+
+                await Console.Out.WriteLineAsync(list.Count().ToString());
+
+                if (list.Count > 0)
+				{
+					_context.RemoveRange(list);
+					await _context.SaveChangesAsync();
+					return true;
+
+				}
+				else
+				{
+					throw new Exception(StaticGenerator.GenerateDTOErrorMessage("UserSearchHistoryDAO", "ClearUserSearchHistory", "User has no search history!"));
+				}
+
+			}catch (Exception ex)
+			{
+				throw new Exception(StaticGenerator.GenerateDTOErrorMessage("UserSearchHistoryDAO", "ClearUserSearchHistory", ex.Message));
+
+			}
+
+		}
+
 		public async Task<List<UserSearchHistory>> GetUserSearchHistory(string userId)
 		{
 			try

@@ -1,28 +1,39 @@
-import { View, Text, SafeAreaView, FlatList, ActivityIndicator} from 'react-native'
+import { View, Text, SafeAreaView, FlatList, ActivityIndicator, Alert} from 'react-native'
 import {React, useState} from 'react'
 import FormField from '../../components/FormField'
 import CustomButton from '../../components/CustomButton'
 import normalApiCall from '../../hooks/normalApiCall'
 import useFetch from '../../hooks/useFetch'
+import CTAButton from '../../components/Buttons/CTAButton'
+import { router } from 'expo-router'
 
 const requestProduct = () => {
 
-    const [category, setCategory] = useState(null)
-    const [brand, setBrand] = useState(null)
-    const [model, setModel] = useState(null)
+    const [category, setCategory] = useState("")
+    const [brand, setBrand] = useState("")
+    const [model, setModel] = useState("")
 
     const {data, isLoading, error, refetch} = useFetch("TimmyProduct/GetUnAdoptedTimmyProductName", "GET", {},{})
 
     const sendAddProductRequest = async (body) => {
       try{
         const data = await normalApiCall("TimmyProduct/AddTimmyProduct", "POST",body,{})
+        Alert.alert("Success", "Product request sent!")
+        router.replace("/requestProduct")
       }
       catch(error){
-        console.log(error)
+        Alert.alert("Error",error.message)
       }
     }
 
     const requestButton = () => {
+
+      // Check input
+      if(category == "" || brand == "" || model == ""){
+        Alert.alert("Error", "Must fill in all blank!")
+        return
+      }
+
         var req = {
             category: category.toLowerCase(),
             brand: brand.toLowerCase(),
@@ -35,7 +46,7 @@ const requestProduct = () => {
     }
 
   return (
-    <SafeAreaView className = "mx-3">
+    <SafeAreaView className = "mx-3 mt-7 h-full">
 
             {
                 isLoading ? (
@@ -79,28 +90,29 @@ const requestProduct = () => {
                       />
 
 
-                  <CustomButton
+                  <CTAButton
                         title = "Request Product"
                         handlePress={()=>{requestButton()}}
                         containerStyles= "mt-4"
+                        textStyles = "text-white text-3xl font-pextrabold text-center"
                       />
                   </View>
                 )
                 :(
                   <FlatList
                     data = {data?.data}
-                    renderItem={({item}) => <Text className="text-center">{item}</Text>}
+                    renderItem={({item}) => <Text className="text-center font-pregular">{item}</Text>}
                     keyExtractor={item=>item}
 
                     ListHeaderComponent={
                       <View>
-                        <Text className = "text-3xl font-bold italic text-center mt-3">Existing UnAdopted Product</Text>
+                        <Text className = "text-3xl font-pbold text-center pt-5 text-primary">Existing UnAdopted Product</Text>
                       </View>
                     }
 
                     ListFooterComponent={
                       <View>  
-                      <Text className = "text-3xl font-bold italic text-center mt-3">Request A Product!</Text>
+                      <Text className = "text-5xl font-pbold text-center pt-5 text-primary">Request A Product!</Text>
                       <FormField
                               title="Category"
                               value = {category}
@@ -136,10 +148,11 @@ const requestProduct = () => {
                           />
     
     
-                      <CustomButton
+                      <CTAButton
                             title = "Request Product"
                             handlePress={()=>{requestButton()}}
                             containerStyles= "mt-4"
+                            textStyles = "text-white text-3xl font-pextrabold text-center"
                           />
                       </View>
                     }

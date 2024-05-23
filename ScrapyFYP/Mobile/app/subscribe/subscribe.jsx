@@ -24,7 +24,7 @@ const Subscribe = () => {
           renderItem={({item}) => <ProductModels category = {item} selectCategory = {selectCategory} setSelectCategory = {setSelectCategory} selectProduct = {selectProduct} setSelectProduct = {setSelectProduct} selectBrand = {selectBrand} setSelectBrand = {setSelectBrand} />}
           keyExtractor={item => item}
           className = "mt-7 mx-3"
-
+          showsVerticalScrollIndicator = {false}
           ListHeaderComponent={() => <SubscribeHero/>}
           ListFooterComponent={() => <SubscribeFooter/>}
         ></FlatList>

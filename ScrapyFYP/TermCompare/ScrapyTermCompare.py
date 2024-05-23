@@ -18,8 +18,17 @@ class ScrapyTermCompare:
         categoryBrandModelsList = self.GetCategoryBrandModelsList(category, brand)
         self.wordDictionary = self.GetListWordDict(categoryBrandModelsList)
         self.UpdateListToDictWithCategory(categoryBrandModelsList, category)
+        # print("Word Dictionary")
+        print(self.wordDictionary)
+        tempdict = self.wordDictionary.copy()
+        # for every word in dictionary take apart the number and character
+        for word in tempdict:
+            split_words = re.findall(r'[a-zA-Z]+|[\d.]+|[^,.()\-\s]+', word)
+            for key in split_words:
+                self.wordDictionary[key] = 1
 
         print(self.wordDictionary)
+        # print("Word Dictionary")
 
         self.GetOtherCategory(category, brand)
 
@@ -96,11 +105,13 @@ class ScrapyTermCompare:
         # 例如 6s等等
         split_words = re.findall(r'[a-zA-Z0-9]+|[\d.]+|[^,.()\-\s]+', title)
 
-        # print(split_words)
+        print("111")
+        print(split_words)
 
         filtered_word = [word for word in split_words if word in self.wordDictionary]
 
-        # print(filtered_word)
+        print(filtered_word)
+        print("111")
 
         filtered_string = ' '.join(filtered_word)
 
@@ -135,11 +146,13 @@ class ScrapyTermCompare:
         # 分割字符串
         split_words = re.findall(r'[a-zA-Z]+|[\d.]+|[^,.()\-\s]+', title)
 
-        # print(split_words)
+        print("000")
+        print(split_words)
 
         filtered_word = [word for word in split_words if word in self.wordDictionary]
 
-        # print(filtered_word)
+        print(filtered_word)
+        print("000")
 
         filtered_string = ' '.join(filtered_word)
 
@@ -171,27 +184,31 @@ class ScrapyTermCompare:
         # return most_similar_product,self.modelDictionary[most_similar_product],cleaned_title,distance        
 
 
-        # print("Ori")
-        # print(title)
+        print("Ori")
+        print(title)
 
-        # print("6s")
-        # print(f'Cleaned: {cleaned_title1}')
-        # print(distance1)
-        # print(f'Most sim: {most_similar_product1}')
+        print("6s")
+        print(f'Cleaned: {cleaned_title1}')
+        print(distance1)
+        print(f'Most sim: {most_similar_product1}')
 
         
-        # print("6 s")
-        # print(f'Cleaned: {cleaned_title}')
-        # print(distance)
-        # print(f'Most sim: {most_similar_product}')
+        print("6 s")
+        print(f'Cleaned: {cleaned_title}')
+        print(distance)
+        print(f'Most sim: {most_similar_product}')
 
         # 如果两个长度不一样，用LD进行判断，选更小的
-        if(len(most_similar_product) != len(most_similar_product1)):
+        if(len(most_similar_product) != len(most_similar_product1) or (distance <= 0.2 and distance1 <= 0.2) ):
             arr = []
             arr.append(most_similar_product1)
             arr.append(most_similar_product)
             
             most_similar_product2, distance2 = self.LevenstheinFinal(title, arr)
+
+            if(distance2 > 20):
+                return None, None,cleaned_title1,distance2
+
 
             return most_similar_product2,self.modelDictionary[most_similar_product2], cleaned_title1, distance2
 
@@ -209,8 +226,8 @@ class ScrapyTermCompare:
         distances = {model: Levenshtein.distance(title, model) for model in decision}
         most_similar_product = min(distances, key=distances.get)
         
-        # print(distances)
-        # print(f'By LD: {most_similar_product}')
+        print(distances)
+        print(f'By LD: {most_similar_product}')
 
         return most_similar_product, distances[most_similar_product]
     # 对标题与型号列表进行比较
@@ -312,28 +329,6 @@ if __name__ == "__main__":
     # 创建一个 ScrapyTermCompare 实例
     comparer = ScrapyTermCompare(category, brand)
 
-    # # 假设有一个标题
-    # title = "苹果ipad air4.2"
-    # # 获取最相近的产品型号
-    # most_similar_product, most_similar_category, cleaned_title, distance = comparer.GetMostSimilarProduct(title)
- 
-    # if(most_similar_product != None):
-    #     print("Most similar product:", most_similar_product)
-    #     print("category:", most_similar_category)
+    title = "Xiaomi 13t Pro 12GB/512Gb Blue Leather"
 
-    # cleaned = comparer.CleanTitle("Apple Watch SE 1st Gen")
-    # print(cleaned)
-    # comparer.CosineSim(cleaned)
-    # print("----------------------------")
-    # cleaned = comparer.CleanTitle1("Apple Watch SE 1st Gen")
-    # print(cleaned)
-    # comparer.CosineSim(cleaned)
-
-    # Apple iPhone 6s Plus 64GB
-
-    title = "Xiaomi Mi 10 T Pro"
-    # comparer.GetMostSimilarProduct(title)
-    comparer.Levensthein(title)
-    # comparer.CosineSim(title)
-    # comparer.LevenstheinFinal("apple watch se gen2", ['watch se', 'watch se 2'])
-    # comparer.GetMostSimilarProduct("apple watch se gen2 40mm")
+    comparer.GetMostSimilarProduct(title)

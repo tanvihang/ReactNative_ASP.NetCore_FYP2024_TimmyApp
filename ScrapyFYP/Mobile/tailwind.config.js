@@ -4,31 +4,36 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#F2F2F2",
+        primary: {
+          DEFAULT: "#2C3E50",
+          100: "#b4c7dd",
+          200: "#57687c"},
         secondary: {
-          DEFAULT: "#b4c7dd",
-          100: "#57687c",
-          200: "#2C3E50",
+          DEFAULT: "#926b6a",
+          100: "#F7CAC9",
         },
         black: {
-          DEFAULT: "#000",
-          100: "#1E1E2D",
-          200: "#232533",
+          DEFAULT: "#333333",
         },
         gray: {
-          100: "#CDCDE0",
+          DEFAULT:"#5c5c5c",
+          100: "#bfbfbf",
         },
+        white: {
+          DEFAULT:"#F2F2F2",
+          100: "#e8e8e8"
+        }
       },
       fontFamily: {
-        // pthin: ["Poppins-Thin", "sans-serif"],
-        // pextralight: ["Poppins-ExtraLight", "sans-serif"],
-        // plight: ["Poppins-Light", "sans-serif"],
-        // pregular: ["Poppins-Regular", "sans-serif"],
-        // pmedium: ["Poppins-Medium", "sans-serif"],
-        // psemibold: ["Poppins-SemiBold", "sans-serif"],
-        // pbold: ["Poppins-Bold", "sans-serif"],
-        // pextrabold: ["Poppins-ExtraBold", "sans-serif"],
-        // pblack: ["Poppins-Black", "sans-serif"],
+        pthin: ["Poppins-Thin", "sans-serif"],
+        pextralight: ["Poppins-ExtraLight", "sans-serif"],
+        plight: ["Poppins-Light", "sans-serif"],
+        pregular: ["Poppins-Regular", "sans-serif"],
+        pmedium: ["Poppins-Medium", "sans-serif"],
+        psemibold: ["Poppins-SemiBold", "sans-serif"],
+        pbold: ["Poppins-Bold", "sans-serif"],
+        pextrabold: ["Poppins-ExtraBold", "sans-serif"],
+        pblack: ["Poppins-Black", "sans-serif"],
       },
     },
   },

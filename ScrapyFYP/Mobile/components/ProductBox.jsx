@@ -6,24 +6,25 @@ import FavouriteButton from './Favourite/FavouriteButton'
 
 const ProductBox = ({data}) => {
 
+
   return (
     <View>
 
       <TouchableOpacity 
             onPress={() =>
             {Linking.openURL(data.product_url)}}
-            className = "h-40 mt-3 mx-3"
+            className = "h-40 mt-3 mx-3 bg-white-100 rounded-2xl"
         >
 
-            <View className = "border-2 border-black-200 focus:bg-slate-300 h-40 rounded-2xl flex flex-row items-center justify-between px-7 ">
+            <View className = "border-black-200 focus:bg-slate-300 h-40 rounded-2xl flex flex-row items-center justify-between px-7 ">
                
                 {/* Product information */}
                 <View className = " basis-3/6 flex flex-col gap-1">
-                    <Text className = "">{data.title}</Text>
+                    <Text className = " font-pblack text-base">{data.title}</Text>
                     
                     <View className = "flex flex-row">
-                        <Text className = "">RMB {data.price_CNY} - </Text>
-                        <Text className = "">{data.condition}</Text>
+                        <Text className = " font-pmedium">RMB {data.price_CNY} - </Text>
+                        <Text className = " font-pmedium text-secondary">{data.condition}</Text>
                     </View>
 
                     <View className = "flex flex-row">

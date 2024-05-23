@@ -6,9 +6,18 @@ import CustomButton from '../../components/CustomButton'
 import { Link, router, useLocalSearchParams } from 'expo-router'
 import normalApiCall from '../../hooks/normalApiCall'
 import { useGlobalContext } from '../../context/GlobalProvider'
+import CTAButton from '../../components/Buttons/CTAButton'
+import * as SecureStore from 'expo-secure-store'
 
 const SignIn = () => {
   const {setIsLoggedIn, setJwtToken, jwtToken} = useGlobalContext();
+
+  const [key, setKey] = useState(null)
+  const [value, setValue] = useState(null)
+
+  const saveSecureValue = async(value) => {
+    await SecureStore.setItemAsync("jwtToken",value)
+  }
 
   // user form state
   const [form, setForm] = useState({
@@ -34,8 +43,11 @@ const SignIn = () => {
       },{});
   
       if(data.statusCode == 200){
-        setIsLoggedIn(true)
+        setKey("jwtToken")
+        setValue(data.data)
+        await saveSecureValue(data.data)
         setJwtToken(data.data);
+        setIsLoggedIn(true)
         router.replace("/home") 
       }
     }
@@ -55,7 +67,7 @@ const SignIn = () => {
       }}>
 
       <View className ="justify-center w-full min-h-[85vh]">
-        <Text className = "text-2xl mt-10 font-semibold">Log in to TimmyApp</Text>
+        <Text className = "text-3xl mt-10 font-semibold text-primary-200">Log in to TimmyApp</Text>
       
         <FormField
           title="UserToken"
@@ -71,10 +83,10 @@ const SignIn = () => {
             value = {form.password}
             handleChangeText = {(e)=>setForm({...form, password:e})} 
             otherStyles= "mt-7"
-            placeholder="pass"
+            placeholder="password"
         />
 
-        <CustomButton 
+        <CTAButton 
           title = "SIGN IN"
           handlePress={()=>{
             submit()
@@ -85,7 +97,7 @@ const SignIn = () => {
 
         <View className = "items-center justify-center flex-row gap-3 pt-3">
           <Text className="text-lg font-regular">Dont't have an account?</Text>
-          <Link href="/sign-up" className='text-lg font-regular text-secondary-100'>Sign Up</Link>
+          <Link href="/sign-up" className='text-lg font-regular text-secondary'>Sign Up</Link>
         </View>
 
       </View>

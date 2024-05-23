@@ -7,5 +7,6 @@ namespace webapi.Services.PriceHistoryService
 	{
 		Task<bool> AddPriceHistory(AddPriceHistoryDTO addPriceHistoryDTO);
 		Task<List<PriceHistory>> GetProductPriceHistory(string timmyProductFullName);
+		Task<ResponsePriceHistoryDTO> convertPriceHistoryToResponsePriceHistory(List<PriceHistory> priceHistoryList, string fullName);
 	}
 }

@@ -1,1 +1,1699 @@
-{"count": 188, "correct": 57, "executedTime": 0.008221864700317383, "data": [{"title": "Apple IPhone 15 Pro Sealed", "trimmedTitle": "apple iphone 15 pro sealed", "predictedModel": "iphone 15 pro max", "realModel": "iphone 15 pro", "category": "mobile", "distance": 11, "correct": false}, {"title": "APPLE WATCH S7-41M- Untuk dilepaskan", "trimmedTitle": "apple watch s7-41m- untuk dilepaskan", "predictedModel": "watch ultra", "realModel": "watch 7", "category": "watches", "distance": 27, "correct": false}, {"title": "Apple watch series 8 45mm cellular", "trimmedTitle": "apple watch series 8 45mm cellular", "predictedModel": "watch se 2", "realModel": "watch 8", "category": "watches", "distance": 25, "correct": false}, {"title": "Apple watch Ultra 2", "trimmedTitle": "apple watch ultra 2", "predictedModel": "watch ultra 2", "realModel": "watch ultra 2", "category": "watches", "distance": 6, "correct": true}, {"title": "Apple Watch Series 6", "trimmedTitle": "apple watch series 6", "predictedModel": "watch se 2", "realModel": "watch 6", "category": "watches", "distance": 11, "correct": false}, {"title": "Apple Watch SE 2nd Gen", "trimmedTitle": "apple watch se 2nd gen", "predictedModel": "watch se 2", "realModel": "watch se 2", "category": "watches", "distance": 12, "correct": true}, {"title": "Apple \u0130Phone SE 64gb", "trimmedTitle": "apple i\u0307phone se 64gb", "predictedModel": "iphone se", "realModel": "iphone se", "category": "mobile", "distance": 12, "correct": true}, {"title": "Apple Watch Series 8 GPS + Cellular 45MM", "trimmedTitle": "apple watch series 8 gps + cellular 45mm", "predictedModel": "iphone 8 plus", "realModel": "watch 8", "category": "mobile", "distance": 31, "correct": false}, {"title": "Apple Watch Series 7 45mm GPS Midnight Alu Sport B", "trimmedTitle": "apple watch series 7 45mm gps midnight alu sport b", "predictedModel": "iphone 7 plus", "realModel": "watch 7", "category": "mobile", "distance": 40, "correct": false}, {"title": "Apple Watch Series 9", "trimmedTitle": "apple watch series 9", "predictedModel": "watch se 2", "realModel": "watch 9", "category": "watches", "distance": 11, "correct": false}, {"title": "Apple Iphone 11 Pro Max 64GB", "trimmedTitle": "apple iphone 11 pro max 64gb", "predictedModel": "iphone 11 pro max", "realModel": "iphone 11 pro max", "category": "mobile", "distance": 11, "correct": true}, {"title": "IPad Pro 11inch (3rd Gen) + Apple Pencil", "trimmedTitle": "ipad pro 11inch (3rd gen) + apple pencil", "predictedModel": "ipad pro 3", "realModel": "ipad pro 3", "category": "tablet", "distance": 30, "correct": true}, {"title": "Apple IPHONE 12 (256GB)", "trimmedTitle": "apple iphone 12 (256gb)", "predictedModel": "iphone 12 pro", "realModel": "iphone 12", "category": "mobile", "distance": 13, "correct": false}, {"title": "Apple Watch Series 8 45mm GPS Fullset", "trimmedTitle": "apple watch series 8 45mm gps fullset", "predictedModel": "iphone 8 plus", "realModel": "watch 8", "category": "mobile", "distance": 28, "correct": false}, {"title": "Apple Watch Ultra 49mm Titanium", "trimmedTitle": "apple watch ultra 49mm titanium", "predictedModel": "watch ultra 2", "realModel": "watch ultra", "category": "watches", "distance": 19, "correct": false}, {"title": "Apple Watch SE 1st Gen", "trimmedTitle": "apple watch se 1st gen", "predictedModel": "watch se 2", "realModel": "watch se", "category": "watches", "distance": 13, "correct": false}, {"title": "Apple Watch Ultra 1", "trimmedTitle": "apple watch ultra 1", "predictedModel": "watch ultra 2", "realModel": "watch ultra", "category": "watches", "distance": 7, "correct": false}, {"title": "Apple Watch S6 44mm Cellular Nike Edition", "trimmedTitle": "apple watch s6 44mm cellular nike edition", "predictedModel": "watch ultra 2", "realModel": "watch 6", "category": "watches", "distance": 31, "correct": false}, {"title": "Apple Watch Series 7 45mm", "trimmedTitle": "apple watch series 7 45mm", "predictedModel": "watch se 2", "realModel": "watch 7", "category": "watches", "distance": 16, "correct": false}, {"title": "NEW UNBOXED APPLE iPHONE 14 256GB STARLIGHT", "trimmedTitle": "new unboxed apple iphone 14 256gb starlight", "predictedModel": "iphone 14 pro max", "realModel": "iphone 14", "category": "mobile", "distance": 31, "correct": false}, {"title": "Apple iPad Mini 6th Generation Purple", "trimmedTitle": "apple ipad mini 6th generation purple", "predictedModel": "ipad mini 6", "realModel": "ipad mini 6", "category": "tablet", "distance": 26, "correct": true}, {"title": "Apple Watch Series 8 GPS only", "trimmedTitle": "apple watch series 8 gps only", "predictedModel": "watch se 2", "realModel": "watch 8", "category": "watches", "distance": 20, "correct": false}, {"title": "Apple IPhone 13 128GB Ori Part All", "trimmedTitle": "apple iphone 13 128gb ori part all", "predictedModel": "iphone 11 pro max", "realModel": "iphone 13", "category": "mobile", "distance": 21, "correct": false}, {"title": "Apple Watch series 9", "trimmedTitle": "apple watch series 9", "predictedModel": "watch se 2", "realModel": "watch 9", "category": "watches", "distance": 11, "correct": false}, {"title": "Apple watch Series 8 45 mm GPS", "trimmedTitle": "apple watch series 8 45 mm gps", "predictedModel": "watch se 2", "realModel": "watch 8", "category": "watches", "distance": 21, "correct": false}, {"title": "Used Apple Watch SE 44mm Space gray", "trimmedTitle": "used apple watch se 44mm space gray", "predictedModel": "iphone 14 pro max", "realModel": "watch se", "category": "mobile", "distance": 26, "correct": false}, {"title": "Used Apple Watch SE 44mm Space Gray Aluminum Case", "trimmedTitle": "used apple watch se 44mm space gray aluminum case", "predictedModel": "iphone 14 pro max", "realModel": "watch se", "category": "mobile", "distance": 38, "correct": false}, {"title": "[USED] Apple iPhone 12 128GB - Macam Baru", "trimmedTitle": "[used] apple iphone 12 128gb - macam baru", "predictedModel": "iphone 12 pro max", "realModel": "iphone 12", "category": "mobile", "distance": 28, "correct": false}, {"title": "[USED] Apple iPhone 11 64GB - Macam Baru", "trimmedTitle": "[used] apple iphone 11 64gb - macam baru", "predictedModel": "iphone 11 pro max", "realModel": "iphone 11", "category": "mobile", "distance": 27, "correct": false}, {"title": "iPad Air 5 256gb Wifi with Apple Pen 2", "trimmedTitle": "ipad air 5 256gb wifi with apple pen 2", "predictedModel": "ipad air 2", "realModel": "ipad air 5", "category": "tablet", "distance": 28, "correct": false}, {"title": "Iphone 13 warranty apple", "trimmedTitle": "iphone 13 warranty apple", "predictedModel": "iphone 13 pro max", "realModel": "iphone 13", "category": "mobile", "distance": 12, "correct": false}, {"title": "iphone 13 256gb black (warranty apple)", "trimmedTitle": "iphone 13 256gb black (warranty apple)", "predictedModel": "iphone 12 pro max", "realModel": "iphone 13", "category": "mobile", "distance": 26, "correct": false}, {"title": "iPhone 11 Pro Max original apple", "trimmedTitle": "iphone 11 pro max original apple", "predictedModel": "iphone 11 pro max", "realModel": "iphone 11 pro max", "category": "mobile", "distance": 15, "correct": true}, {"title": "Apple Ultra Watch 49mm", "trimmedTitle": "apple ultra watch 49mm", "predictedModel": "watch 4", "realModel": "watch ultra", "category": "watches", "distance": 15, "correct": false}, {"title": "Apple Watch Series 7 (41mm, Midnight)", "trimmedTitle": "apple watch series 7 (41mm, midnight)", "predictedModel": "watch se 2", "realModel": "watch 7", "category": "watches", "distance": 28, "correct": false}, {"title": "Apple iPhone 14 Pro 256GB under warranty", "trimmedTitle": "apple iphone 14 pro 256gb under warranty", "predictedModel": "iphone 14 pro max", "realModel": "iphone 14 pro", "category": "mobile", "distance": 25, "correct": false}, {"title": "Apple Iphone 11 Pro Max 256GB Midnight Green", "trimmedTitle": "apple iphone 11 pro max 256gb midnight green", "predictedModel": "iphone 11 pro max", "realModel": "iphone 11 pro max", "category": "mobile", "distance": 27, "correct": true}, {"title": "Apple iPad 4 16Gb WiFi + 4G (LTE) MD522ZP/A", "trimmedTitle": "apple ipad 4 16gb wifi + 4g (lte) md522zp/a", "predictedModel": "ipad mini 2", "realModel": "ipad 4", "category": "tablet", "distance": 34, "correct": false}, {"title": "[USED] Apple iPhone 13 Pro Max 256GB - Macam Baru", "trimmedTitle": "[used] apple iphone 13 pro max 256gb - macam baru", "predictedModel": "iphone 13 pro max", "realModel": "iphone 13 pro max", "category": "mobile", "distance": 32, "correct": true}, {"title": "[USED] Apple iPhone 12 Pro Max 256GB - Like New", "trimmedTitle": "[used] apple iphone 12 pro max 256gb - like new", "predictedModel": "iphone 12 pro max", "realModel": "iphone 12 pro max", "category": "mobile", "distance": 30, "correct": true}, {"title": "Brand New Apple Watch Series 9", "trimmedTitle": "brand new apple watch series 9", "predictedModel": "watch se 2", "realModel": "watch 9", "category": "watches", "distance": 21, "correct": false}, {"title": "Ipad Mini 5 - 256GB With Original Apple Pencil", "trimmedTitle": "ipad mini 5 - 256gb with original apple pencil", "predictedModel": "ipad mini 2", "realModel": "ipad mini 5", "category": "tablet", "distance": 35, "correct": false}, {"title": "Apple Watch SE 40mm Space Gray", "trimmedTitle": "apple watch se 40mm space gray", "predictedModel": "watch se 2", "realModel": "watch se", "category": "watches", "distance": 21, "correct": false}, {"title": "apple iPhone \ud83d\udcf1 11 pro max", "trimmedTitle": "apple iphone \ud83d\udcf1 11 pro max", "predictedModel": "iphone 11 pro max", "realModel": "iphone 11 pro max", "category": "mobile", "distance": 8, "correct": true}, {"title": "APPLE IPHONE 13 PRO MAX (128Gb) ZP set", "trimmedTitle": "apple iphone 13 pro max (128gb) zp set", "predictedModel": "iphone 13 pro max", "realModel": "iphone 13 pro max", "category": "mobile", "distance": 21, "correct": true}, {"title": "Apple Magic Keyboard iPad Pro 11\" & iPad Air 4/5", "trimmedTitle": "apple magic keyboard ipad pro 11\" & ipad air 4/5", "predictedModel": "macbook air", "realModel": "ipad air 5", "category": "computer", "distance": 38, "correct": false}, {"title": "Apple Watch SE (Gen 2)", "trimmedTitle": "apple watch se (gen 2)", "predictedModel": "watch se 2", "realModel": "watch se 2", "category": "watches", "distance": 12, "correct": true}, {"title": "Apple Iphone 11  ", "trimmedTitle": "apple iphone 11  ", "predictedModel": "iphone 11", "realModel": "iphone 11", "category": "mobile", "distance": 8, "correct": true}, {"title": "Apple iPod 32gb and Music Player", "trimmedTitle": "apple ipod 32gb and music player", "predictedModel": "iphone 6s plus", "realModel": "ipod", "category": "mobile", "distance": 24, "correct": false}, {"title": "iPad Air 5th Gen Blue (256gb) + Apple Pencil", "trimmedTitle": "ipad air 5th gen blue (256gb) + apple pencil", "predictedModel": "iphone 12 pro max", "realModel": "ipad air 5", "category": "mobile", "distance": 34, "correct": false}, {"title": "APPLE WATCH SERIES 7 45MM for sale", "trimmedTitle": "apple watch series 7 45mm for sale", "predictedModel": "watch se 2", "realModel": "watch 7", "category": "watches", "distance": 25, "correct": false}, {"title": "Apple iPhone 13 128GB 1 Month Warranty", "trimmedTitle": "apple iphone 13 128gb 1 month warranty", "predictedModel": "iphone 11 pro max", "realModel": "iphone 13", "category": "mobile", "distance": 25, "correct": false}, {"title": "Apple Watch SE (2nd Gen) 44mm", "trimmedTitle": "apple watch se (2nd gen) 44mm", "predictedModel": "watch se 2", "realModel": "watch se 2", "category": "watches", "distance": 19, "correct": true}, {"title": "Apple watch s5 sliver 44mm", "trimmedTitle": "apple watch s5 sliver 44mm", "predictedModel": "watch se 2", "realModel": "watch 5", "category": "watches", "distance": 17, "correct": false}, {"title": "Apple Iphone 8 plus", "trimmedTitle": "apple iphone 8 plus", "predictedModel": "iphone 8 plus", "realModel": "iphone 8 plus", "category": "mobile", "distance": 6, "correct": true}, {"title": "Apple Watch SE 40mm", "trimmedTitle": "apple watch se 40mm", "predictedModel": "watch se 2", "realModel": "watch se", "category": "watches", "distance": 10, "correct": false}, {"title": "Apple iPhone 6 32gb", "trimmedTitle": "apple iphone 6 32gb", "predictedModel": "iphone 12", "realModel": "iphone 6", "category": "mobile", "distance": 11, "correct": false}, {"title": "apple watch series 8 45mm", "trimmedTitle": "apple watch series 8 45mm", "predictedModel": "watch se 2", "realModel": "watch 8", "category": "watches", "distance": 16, "correct": false}, {"title": "apple ipad mini 2", "trimmedTitle": "apple ipad mini 2", "predictedModel": "ipad mini 2", "realModel": "ipad mini 2", "category": "tablet", "distance": 6, "correct": true}, {"title": "Apple Iphone 13 Pro", "trimmedTitle": "apple iphone 13 pro", "predictedModel": "iphone 13 pro", "realModel": "iphone 13 pro", "category": "mobile", "distance": 6, "correct": true}, {"title": "Apple Ipad 9gen", "trimmedTitle": "apple ipad 9gen", "predictedModel": "ipad 9", "realModel": "ipad 9", "category": "tablet", "distance": 9, "correct": true}, {"title": "Apple watch series 8 GPS + CELLULAR", "trimmedTitle": "apple watch series 8 gps + cellular", "predictedModel": "iphone 8 plus", "realModel": "watch 8", "category": "mobile", "distance": 26, "correct": false}, {"title": "Apple Watch Series 3 42mm GPS", "trimmedTitle": "apple watch series 3 42mm gps", "predictedModel": "watch se 2", "realModel": "watch 3", "category": "watches", "distance": 19, "correct": false}, {"title": "Apple Watch Se(44mm)", "trimmedTitle": "apple watch se(44mm)", "predictedModel": "watch se", "realModel": "watch se", "category": "watches", "distance": 12, "correct": true}, {"title": "New Apple Watch Series 7 45mm GPS Nike Edition", "trimmedTitle": "new apple watch series 7 45mm gps nike edition", "predictedModel": "watch se 2", "realModel": "watch 7", "category": "watches", "distance": 37, "correct": false}, {"title": "Apple Watch SE Gen2 40mm", "trimmedTitle": "apple watch se gen2 40mm", "predictedModel": "watch se 2", "realModel": "watch se 2", "category": "watches", "distance": 14, "correct": true}, {"title": "Apple Iphone 13 Pro Max 256gb", "trimmedTitle": "apple iphone 13 pro max 256gb", "predictedModel": "iphone 13 pro max", "realModel": "iphone 13 pro max", "category": "mobile", "distance": 12, "correct": true}, {"title": "Apple Watch Series 9", "trimmedTitle": "apple watch series 9", "predictedModel": "watch se 2", "realModel": "watch 9", "category": "watches", "distance": 11, "correct": false}, {"title": "Apple iphone 13", "trimmedTitle": "apple iphone 13", "predictedModel": "iphone 13", "realModel": "iphone 13", "category": "mobile", "distance": 6, "correct": true}, {"title": "Apple watch se nike 40mm first gen", "trimmedTitle": "apple watch se nike 40mm first gen", "predictedModel": "watch se 2", "realModel": "watch se", "category": "watches", "distance": 25, "correct": false}, {"title": "Apple Watch series 9 45mm", "trimmedTitle": "apple watch series 9 45mm", "predictedModel": "watch se 2", "realModel": "watch 9", "category": "watches", "distance": 16, "correct": false}, {"title": "Apple Watch series 9 45mm Midnight", "trimmedTitle": "apple watch series 9 45mm midnight", "predictedModel": "watch se 2", "realModel": "watch 9", "category": "watches", "distance": 25, "correct": false}, {"title": "\u203c\ufe0fAPPLE WATCH Series 2\u203c\ufe0f", "trimmedTitle": "\u203c\ufe0fapple watch series 2\u203c\ufe0f", "predictedModel": "watch se 2", "realModel": "watch 2", "category": "watches", "distance": 14, "correct": false}, {"title": "Apple Watch series 9 45MM GPS", "trimmedTitle": "apple watch series 9 45mm gps", "predictedModel": "watch se 2", "realModel": "watch 9", "category": "watches", "distance": 20, "correct": false}, {"title": "iPhone 12 128GB - Original Apple Ori Part", "trimmedTitle": "iphone 12 128gb - original apple ori part", "predictedModel": "iphone 11 pro max", "realModel": "iphone 12", "category": "mobile", "distance": 27, "correct": false}, {"title": "Apple IPad 9th Gen with WaRRanty 100% Original", "trimmedTitle": "apple ipad 9th gen with warranty 100% original", "predictedModel": "iphone 11 pro max", "realModel": "ipad 9", "category": "mobile", "distance": 37, "correct": false}, {"title": "Apple Iphone 12 128GB Green", "trimmedTitle": "apple iphone 12 128gb green", "predictedModel": "iphone 11 pro", "realModel": "iphone 12", "category": "mobile", "distance": 16, "correct": false}, {"title": "Ipad 5 gen 256 gb wifi + apple pencil 2", "trimmedTitle": "ipad 5 gen 256 gb wifi + apple pencil 2", "predictedModel": "ipad mini 2", "realModel": "ipad 5", "category": "tablet", "distance": 29, "correct": false}, {"title": "Apple Watch Series 4 (40mm) Nike series", "trimmedTitle": "apple watch series 4 (40mm) nike series", "predictedModel": "watch se 2", "realModel": "watch 4", "category": "watches", "distance": 30, "correct": false}, {"title": "Apple Iphone 7 Plus 256GB", "trimmedTitle": "apple iphone 7 plus 256gb", "predictedModel": "iphone 7 plus", "realModel": "iphone 7 plus", "category": "mobile", "distance": 12, "correct": true}, {"title": "Apple watch ultra 49mm", "trimmedTitle": "apple watch ultra 49mm", "predictedModel": "watch ultra 2", "realModel": "watch ultra", "category": "watches", "distance": 10, "correct": false}, {"title": "APPLE WATCH SERIES 7 gps (GREEN LIMITED EDITION)", "trimmedTitle": "apple watch series 7 gps (green limited edition)", "predictedModel": "watch se 2", "realModel": "watch 7", "category": "watches", "distance": 39, "correct": false}, {"title": "Second Apple Watch SE GPS 40mm", "trimmedTitle": "second apple watch se gps 40mm", "predictedModel": "watch se 2", "realModel": "watch se", "category": "watches", "distance": 21, "correct": false}, {"title": "Apple Watch S7 Nike Edition", "trimmedTitle": "apple watch s7 nike edition", "predictedModel": "watch se 2", "realModel": "watch 7", "category": "watches", "distance": 18, "correct": false}, {"title": "APPLE WATCH SE 2 40 mm", "trimmedTitle": "apple watch se 2 40 mm", "predictedModel": "watch se 2", "realModel": "watch se 2", "category": "watches", "distance": 12, "correct": true}, {"title": "NEW Apple Watch Series 6 40mm Red Aluminum ", "trimmedTitle": "new apple watch series 6 40mm red aluminum ", "predictedModel": "watch se 2", "realModel": "watch 6", "category": "watches", "distance": 34, "correct": false}, {"title": "Apple Watch Series 8 41mm", "trimmedTitle": "apple watch series 8 41mm", "predictedModel": "watch se 2", "realModel": "watch 8", "category": "watches", "distance": 16, "correct": false}, {"title": "apple watch series 7", "trimmedTitle": "apple watch series 7", "predictedModel": "watch se 2", "realModel": "watch 7", "category": "watches", "distance": 11, "correct": false}, {"title": "Iphone 14 Pro Max + Apple Watch SE", "trimmedTitle": "iphone 14 pro max + apple watch se", "predictedModel": "iphone 14 pro max", "realModel": "iphone 14 pro max", "category": "mobile", "distance": 17, "correct": true}, {"title": "Apple iPhone XS Max 256GB", "trimmedTitle": "apple iphone xs max 256gb", "predictedModel": "iphone xs max", "realModel": "iphone xs max", "category": "mobile", "distance": 12, "correct": true}, {"title": "Apple iPhone 6s Plus 64GB", "trimmedTitle": "apple iphone 6s plus 64gb", "predictedModel": "iphone 6s plus", "realModel": "iphone 6s plus", "category": "mobile", "distance": 11, "correct": true}, {"title": "Apple Watch SE Gen2", "trimmedTitle": "apple watch se gen2", "predictedModel": "watch se 2", "realModel": "watch se 2", "category": "watches", "distance": 9, "correct": true}, {"title": "Apple iphone 11 128GB mint green", "trimmedTitle": "apple iphone 11 128gb mint green", "predictedModel": "iphone 11 pro max", "realModel": "iphone 11", "category": "mobile", "distance": 20, "correct": false}, {"title": "apple watch stainless steel series 4 44mm", "trimmedTitle": "apple watch stainless steel series 4 44mm", "predictedModel": "watch ultra 2", "realModel": "watch 4", "category": "watches", "distance": 31, "correct": false}, {"title": "Apple Iphone 12 Pro | Promax Used | Cash & Ansuran", "trimmedTitle": "apple iphone 12 pro | promax used | cash & ansuran", "predictedModel": "iphone 12 pro max", "realModel": "iphone 12 pro", "category": "mobile", "distance": 33, "correct": false}, {"title": "Apple Watch Series 8 41mm", "trimmedTitle": "apple watch series 8 41mm", "predictedModel": "watch se 2", "realModel": "watch 8", "category": "watches", "distance": 16, "correct": false}, {"title": "Apple Watch Series 9 GPS 45MM", "trimmedTitle": "apple watch series 9 gps 45mm", "predictedModel": "watch se 2", "realModel": "watch 9", "category": "watches", "distance": 20, "correct": false}, {"title": "Apple Watch Series 7", "trimmedTitle": "apple watch series 7", "predictedModel": "watch se 2", "realModel": "watch 7", "category": "watches", "distance": 11, "correct": false}, {"title": "Apple iPhone 14 Pro Max 256gb (Deep Purple)", "trimmedTitle": "apple iphone 14 pro max 256gb (deep purple)", "predictedModel": "iphone 14 pro max", "realModel": "iphone 14 pro max", "category": "mobile", "distance": 26, "correct": true}, {"title": "Apple Watch Series 7 41mm Starlight Gps Cellular", "trimmedTitle": "apple watch series 7 41mm starlight gps cellular", "predictedModel": "iphone 11 pro max", "realModel": "watch 7", "category": "mobile", "distance": 39, "correct": false}, {"title": "Apple watch series 8 45mm", "trimmedTitle": "apple watch series 8 45mm", "predictedModel": "watch se 2", "realModel": "watch 8", "category": "watches", "distance": 16, "correct": false}, {"title": "Apple Watch Series 7", "trimmedTitle": "apple watch series 7", "predictedModel": "watch se 2", "realModel": "watch 7", "category": "watches", "distance": 11, "correct": false}, {"title": "Apple Watch SE 2023", "trimmedTitle": "apple watch se 2023", "predictedModel": "watch se 2", "realModel": "watch se", "category": "watches", "distance": 9, "correct": false}, {"title": "Apple Watch Stainless Steel Series 6", "trimmedTitle": "apple watch stainless steel series 6", "predictedModel": "watch ultra 2", "realModel": "watch 6", "category": "watches", "distance": 26, "correct": false}, {"title": "apple iPhone 7 plus 32GB", "trimmedTitle": "apple iphone 7 plus 32gb", "predictedModel": "iphone 7 plus", "realModel": "iphone 7 plus", "category": "mobile", "distance": 11, "correct": true}, {"title": "Apple Iphone 13 Pro Sierra Blue 256GB", "trimmedTitle": "apple iphone 13 pro sierra blue 256gb", "predictedModel": "iphone 13 pro max", "realModel": "iphone 13 pro", "category": "mobile", "distance": 22, "correct": false}, {"title": "Apple Watch Series 9 ", "trimmedTitle": "apple watch series 9 ", "predictedModel": "watch se 2", "realModel": "watch 9", "category": "watches", "distance": 12, "correct": false}, {"title": "Apple Ipad 8th Gen 2021 32GB Wifi", "trimmedTitle": "apple ipad 8th gen 2021 32gb wifi", "predictedModel": "iphone 11 pro max", "realModel": "ipad 8", "category": "mobile", "distance": 25, "correct": false}, {"title": "Apple watch SE 2023 (Gen 2) 44mm", "trimmedTitle": "apple watch se 2023 (gen 2) 44mm", "predictedModel": "watch se 2", "realModel": "watch se 2", "category": "watches", "distance": 22, "correct": true}, {"title": "Apple Watch Series 6 44mm Celullar", "trimmedTitle": "apple watch series 6 44mm celullar", "predictedModel": "watch se 2", "realModel": "watch 6", "category": "watches", "distance": 25, "correct": false}, {"title": "apple watch series 4", "trimmedTitle": "apple watch series 4", "predictedModel": "watch se 2", "realModel": "watch 4", "category": "watches", "distance": 11, "correct": false}, {"title": "Apple iPhone 11 Pro Good Condition", "trimmedTitle": "apple iphone 11 pro good condition", "predictedModel": "iphone 11 pro max", "realModel": "iphone 11 pro", "category": "mobile", "distance": 20, "correct": false}, {"title": "Apple iPhone 13 PRO Good Condition", "trimmedTitle": "apple iphone 13 pro good condition", "predictedModel": "iphone 13 pro max", "realModel": "iphone 13 pro", "category": "mobile", "distance": 20, "correct": false}, {"title": "Apple Watch SE", "trimmedTitle": "apple watch se", "predictedModel": "watch se", "realModel": "watch se", "category": "watches", "distance": 6, "correct": true}, {"title": "Apple Watch SE GPS 40M", "trimmedTitle": "apple watch se gps 40m", "predictedModel": "watch se 2", "realModel": "watch se", "category": "watches", "distance": 13, "correct": false}, {"title": "Apple Iphone 11 Pro| Promax Used | Terima Trade In", "trimmedTitle": "apple iphone 11 pro| promax used | terima trade in", "predictedModel": "iphone 11 pro max", "realModel": "iphone 11 pro", "category": "mobile", "distance": 33, "correct": false}, {"title": "Apple Watch Series 9 Satu Unit Sahaja", "trimmedTitle": "apple watch series 9 satu unit sahaja", "predictedModel": "watch se 2", "realModel": "watch 9", "category": "watches", "distance": 28, "correct": false}, {"title": "apple iPad pro 2nd generation", "trimmedTitle": "apple ipad pro 2nd generation", "predictedModel": "ipad pro 2", "realModel": "ipad pro 2", "category": "tablet", "distance": 19, "correct": true}, {"title": "Apple iPad Air 1. Great condition. Limited item.", "trimmedTitle": "apple ipad air 1. great condition. limited item.", "predictedModel": "ipad air 1", "realModel": "ipad air 1", "category": "tablet", "distance": 38, "correct": true}, {"title": "jam tangan apple watch ultra", "trimmedTitle": "jam tangan apple watch ultra", "predictedModel": "watch ultra", "realModel": "watch ultra", "category": "watches", "distance": 17, "correct": true}, {"title": "iphone 11 128gb as new free apple earphone", "trimmedTitle": "iphone 11 128gb as new free apple earphone", "predictedModel": "iphone 11 pro", "realModel": "iphone 11", "category": "mobile", "distance": 29, "correct": false}, {"title": "Apple Watch Series 9", "trimmedTitle": "apple watch series 9", "predictedModel": "watch se 2", "realModel": "watch 9", "category": "watches", "distance": 11, "correct": false}, {"title": "Apple Watch Series 5 for sell", "trimmedTitle": "apple watch series 5 for sell", "predictedModel": "watch se 2", "realModel": "watch 5", "category": "watches", "distance": 20, "correct": false}, {"title": "Apple Watch SE", "trimmedTitle": "apple watch se", "predictedModel": "watch se", "realModel": "watch se", "category": "watches", "distance": 6, "correct": true}, {"title": "Apple Watch Series 7 45mm GPS", "trimmedTitle": "apple watch series 7 45mm gps", "predictedModel": "watch se 2", "realModel": "watch 7", "category": "watches", "distance": 20, "correct": false}, {"title": "Apple iPhone 8 Plus 256GB", "trimmedTitle": "apple iphone 8 plus 256gb", "predictedModel": "iphone 8 plus", "realModel": "iphone 8 plus", "category": "mobile", "distance": 12, "correct": true}, {"title": "Apple Watch SERIES 7 45MM", "trimmedTitle": "apple watch series 7 45mm", "predictedModel": "watch se 2", "realModel": "watch 7", "category": "watches", "distance": 16, "correct": false}, {"title": "Apple Iphone 15 New |Promo CNY  8-13 February 2024", "trimmedTitle": "apple iphone 15 new |promo cny  8-13 february 2024", "predictedModel": "iphone 15 pro max", "realModel": "iphone 15", "category": "mobile", "distance": 35, "correct": false}, {"title": "iPhone XS 256GB - Original Apple Original Part", "trimmedTitle": "iphone xs 256gb - original apple original part", "predictedModel": "iphone 12 pro max", "realModel": "iphone xs", "category": "mobile", "distance": 33, "correct": false}, {"title": "Apple iPhone 11 untuk dijual", "trimmedTitle": "apple iphone 11 untuk dijual", "predictedModel": "iphone 11 pro max", "realModel": "iphone 11", "category": "mobile", "distance": 16, "correct": false}, {"title": "Apple Watch Series 7 45mm midnight blue", "trimmedTitle": "apple watch series 7 45mm midnight blue", "predictedModel": "watch se 2", "realModel": "watch 7", "category": "watches", "distance": 30, "correct": false}, {"title": "Apple Watch Se 44mm", "trimmedTitle": "apple watch se 44mm", "predictedModel": "watch se 2", "realModel": "watch se", "category": "watches", "distance": 10, "correct": false}, {"title": "Apple watch series 5", "trimmedTitle": "apple watch series 5", "predictedModel": "watch se 2", "realModel": "watch 5", "category": "watches", "distance": 11, "correct": false}, {"title": "Apple Watch SE 2 44mm", "trimmedTitle": "apple watch se 2 44mm", "predictedModel": "watch se 2", "realModel": "watch se 2", "category": "watches", "distance": 11, "correct": true}, {"title": "Apple Watch 6 cellular 44mm", "trimmedTitle": "apple watch 6 cellular 44mm", "predictedModel": "watch ultra", "realModel": "watch 6", "category": "watches", "distance": 18, "correct": false}, {"title": "Apple Pencil 2nd", "trimmedTitle": "apple pencil 2nd", "predictedModel": "pencil 2", "realModel": "pencil 2", "category": "tablet", "distance": 8, "correct": true}, {"title": "Apple Ipad 5 ios16 Game Pro Trade in Ready mini", "trimmedTitle": "apple ipad 5 ios16 game pro trade in ready mini", "predictedModel": "iphone 11 pro max", "realModel": "ipad 5", "category": "mobile", "distance": 37, "correct": false}, {"title": "Apple Pen 1st Gen or swap", "trimmedTitle": "apple pen 1st gen or swap", "predictedModel": "iphone 11 pro max", "realModel": "pencil 1", "category": "mobile", "distance": 17, "correct": false}, {"title": "Apple Iphone 8 Plus", "trimmedTitle": "apple iphone 8 plus", "predictedModel": "iphone 8 plus", "realModel": "iphone 8 plus", "category": "mobile", "distance": 6, "correct": true}, {"title": "Apple Watch Series 3", "trimmedTitle": "apple watch series 3", "predictedModel": "watch se 2", "realModel": "watch 3", "category": "watches", "distance": 11, "correct": false}, {"title": "Apple Watch SE (Gen 2) 44mm Midnight", "trimmedTitle": "apple watch se (gen 2) 44mm midnight", "predictedModel": "watch se 2", "realModel": "watch se 2", "category": "watches", "distance": 26, "correct": true}, {"title": "Apple watch SE (2nd gen) 40mm star alu star gps", "trimmedTitle": "apple watch se (2nd gen) 40mm star alu star gps", "predictedModel": "iphone 6s plus", "realModel": "watch se 2", "category": "mobile", "distance": 37, "correct": false}, {"title": "Apple Watch Se 2nd Gen (New) ", "trimmedTitle": "apple watch se 2nd gen (new) ", "predictedModel": "watch se 2", "realModel": "watch se 2", "category": "watches", "distance": 19, "correct": true}, {"title": "Apple IPad Air 2 learning/entertainment", "trimmedTitle": "apple ipad air 2 learning/entertainment", "predictedModel": "ipad air 2", "realModel": "ipad air 2", "category": "tablet", "distance": 29, "correct": true}, {"title": "Apple Iphone 14 Pro Max 128Gb", "trimmedTitle": "apple iphone 14 pro max 128gb", "predictedModel": "iphone 14 pro max", "realModel": "iphone 14 pro max", "category": "mobile", "distance": 12, "correct": true}, {"title": "Apple iPhone 15 Pro 512GB", "trimmedTitle": "apple iphone 15 pro 512gb", "predictedModel": "iphone 15 pro max", "realModel": "iphone 15 pro", "category": "mobile", "distance": 11, "correct": false}, {"title": "Apple iPhone 6s 64GB", "trimmedTitle": "apple iphone 6s 64gb", "predictedModel": "iphone 6s plus", "realModel": "iphone 6s", "category": "mobile", "distance": 10, "correct": false}, {"title": "Apple ipad 7th generation 2019 ", "trimmedTitle": "apple ipad 7th generation 2019 ", "predictedModel": "ipad air 1", "realModel": "ipad 7", "category": "tablet", "distance": 22, "correct": false}, {"title": "apple watch series 6 upgrade ", "trimmedTitle": "apple watch series 6 upgrade ", "predictedModel": "watch se 2", "realModel": "watch 6", "category": "watches", "distance": 20, "correct": false}, {"title": "Apple Iphone 14Plus Midnight Blue 256Gb", "trimmedTitle": "apple iphone 14plus midnight blue 256gb", "predictedModel": "iphone 14 pro max", "realModel": "iphone 14", "category": "mobile", "distance": 28, "correct": false}, {"title": "Apple Watch Series 6 Nike Edition (GPS & CELLULAR)", "trimmedTitle": "apple watch series 6 nike edition (gps & cellular)", "predictedModel": "Not in database", "realModel": "watch 6", "category": "Not in database", "distance": -1, "correct": false}, {"title": "Apple Pencil (2nd Generation)", "trimmedTitle": "apple pencil (2nd generation)", "predictedModel": "pencil 2", "realModel": "pencil 2", "category": "tablet", "distance": 21, "correct": true}, {"title": "Apple Watch Series 9 41mm GPS", "trimmedTitle": "apple watch series 9 41mm gps", "predictedModel": "watch se 2", "realModel": "watch 9", "category": "watches", "distance": 20, "correct": false}, {"title": "Apple Watch Series 8 45mm (Aluminium Case)", "trimmedTitle": "apple watch series 8 45mm (aluminium case)", "predictedModel": "iphone 8 plus", "realModel": "watch 8", "category": "mobile", "distance": 33, "correct": false}, {"title": "iphone 11 128GB Apple warranty till march", "trimmedTitle": "iphone 11 128gb apple warranty till march", "predictedModel": "iphone 11 pro max", "realModel": "iphone 11", "category": "mobile", "distance": 26, "correct": false}, {"title": "Apple Watch Series 7", "trimmedTitle": "apple watch series 7", "predictedModel": "watch se 2", "realModel": "watch 7", "category": "watches", "distance": 11, "correct": false}, {"title": "Apple Watch Series 9 - 45 mm. GPS Pink", "trimmedTitle": "apple watch series 9 - 45 mm. gps pink", "predictedModel": "watch se 2", "realModel": "watch 9", "category": "watches", "distance": 29, "correct": false}, {"title": "iPhone 13 Pro Max 256GB - Original Apple Ori Part", "trimmedTitle": "iphone 13 pro max 256gb - original apple ori part", "predictedModel": "iphone 13 pro max", "realModel": "iphone 13 pro max", "category": "mobile", "distance": 32, "correct": true}, {"title": "Apple Watch Series 6 40mm GPS - Fullset", "trimmedTitle": "apple watch series 6 40mm gps - fullset", "predictedModel": "iphone 6s plus", "realModel": "watch 6", "category": "mobile", "distance": 30, "correct": false}, {"title": "Apple Air 3", "trimmedTitle": "apple air 3", "predictedModel": "ipad air 3", "realModel": "ipad air 3", "category": "tablet", "distance": 4, "correct": true}, {"title": "iPad Air 5 256gb w Apple Pencil 2", "trimmedTitle": "ipad air 5 256gb w apple pencil 2", "predictedModel": "ipad air 2", "realModel": "ipad air 5", "category": "tablet", "distance": 23, "correct": false}, {"title": "Apple Watch SE (Gen 2) Starlight AI Star 40mm", "trimmedTitle": "apple watch se (gen 2) starlight ai star 40mm", "predictedModel": "watch se 2", "realModel": "watch se 2", "category": "watches", "distance": 35, "correct": true}, {"title": "iPad Mini (6th Generation) & Apple Pencil", "trimmedTitle": "ipad mini (6th generation) & apple pencil", "predictedModel": "ipad mini 6", "realModel": "ipad mini 6", "category": "tablet", "distance": 30, "correct": true}, {"title": "apple 14 pro 256gb deep purple", "trimmedTitle": "apple 14 pro 256gb deep purple", "predictedModel": "iphone 14 pro max", "realModel": "iphone 14 pro", "category": "mobile", "distance": 21, "correct": false}, {"title": "Samsung Galaxy Watch 3 Swap Apple Watch", "trimmedTitle": "samsung galaxy watch 3 swap apple watch", "predictedModel": "watch se 2", "realModel": "galaxy watch 3", "category": "watches", "distance": 30, "correct": false}, {"title": "Apple Watch Nike Series 7 GPS, 45mm Aluminium Case", "trimmedTitle": "apple watch nike series 7 gps, 45mm aluminium case", "predictedModel": "iphone 6s plus", "realModel": "watch 7", "category": "mobile", "distance": 39, "correct": false}, {"title": "iphone XR 64gb apple", "trimmedTitle": "iphone xr 64gb apple", "predictedModel": "iphone 14 pro", "realModel": "iphone xr", "category": "mobile", "distance": 10, "correct": false}, {"title": "Apple watch se 1 gen (40mm,gps) read description \u2757\ufe0f", "trimmedTitle": "apple watch se 1 gen (40mm,gps) read description \u2757\ufe0f", "predictedModel": "Not in database", "realModel": "watch se", "category": "Not in database", "distance": -1, "correct": false}, {"title": "Apple wach series 6 44mm", "trimmedTitle": "apple wach series 6 44mm", "predictedModel": "watch se 2", "realModel": "watch 6", "category": "watches", "distance": 17, "correct": false}, {"title": "Apple Watch Ultra", "trimmedTitle": "apple watch ultra", "predictedModel": "watch ultra", "realModel": "watch ultra", "category": "watches", "distance": 6, "correct": true}, {"title": "Apple Watch Series 7 45mm nike edition", "trimmedTitle": "apple watch series 7 45mm nike edition", "predictedModel": "watch se 2", "realModel": "watch 7", "category": "watches", "distance": 29, "correct": false}, {"title": "apple watch se 1 44mm", "trimmedTitle": "apple watch se 1 44mm", "predictedModel": "watch se 2", "realModel": "watch se", "category": "watches", "distance": 12, "correct": false}, {"title": "Apple 10.9 10th Gen WiFi iPad Pink 256GB", "trimmedTitle": "apple 10.9 10th gen wifi ipad pink 256gb", "predictedModel": "ipad mini 2", "realModel": "ipad 10", "category": "tablet", "distance": 31, "correct": false}, {"title": "Apple Watch SE Gen 2 44MM GPS (Open Nego)", "trimmedTitle": "apple watch se gen 2 44mm gps (open nego)", "predictedModel": "watch se 2", "realModel": "watch se 2", "category": "watches", "distance": 31, "correct": true}, {"title": "Apple Watch Se 44mm 1st gen", "trimmedTitle": "apple watch se 44mm 1st gen", "predictedModel": "watch se 2", "realModel": "watch se", "category": "watches", "distance": 18, "correct": false}, {"title": "apple watch SE GEN 2 (44 mm)", "trimmedTitle": "apple watch se gen 2 (44 mm)", "predictedModel": "watch se 2", "realModel": "watch se 2", "category": "watches", "distance": 18, "correct": true}, {"title": "Apple Watch 6 Series 40mm gps+ cellular", "trimmedTitle": "apple watch 6 series 40mm gps+ cellular", "predictedModel": "watch se 2", "realModel": "watch 6", "category": "watches", "distance": 30, "correct": false}, {"title": "Selling iPad 9th Gen (64GB) + Apple Pencil", "trimmedTitle": "selling ipad 9th gen (64gb) + apple pencil", "predictedModel": "iphone 14 pro max", "realModel": "ipad 9", "category": "mobile", "distance": 33, "correct": false}, {"title": "Apple Watch Ultra", "trimmedTitle": "apple watch ultra", "predictedModel": "watch ultra", "realModel": "watch ultra", "category": "watches", "distance": 6, "correct": true}, {"title": "Apple Watch Series 8 Gold Stainless Steel", "trimmedTitle": "apple watch series 8 gold stainless steel", "predictedModel": "watch se 2", "realModel": "watch 8", "category": "watches", "distance": 32, "correct": false}, {"title": "\uff3bNEW\uff3dApple Iphone 15 Pro 256GB blue", "trimmedTitle": "\uff3bnew\uff3dapple iphone 15 pro 256gb blue", "predictedModel": "iphone 15 pro max", "realModel": "iphone 15 pro", "category": "mobile", "distance": 21, "correct": false}, {"title": "Apple watch se 2 44mm", "trimmedTitle": "apple watch se 2 44mm", "predictedModel": "watch se 2", "realModel": "watch se 2", "category": "watches", "distance": 11, "correct": true}, {"title": "Apple Watch Series 8 (45MM) GPS", "trimmedTitle": "apple watch series 8 (45mm) gps", "predictedModel": "watch se 2", "realModel": "watch 8", "category": "watches", "distance": 22, "correct": false}, {"title": "Apple Watch Series 6", "trimmedTitle": "apple watch series 6", "predictedModel": "watch se 2", "realModel": "watch 6", "category": "watches", "distance": 11, "correct": false}, {"title": "Apple iPad (9th Gen) Wifi + Cellular", "trimmedTitle": "apple ipad (9th gen) wifi + cellular", "predictedModel": "iphone 6s plus", "realModel": "ipad 9", "category": "mobile", "distance": 28, "correct": false}, {"title": "Apple Watch SE", "trimmedTitle": "apple watch se", "predictedModel": "watch se", "realModel": "watch se", "category": "watches", "distance": 6, "correct": true}, {"title": "Apple Watch se 2 44", "trimmedTitle": "apple watch se 2 44", "predictedModel": "watch se 2", "realModel": "watch se 2", "category": "watches", "distance": 9, "correct": true}, {"title": "Apple Watch SE  40mm Starlight Aluminium Case ", "trimmedTitle": "apple watch se  40mm starlight aluminium case ", "predictedModel": "iphone 14 pro max", "realModel": "watch se", "category": "mobile", "distance": 36, "correct": false}]}
+{
+  "count": 188,
+  "correct": 57,
+  "executedTime": 0.008221864700317383,
+  "data": [
+    {
+      "title": "Apple IPhone 15 Pro Sealed",
+      "trimmedTitle": "apple iphone 15 pro sealed",
+      "predictedModel": "iphone 15 pro max",
+      "realModel": "iphone 15 pro",
+      "category": "mobile",
+      "distance": 11,
+      "correct": false
+    },
+    {
+      "title": "APPLE WATCH S7-41M- Untuk dilepaskan",
+      "trimmedTitle": "apple watch s7-41m- untuk dilepaskan",
+      "predictedModel": "watch ultra",
+      "realModel": "watch 7",
+      "category": "watches",
+      "distance": 27,
+      "correct": false
+    },
+    {
+      "title": "Apple watch series 8 45mm cellular",
+      "trimmedTitle": "apple watch series 8 45mm cellular",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 8",
+      "category": "watches",
+      "distance": 25,
+      "correct": false
+    },
+    {
+      "title": "Apple watch Ultra 2",
+      "trimmedTitle": "apple watch ultra 2",
+      "predictedModel": "watch ultra 2",
+      "realModel": "watch ultra 2",
+      "category": "watches",
+      "distance": 6,
+      "correct": true
+    },
+    {
+      "title": "Apple Watch Series 6",
+      "trimmedTitle": "apple watch series 6",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 6",
+      "category": "watches",
+      "distance": 11,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch SE 2nd Gen",
+      "trimmedTitle": "apple watch se 2nd gen",
+      "predictedModel": "watch se 2",
+      "realModel": "watch se 2",
+      "category": "watches",
+      "distance": 12,
+      "correct": true
+    },
+    {
+      "title": "Apple \u0130Phone SE 64gb",
+      "trimmedTitle": "apple i\u0307phone se 64gb",
+      "predictedModel": "iphone se",
+      "realModel": "iphone se",
+      "category": "mobile",
+      "distance": 12,
+      "correct": true
+    },
+    {
+      "title": "Apple Watch Series 8 GPS + Cellular 45MM",
+      "trimmedTitle": "apple watch series 8 gps + cellular 45mm",
+      "predictedModel": "iphone 8 plus",
+      "realModel": "watch 8",
+      "category": "mobile",
+      "distance": 31,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Series 7 45mm GPS Midnight Alu Sport B",
+      "trimmedTitle": "apple watch series 7 45mm gps midnight alu sport b",
+      "predictedModel": "iphone 7 plus",
+      "realModel": "watch 7",
+      "category": "mobile",
+      "distance": 40,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Series 9",
+      "trimmedTitle": "apple watch series 9",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 9",
+      "category": "watches",
+      "distance": 11,
+      "correct": false
+    },
+    {
+      "title": "Apple Iphone 11 Pro Max 64GB",
+      "trimmedTitle": "apple iphone 11 pro max 64gb",
+      "predictedModel": "iphone 11 pro max",
+      "realModel": "iphone 11 pro max",
+      "category": "mobile",
+      "distance": 11,
+      "correct": true
+    },
+    {
+      "title": "IPad Pro 11inch (3rd Gen) + Apple Pencil",
+      "trimmedTitle": "ipad pro 11inch (3rd gen) + apple pencil",
+      "predictedModel": "ipad pro 3",
+      "realModel": "ipad pro 3",
+      "category": "tablet",
+      "distance": 30,
+      "correct": true
+    },
+    {
+      "title": "Apple IPHONE 12 (256GB)",
+      "trimmedTitle": "apple iphone 12 (256gb)",
+      "predictedModel": "iphone 12 pro",
+      "realModel": "iphone 12",
+      "category": "mobile",
+      "distance": 13,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Series 8 45mm GPS Fullset",
+      "trimmedTitle": "apple watch series 8 45mm gps fullset",
+      "predictedModel": "iphone 8 plus",
+      "realModel": "watch 8",
+      "category": "mobile",
+      "distance": 28,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Ultra 49mm Titanium",
+      "trimmedTitle": "apple watch ultra 49mm titanium",
+      "predictedModel": "watch ultra 2",
+      "realModel": "watch ultra",
+      "category": "watches",
+      "distance": 19,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch SE 1st Gen",
+      "trimmedTitle": "apple watch se 1st gen",
+      "predictedModel": "watch se 2",
+      "realModel": "watch se",
+      "category": "watches",
+      "distance": 13,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Ultra 1",
+      "trimmedTitle": "apple watch ultra 1",
+      "predictedModel": "watch ultra 2",
+      "realModel": "watch ultra",
+      "category": "watches",
+      "distance": 7,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch S6 44mm Cellular Nike Edition",
+      "trimmedTitle": "apple watch s6 44mm cellular nike edition",
+      "predictedModel": "watch ultra 2",
+      "realModel": "watch 6",
+      "category": "watches",
+      "distance": 31,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Series 7 45mm",
+      "trimmedTitle": "apple watch series 7 45mm",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 7",
+      "category": "watches",
+      "distance": 16,
+      "correct": false
+    },
+    {
+      "title": "NEW UNBOXED APPLE iPHONE 14 256GB STARLIGHT",
+      "trimmedTitle": "new unboxed apple iphone 14 256gb starlight",
+      "predictedModel": "iphone 14 pro max",
+      "realModel": "iphone 14",
+      "category": "mobile",
+      "distance": 31,
+      "correct": false
+    },
+    {
+      "title": "Apple iPad Mini 6th Generation Purple",
+      "trimmedTitle": "apple ipad mini 6th generation purple",
+      "predictedModel": "ipad mini 6",
+      "realModel": "ipad mini 6",
+      "category": "tablet",
+      "distance": 26,
+      "correct": true
+    },
+    {
+      "title": "Apple Watch Series 8 GPS only",
+      "trimmedTitle": "apple watch series 8 gps only",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 8",
+      "category": "watches",
+      "distance": 20,
+      "correct": false
+    },
+    {
+      "title": "Apple IPhone 13 128GB Ori Part All",
+      "trimmedTitle": "apple iphone 13 128gb ori part all",
+      "predictedModel": "iphone 11 pro max",
+      "realModel": "iphone 13",
+      "category": "mobile",
+      "distance": 21,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch series 9",
+      "trimmedTitle": "apple watch series 9",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 9",
+      "category": "watches",
+      "distance": 11,
+      "correct": false
+    },
+    {
+      "title": "Apple watch Series 8 45 mm GPS",
+      "trimmedTitle": "apple watch series 8 45 mm gps",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 8",
+      "category": "watches",
+      "distance": 21,
+      "correct": false
+    },
+    {
+      "title": "Used Apple Watch SE 44mm Space gray",
+      "trimmedTitle": "used apple watch se 44mm space gray",
+      "predictedModel": "iphone 14 pro max",
+      "realModel": "watch se",
+      "category": "mobile",
+      "distance": 26,
+      "correct": false
+    },
+    {
+      "title": "Used Apple Watch SE 44mm Space Gray Aluminum Case",
+      "trimmedTitle": "used apple watch se 44mm space gray aluminum case",
+      "predictedModel": "iphone 14 pro max",
+      "realModel": "watch se",
+      "category": "mobile",
+      "distance": 38,
+      "correct": false
+    },
+    {
+      "title": "[USED] Apple iPhone 12 128GB - Macam Baru",
+      "trimmedTitle": "[used] apple iphone 12 128gb - macam baru",
+      "predictedModel": "iphone 12 pro max",
+      "realModel": "iphone 12",
+      "category": "mobile",
+      "distance": 28,
+      "correct": false
+    },
+    {
+      "title": "[USED] Apple iPhone 11 64GB - Macam Baru",
+      "trimmedTitle": "[used] apple iphone 11 64gb - macam baru",
+      "predictedModel": "iphone 11 pro max",
+      "realModel": "iphone 11",
+      "category": "mobile",
+      "distance": 27,
+      "correct": false
+    },
+    {
+      "title": "iPad Air 5 256gb Wifi with Apple Pen 2",
+      "trimmedTitle": "ipad air 5 256gb wifi with apple pen 2",
+      "predictedModel": "ipad air 2",
+      "realModel": "ipad air 5",
+      "category": "tablet",
+      "distance": 28,
+      "correct": false
+    },
+    {
+      "title": "Iphone 13 warranty apple",
+      "trimmedTitle": "iphone 13 warranty apple",
+      "predictedModel": "iphone 13 pro max",
+      "realModel": "iphone 13",
+      "category": "mobile",
+      "distance": 12,
+      "correct": false
+    },
+    {
+      "title": "iphone 13 256gb black (warranty apple)",
+      "trimmedTitle": "iphone 13 256gb black (warranty apple)",
+      "predictedModel": "iphone 12 pro max",
+      "realModel": "iphone 13",
+      "category": "mobile",
+      "distance": 26,
+      "correct": false
+    },
+    {
+      "title": "iPhone 11 Pro Max original apple",
+      "trimmedTitle": "iphone 11 pro max original apple",
+      "predictedModel": "iphone 11 pro max",
+      "realModel": "iphone 11 pro max",
+      "category": "mobile",
+      "distance": 15,
+      "correct": true
+    },
+    {
+      "title": "Apple Ultra Watch 49mm",
+      "trimmedTitle": "apple ultra watch 49mm",
+      "predictedModel": "watch 4",
+      "realModel": "watch ultra",
+      "category": "watches",
+      "distance": 15,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Series 7 (41mm, Midnight)",
+      "trimmedTitle": "apple watch series 7 (41mm, midnight)",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 7",
+      "category": "watches",
+      "distance": 28,
+      "correct": false
+    },
+    {
+      "title": "Apple iPhone 14 Pro 256GB under warranty",
+      "trimmedTitle": "apple iphone 14 pro 256gb under warranty",
+      "predictedModel": "iphone 14 pro max",
+      "realModel": "iphone 14 pro",
+      "category": "mobile",
+      "distance": 25,
+      "correct": false
+    },
+    {
+      "title": "Apple Iphone 11 Pro Max 256GB Midnight Green",
+      "trimmedTitle": "apple iphone 11 pro max 256gb midnight green",
+      "predictedModel": "iphone 11 pro max",
+      "realModel": "iphone 11 pro max",
+      "category": "mobile",
+      "distance": 27,
+      "correct": true
+    },
+    {
+      "title": "Apple iPad 4 16Gb WiFi + 4G (LTE) MD522ZP/A",
+      "trimmedTitle": "apple ipad 4 16gb wifi + 4g (lte) md522zp/a",
+      "predictedModel": "ipad mini 2",
+      "realModel": "ipad 4",
+      "category": "tablet",
+      "distance": 34,
+      "correct": false
+    },
+    {
+      "title": "[USED] Apple iPhone 13 Pro Max 256GB - Macam Baru",
+      "trimmedTitle": "[used] apple iphone 13 pro max 256gb - macam baru",
+      "predictedModel": "iphone 13 pro max",
+      "realModel": "iphone 13 pro max",
+      "category": "mobile",
+      "distance": 32,
+      "correct": true
+    },
+    {
+      "title": "[USED] Apple iPhone 12 Pro Max 256GB - Like New",
+      "trimmedTitle": "[used] apple iphone 12 pro max 256gb - like new",
+      "predictedModel": "iphone 12 pro max",
+      "realModel": "iphone 12 pro max",
+      "category": "mobile",
+      "distance": 30,
+      "correct": true
+    },
+    {
+      "title": "Brand New Apple Watch Series 9",
+      "trimmedTitle": "brand new apple watch series 9",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 9",
+      "category": "watches",
+      "distance": 21,
+      "correct": false
+    },
+    {
+      "title": "Ipad Mini 5 - 256GB With Original Apple Pencil",
+      "trimmedTitle": "ipad mini 5 - 256gb with original apple pencil",
+      "predictedModel": "ipad mini 2",
+      "realModel": "ipad mini 5",
+      "category": "tablet",
+      "distance": 35,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch SE 40mm Space Gray",
+      "trimmedTitle": "apple watch se 40mm space gray",
+      "predictedModel": "watch se 2",
+      "realModel": "watch se",
+      "category": "watches",
+      "distance": 21,
+      "correct": false
+    },
+    {
+      "title": "apple iPhone \ud83d\udcf1 11 pro max",
+      "trimmedTitle": "apple iphone \ud83d\udcf1 11 pro max",
+      "predictedModel": "iphone 11 pro max",
+      "realModel": "iphone 11 pro max",
+      "category": "mobile",
+      "distance": 8,
+      "correct": true
+    },
+    {
+      "title": "APPLE IPHONE 13 PRO MAX (128Gb) ZP set",
+      "trimmedTitle": "apple iphone 13 pro max (128gb) zp set",
+      "predictedModel": "iphone 13 pro max",
+      "realModel": "iphone 13 pro max",
+      "category": "mobile",
+      "distance": 21,
+      "correct": true
+    },
+    {
+      "title": "Apple Magic Keyboard iPad Pro 11\" & iPad Air 4/5",
+      "trimmedTitle": "apple magic keyboard ipad pro 11\" & ipad air 4/5",
+      "predictedModel": "macbook air",
+      "realModel": "ipad air 5",
+      "category": "computer",
+      "distance": 38,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch SE (Gen 2)",
+      "trimmedTitle": "apple watch se (gen 2)",
+      "predictedModel": "watch se 2",
+      "realModel": "watch se 2",
+      "category": "watches",
+      "distance": 12,
+      "correct": true
+    },
+    {
+      "title": "Apple Iphone 11  ",
+      "trimmedTitle": "apple iphone 11  ",
+      "predictedModel": "iphone 11",
+      "realModel": "iphone 11",
+      "category": "mobile",
+      "distance": 8,
+      "correct": true
+    },
+    {
+      "title": "Apple iPod 32gb and Music Player",
+      "trimmedTitle": "apple ipod 32gb and music player",
+      "predictedModel": "iphone 6s plus",
+      "realModel": "ipod",
+      "category": "mobile",
+      "distance": 24,
+      "correct": false
+    },
+    {
+      "title": "iPad Air 5th Gen Blue (256gb) + Apple Pencil",
+      "trimmedTitle": "ipad air 5th gen blue (256gb) + apple pencil",
+      "predictedModel": "iphone 12 pro max",
+      "realModel": "ipad air 5",
+      "category": "mobile",
+      "distance": 34,
+      "correct": false
+    },
+    {
+      "title": "APPLE WATCH SERIES 7 45MM for sale",
+      "trimmedTitle": "apple watch series 7 45mm for sale",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 7",
+      "category": "watches",
+      "distance": 25,
+      "correct": false
+    },
+    {
+      "title": "Apple iPhone 13 128GB 1 Month Warranty",
+      "trimmedTitle": "apple iphone 13 128gb 1 month warranty",
+      "predictedModel": "iphone 11 pro max",
+      "realModel": "iphone 13",
+      "category": "mobile",
+      "distance": 25,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch SE (2nd Gen) 44mm",
+      "trimmedTitle": "apple watch se (2nd gen) 44mm",
+      "predictedModel": "watch se 2",
+      "realModel": "watch se 2",
+      "category": "watches",
+      "distance": 19,
+      "correct": true
+    },
+    {
+      "title": "Apple watch s5 sliver 44mm",
+      "trimmedTitle": "apple watch s5 sliver 44mm",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 5",
+      "category": "watches",
+      "distance": 17,
+      "correct": false
+    },
+    {
+      "title": "Apple Iphone 8 plus",
+      "trimmedTitle": "apple iphone 8 plus",
+      "predictedModel": "iphone 8 plus",
+      "realModel": "iphone 8 plus",
+      "category": "mobile",
+      "distance": 6,
+      "correct": true
+    },
+    {
+      "title": "Apple Watch SE 40mm",
+      "trimmedTitle": "apple watch se 40mm",
+      "predictedModel": "watch se 2",
+      "realModel": "watch se",
+      "category": "watches",
+      "distance": 10,
+      "correct": false
+    },
+    {
+      "title": "Apple iPhone 6 32gb",
+      "trimmedTitle": "apple iphone 6 32gb",
+      "predictedModel": "iphone 12",
+      "realModel": "iphone 6",
+      "category": "mobile",
+      "distance": 11,
+      "correct": false
+    },
+    {
+      "title": "apple watch series 8 45mm",
+      "trimmedTitle": "apple watch series 8 45mm",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 8",
+      "category": "watches",
+      "distance": 16,
+      "correct": false
+    },
+    {
+      "title": "apple ipad mini 2",
+      "trimmedTitle": "apple ipad mini 2",
+      "predictedModel": "ipad mini 2",
+      "realModel": "ipad mini 2",
+      "category": "tablet",
+      "distance": 6,
+      "correct": true
+    },
+    {
+      "title": "Apple Iphone 13 Pro",
+      "trimmedTitle": "apple iphone 13 pro",
+      "predictedModel": "iphone 13 pro",
+      "realModel": "iphone 13 pro",
+      "category": "mobile",
+      "distance": 6,
+      "correct": true
+    },
+    {
+      "title": "Apple Ipad 9gen",
+      "trimmedTitle": "apple ipad 9gen",
+      "predictedModel": "ipad 9",
+      "realModel": "ipad 9",
+      "category": "tablet",
+      "distance": 9,
+      "correct": true
+    },
+    {
+      "title": "Apple watch series 8 GPS + CELLULAR",
+      "trimmedTitle": "apple watch series 8 gps + cellular",
+      "predictedModel": "iphone 8 plus",
+      "realModel": "watch 8",
+      "category": "mobile",
+      "distance": 26,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Series 3 42mm GPS",
+      "trimmedTitle": "apple watch series 3 42mm gps",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 3",
+      "category": "watches",
+      "distance": 19,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Se(44mm)",
+      "trimmedTitle": "apple watch se(44mm)",
+      "predictedModel": "watch se",
+      "realModel": "watch se",
+      "category": "watches",
+      "distance": 12,
+      "correct": true
+    },
+    {
+      "title": "New Apple Watch Series 7 45mm GPS Nike Edition",
+      "trimmedTitle": "new apple watch series 7 45mm gps nike edition",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 7",
+      "category": "watches",
+      "distance": 37,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch SE Gen2 40mm",
+      "trimmedTitle": "apple watch se gen2 40mm",
+      "predictedModel": "watch se 2",
+      "realModel": "watch se 2",
+      "category": "watches",
+      "distance": 14,
+      "correct": true
+    },
+    {
+      "title": "Apple Iphone 13 Pro Max 256gb",
+      "trimmedTitle": "apple iphone 13 pro max 256gb",
+      "predictedModel": "iphone 13 pro max",
+      "realModel": "iphone 13 pro max",
+      "category": "mobile",
+      "distance": 12,
+      "correct": true
+    },
+    {
+      "title": "Apple Watch Series 9",
+      "trimmedTitle": "apple watch series 9",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 9",
+      "category": "watches",
+      "distance": 11,
+      "correct": false
+    },
+    {
+      "title": "Apple iphone 13",
+      "trimmedTitle": "apple iphone 13",
+      "predictedModel": "iphone 13",
+      "realModel": "iphone 13",
+      "category": "mobile",
+      "distance": 6,
+      "correct": true
+    },
+    {
+      "title": "Apple watch se nike 40mm first gen",
+      "trimmedTitle": "apple watch se nike 40mm first gen",
+      "predictedModel": "watch se 2",
+      "realModel": "watch se",
+      "category": "watches",
+      "distance": 25,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch series 9 45mm",
+      "trimmedTitle": "apple watch series 9 45mm",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 9",
+      "category": "watches",
+      "distance": 16,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch series 9 45mm Midnight",
+      "trimmedTitle": "apple watch series 9 45mm midnight",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 9",
+      "category": "watches",
+      "distance": 25,
+      "correct": false
+    },
+    {
+      "title": "\u203c\ufe0fAPPLE WATCH Series 2\u203c\ufe0f",
+      "trimmedTitle": "\u203c\ufe0fapple watch series 2\u203c\ufe0f",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 2",
+      "category": "watches",
+      "distance": 14,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch series 9 45MM GPS",
+      "trimmedTitle": "apple watch series 9 45mm gps",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 9",
+      "category": "watches",
+      "distance": 20,
+      "correct": false
+    },
+    {
+      "title": "iPhone 12 128GB - Original Apple Ori Part",
+      "trimmedTitle": "iphone 12 128gb - original apple ori part",
+      "predictedModel": "iphone 11 pro max",
+      "realModel": "iphone 12",
+      "category": "mobile",
+      "distance": 27,
+      "correct": false
+    },
+    {
+      "title": "Apple IPad 9th Gen with WaRRanty 100% Original",
+      "trimmedTitle": "apple ipad 9th gen with warranty 100% original",
+      "predictedModel": "iphone 11 pro max",
+      "realModel": "ipad 9",
+      "category": "mobile",
+      "distance": 37,
+      "correct": false
+    },
+    {
+      "title": "Apple Iphone 12 128GB Green",
+      "trimmedTitle": "apple iphone 12 128gb green",
+      "predictedModel": "iphone 11 pro",
+      "realModel": "iphone 12",
+      "category": "mobile",
+      "distance": 16,
+      "correct": false
+    },
+    {
+      "title": "Ipad 5 gen 256 gb wifi + apple pencil 2",
+      "trimmedTitle": "ipad 5 gen 256 gb wifi + apple pencil 2",
+      "predictedModel": "ipad mini 2",
+      "realModel": "ipad 5",
+      "category": "tablet",
+      "distance": 29,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Series 4 (40mm) Nike series",
+      "trimmedTitle": "apple watch series 4 (40mm) nike series",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 4",
+      "category": "watches",
+      "distance": 30,
+      "correct": false
+    },
+    {
+      "title": "Apple Iphone 7 Plus 256GB",
+      "trimmedTitle": "apple iphone 7 plus 256gb",
+      "predictedModel": "iphone 7 plus",
+      "realModel": "iphone 7 plus",
+      "category": "mobile",
+      "distance": 12,
+      "correct": true
+    },
+    {
+      "title": "Apple watch ultra 49mm",
+      "trimmedTitle": "apple watch ultra 49mm",
+      "predictedModel": "watch ultra 2",
+      "realModel": "watch ultra",
+      "category": "watches",
+      "distance": 10,
+      "correct": false
+    },
+    {
+      "title": "APPLE WATCH SERIES 7 gps (GREEN LIMITED EDITION)",
+      "trimmedTitle": "apple watch series 7 gps (green limited edition)",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 7",
+      "category": "watches",
+      "distance": 39,
+      "correct": false
+    },
+    {
+      "title": "Second Apple Watch SE GPS 40mm",
+      "trimmedTitle": "second apple watch se gps 40mm",
+      "predictedModel": "watch se 2",
+      "realModel": "watch se",
+      "category": "watches",
+      "distance": 21,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch S7 Nike Edition",
+      "trimmedTitle": "apple watch s7 nike edition",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 7",
+      "category": "watches",
+      "distance": 18,
+      "correct": false
+    },
+    {
+      "title": "APPLE WATCH SE 2 40 mm",
+      "trimmedTitle": "apple watch se 2 40 mm",
+      "predictedModel": "watch se 2",
+      "realModel": "watch se 2",
+      "category": "watches",
+      "distance": 12,
+      "correct": true
+    },
+    {
+      "title": "NEW Apple Watch Series 6 40mm Red Aluminum ",
+      "trimmedTitle": "new apple watch series 6 40mm red aluminum ",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 6",
+      "category": "watches",
+      "distance": 34,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Series 8 41mm",
+      "trimmedTitle": "apple watch series 8 41mm",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 8",
+      "category": "watches",
+      "distance": 16,
+      "correct": false
+    },
+    {
+      "title": "apple watch series 7",
+      "trimmedTitle": "apple watch series 7",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 7",
+      "category": "watches",
+      "distance": 11,
+      "correct": false
+    },
+    {
+      "title": "Iphone 14 Pro Max + Apple Watch SE",
+      "trimmedTitle": "iphone 14 pro max + apple watch se",
+      "predictedModel": "iphone 14 pro max",
+      "realModel": "iphone 14 pro max",
+      "category": "mobile",
+      "distance": 17,
+      "correct": true
+    },
+    {
+      "title": "Apple iPhone XS Max 256GB",
+      "trimmedTitle": "apple iphone xs max 256gb",
+      "predictedModel": "iphone xs max",
+      "realModel": "iphone xs max",
+      "category": "mobile",
+      "distance": 12,
+      "correct": true
+    },
+    {
+      "title": "Apple iPhone 6s Plus 64GB",
+      "trimmedTitle": "apple iphone 6s plus 64gb",
+      "predictedModel": "iphone 6s plus",
+      "realModel": "iphone 6s plus",
+      "category": "mobile",
+      "distance": 11,
+      "correct": true
+    },
+    {
+      "title": "Apple Watch SE Gen2",
+      "trimmedTitle": "apple watch se gen2",
+      "predictedModel": "watch se 2",
+      "realModel": "watch se 2",
+      "category": "watches",
+      "distance": 9,
+      "correct": true
+    },
+    {
+      "title": "Apple iphone 11 128GB mint green",
+      "trimmedTitle": "apple iphone 11 128gb mint green",
+      "predictedModel": "iphone 11 pro max",
+      "realModel": "iphone 11",
+      "category": "mobile",
+      "distance": 20,
+      "correct": false
+    },
+    {
+      "title": "apple watch stainless steel series 4 44mm",
+      "trimmedTitle": "apple watch stainless steel series 4 44mm",
+      "predictedModel": "watch ultra 2",
+      "realModel": "watch 4",
+      "category": "watches",
+      "distance": 31,
+      "correct": false
+    },
+    {
+      "title": "Apple Iphone 12 Pro | Promax Used | Cash & Ansuran",
+      "trimmedTitle": "apple iphone 12 pro | promax used | cash & ansuran",
+      "predictedModel": "iphone 12 pro max",
+      "realModel": "iphone 12 pro",
+      "category": "mobile",
+      "distance": 33,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Series 8 41mm",
+      "trimmedTitle": "apple watch series 8 41mm",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 8",
+      "category": "watches",
+      "distance": 16,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Series 9 GPS 45MM",
+      "trimmedTitle": "apple watch series 9 gps 45mm",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 9",
+      "category": "watches",
+      "distance": 20,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Series 7",
+      "trimmedTitle": "apple watch series 7",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 7",
+      "category": "watches",
+      "distance": 11,
+      "correct": false
+    },
+    {
+      "title": "Apple iPhone 14 Pro Max 256gb (Deep Purple)",
+      "trimmedTitle": "apple iphone 14 pro max 256gb (deep purple)",
+      "predictedModel": "iphone 14 pro max",
+      "realModel": "iphone 14 pro max",
+      "category": "mobile",
+      "distance": 26,
+      "correct": true
+    },
+    {
+      "title": "Apple Watch Series 7 41mm Starlight Gps Cellular",
+      "trimmedTitle": "apple watch series 7 41mm starlight gps cellular",
+      "predictedModel": "iphone 11 pro max",
+      "realModel": "watch 7",
+      "category": "mobile",
+      "distance": 39,
+      "correct": false
+    },
+    {
+      "title": "Apple watch series 8 45mm",
+      "trimmedTitle": "apple watch series 8 45mm",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 8",
+      "category": "watches",
+      "distance": 16,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Series 7",
+      "trimmedTitle": "apple watch series 7",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 7",
+      "category": "watches",
+      "distance": 11,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch SE 2023",
+      "trimmedTitle": "apple watch se 2023",
+      "predictedModel": "watch se 2",
+      "realModel": "watch se",
+      "category": "watches",
+      "distance": 9,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Stainless Steel Series 6",
+      "trimmedTitle": "apple watch stainless steel series 6",
+      "predictedModel": "watch ultra 2",
+      "realModel": "watch 6",
+      "category": "watches",
+      "distance": 26,
+      "correct": false
+    },
+    {
+      "title": "apple iPhone 7 plus 32GB",
+      "trimmedTitle": "apple iphone 7 plus 32gb",
+      "predictedModel": "iphone 7 plus",
+      "realModel": "iphone 7 plus",
+      "category": "mobile",
+      "distance": 11,
+      "correct": true
+    },
+    {
+      "title": "Apple Iphone 13 Pro Sierra Blue 256GB",
+      "trimmedTitle": "apple iphone 13 pro sierra blue 256gb",
+      "predictedModel": "iphone 13 pro max",
+      "realModel": "iphone 13 pro",
+      "category": "mobile",
+      "distance": 22,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Series 9 ",
+      "trimmedTitle": "apple watch series 9 ",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 9",
+      "category": "watches",
+      "distance": 12,
+      "correct": false
+    },
+    {
+      "title": "Apple Ipad 8th Gen 2021 32GB Wifi",
+      "trimmedTitle": "apple ipad 8th gen 2021 32gb wifi",
+      "predictedModel": "iphone 11 pro max",
+      "realModel": "ipad 8",
+      "category": "mobile",
+      "distance": 25,
+      "correct": false
+    },
+    {
+      "title": "Apple watch SE 2023 (Gen 2) 44mm",
+      "trimmedTitle": "apple watch se 2023 (gen 2) 44mm",
+      "predictedModel": "watch se 2",
+      "realModel": "watch se 2",
+      "category": "watches",
+      "distance": 22,
+      "correct": true
+    },
+    {
+      "title": "Apple Watch Series 6 44mm Celullar",
+      "trimmedTitle": "apple watch series 6 44mm celullar",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 6",
+      "category": "watches",
+      "distance": 25,
+      "correct": false
+    },
+    {
+      "title": "apple watch series 4",
+      "trimmedTitle": "apple watch series 4",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 4",
+      "category": "watches",
+      "distance": 11,
+      "correct": false
+    },
+    {
+      "title": "Apple iPhone 11 Pro Good Condition",
+      "trimmedTitle": "apple iphone 11 pro good condition",
+      "predictedModel": "iphone 11 pro max",
+      "realModel": "iphone 11 pro",
+      "category": "mobile",
+      "distance": 20,
+      "correct": false
+    },
+    {
+      "title": "Apple iPhone 13 PRO Good Condition",
+      "trimmedTitle": "apple iphone 13 pro good condition",
+      "predictedModel": "iphone 13 pro max",
+      "realModel": "iphone 13 pro",
+      "category": "mobile",
+      "distance": 20,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch SE",
+      "trimmedTitle": "apple watch se",
+      "predictedModel": "watch se",
+      "realModel": "watch se",
+      "category": "watches",
+      "distance": 6,
+      "correct": true
+    },
+    {
+      "title": "Apple Watch SE GPS 40M",
+      "trimmedTitle": "apple watch se gps 40m",
+      "predictedModel": "watch se 2",
+      "realModel": "watch se",
+      "category": "watches",
+      "distance": 13,
+      "correct": false
+    },
+    {
+      "title": "Apple Iphone 11 Pro| Promax Used | Terima Trade In",
+      "trimmedTitle": "apple iphone 11 pro| promax used | terima trade in",
+      "predictedModel": "iphone 11 pro max",
+      "realModel": "iphone 11 pro",
+      "category": "mobile",
+      "distance": 33,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Series 9 Satu Unit Sahaja",
+      "trimmedTitle": "apple watch series 9 satu unit sahaja",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 9",
+      "category": "watches",
+      "distance": 28,
+      "correct": false
+    },
+    {
+      "title": "apple iPad pro 2nd generation",
+      "trimmedTitle": "apple ipad pro 2nd generation",
+      "predictedModel": "ipad pro 2",
+      "realModel": "ipad pro 2",
+      "category": "tablet",
+      "distance": 19,
+      "correct": true
+    },
+    {
+      "title": "Apple iPad Air 1. Great condition. Limited item.",
+      "trimmedTitle": "apple ipad air 1. great condition. limited item.",
+      "predictedModel": "ipad air 1",
+      "realModel": "ipad air 1",
+      "category": "tablet",
+      "distance": 38,
+      "correct": true
+    },
+    {
+      "title": "jam tangan apple watch ultra",
+      "trimmedTitle": "jam tangan apple watch ultra",
+      "predictedModel": "watch ultra",
+      "realModel": "watch ultra",
+      "category": "watches",
+      "distance": 17,
+      "correct": true
+    },
+    {
+      "title": "iphone 11 128gb as new free apple earphone",
+      "trimmedTitle": "iphone 11 128gb as new free apple earphone",
+      "predictedModel": "iphone 11 pro",
+      "realModel": "iphone 11",
+      "category": "mobile",
+      "distance": 29,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Series 9",
+      "trimmedTitle": "apple watch series 9",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 9",
+      "category": "watches",
+      "distance": 11,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Series 5 for sell",
+      "trimmedTitle": "apple watch series 5 for sell",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 5",
+      "category": "watches",
+      "distance": 20,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch SE",
+      "trimmedTitle": "apple watch se",
+      "predictedModel": "watch se",
+      "realModel": "watch se",
+      "category": "watches",
+      "distance": 6,
+      "correct": true
+    },
+    {
+      "title": "Apple Watch Series 7 45mm GPS",
+      "trimmedTitle": "apple watch series 7 45mm gps",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 7",
+      "category": "watches",
+      "distance": 20,
+      "correct": false
+    },
+    {
+      "title": "Apple iPhone 8 Plus 256GB",
+      "trimmedTitle": "apple iphone 8 plus 256gb",
+      "predictedModel": "iphone 8 plus",
+      "realModel": "iphone 8 plus",
+      "category": "mobile",
+      "distance": 12,
+      "correct": true
+    },
+    {
+      "title": "Apple Watch SERIES 7 45MM",
+      "trimmedTitle": "apple watch series 7 45mm",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 7",
+      "category": "watches",
+      "distance": 16,
+      "correct": false
+    },
+    {
+      "title": "Apple Iphone 15 New |Promo CNY  8-13 February 2024",
+      "trimmedTitle": "apple iphone 15 new |promo cny  8-13 february 2024",
+      "predictedModel": "iphone 15 pro max",
+      "realModel": "iphone 15",
+      "category": "mobile",
+      "distance": 35,
+      "correct": false
+    },
+    {
+      "title": "iPhone XS 256GB - Original Apple Original Part",
+      "trimmedTitle": "iphone xs 256gb - original apple original part",
+      "predictedModel": "iphone 12 pro max",
+      "realModel": "iphone xs",
+      "category": "mobile",
+      "distance": 33,
+      "correct": false
+    },
+    {
+      "title": "Apple iPhone 11 untuk dijual",
+      "trimmedTitle": "apple iphone 11 untuk dijual",
+      "predictedModel": "iphone 11 pro max",
+      "realModel": "iphone 11",
+      "category": "mobile",
+      "distance": 16,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Series 7 45mm midnight blue",
+      "trimmedTitle": "apple watch series 7 45mm midnight blue",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 7",
+      "category": "watches",
+      "distance": 30,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Se 44mm",
+      "trimmedTitle": "apple watch se 44mm",
+      "predictedModel": "watch se 2",
+      "realModel": "watch se",
+      "category": "watches",
+      "distance": 10,
+      "correct": false
+    },
+    {
+      "title": "Apple watch series 5",
+      "trimmedTitle": "apple watch series 5",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 5",
+      "category": "watches",
+      "distance": 11,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch SE 2 44mm",
+      "trimmedTitle": "apple watch se 2 44mm",
+      "predictedModel": "watch se 2",
+      "realModel": "watch se 2",
+      "category": "watches",
+      "distance": 11,
+      "correct": true
+    },
+    {
+      "title": "Apple Watch 6 cellular 44mm",
+      "trimmedTitle": "apple watch 6 cellular 44mm",
+      "predictedModel": "watch ultra",
+      "realModel": "watch 6",
+      "category": "watches",
+      "distance": 18,
+      "correct": false
+    },
+    {
+      "title": "Apple Pencil 2nd",
+      "trimmedTitle": "apple pencil 2nd",
+      "predictedModel": "pencil 2",
+      "realModel": "pencil 2",
+      "category": "tablet",
+      "distance": 8,
+      "correct": true
+    },
+    {
+      "title": "Apple Ipad 5 ios16 Game Pro Trade in Ready mini",
+      "trimmedTitle": "apple ipad 5 ios16 game pro trade in ready mini",
+      "predictedModel": "iphone 11 pro max",
+      "realModel": "ipad 5",
+      "category": "mobile",
+      "distance": 37,
+      "correct": false
+    },
+    {
+      "title": "Apple Pen 1st Gen or swap",
+      "trimmedTitle": "apple pen 1st gen or swap",
+      "predictedModel": "iphone 11 pro max",
+      "realModel": "pencil 1",
+      "category": "mobile",
+      "distance": 17,
+      "correct": false
+    },
+    {
+      "title": "Apple Iphone 8 Plus",
+      "trimmedTitle": "apple iphone 8 plus",
+      "predictedModel": "iphone 8 plus",
+      "realModel": "iphone 8 plus",
+      "category": "mobile",
+      "distance": 6,
+      "correct": true
+    },
+    {
+      "title": "Apple Watch Series 3",
+      "trimmedTitle": "apple watch series 3",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 3",
+      "category": "watches",
+      "distance": 11,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch SE (Gen 2) 44mm Midnight",
+      "trimmedTitle": "apple watch se (gen 2) 44mm midnight",
+      "predictedModel": "watch se 2",
+      "realModel": "watch se 2",
+      "category": "watches",
+      "distance": 26,
+      "correct": true
+    },
+    {
+      "title": "Apple watch SE (2nd gen) 40mm star alu star gps",
+      "trimmedTitle": "apple watch se (2nd gen) 40mm star alu star gps",
+      "predictedModel": "iphone 6s plus",
+      "realModel": "watch se 2",
+      "category": "mobile",
+      "distance": 37,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Se 2nd Gen (New) ",
+      "trimmedTitle": "apple watch se 2nd gen (new) ",
+      "predictedModel": "watch se 2",
+      "realModel": "watch se 2",
+      "category": "watches",
+      "distance": 19,
+      "correct": true
+    },
+    {
+      "title": "Apple IPad Air 2 learning/entertainment",
+      "trimmedTitle": "apple ipad air 2 learning/entertainment",
+      "predictedModel": "ipad air 2",
+      "realModel": "ipad air 2",
+      "category": "tablet",
+      "distance": 29,
+      "correct": true
+    },
+    {
+      "title": "Apple Iphone 14 Pro Max 128Gb",
+      "trimmedTitle": "apple iphone 14 pro max 128gb",
+      "predictedModel": "iphone 14 pro max",
+      "realModel": "iphone 14 pro max",
+      "category": "mobile",
+      "distance": 12,
+      "correct": true
+    },
+    {
+      "title": "Apple iPhone 15 Pro 512GB",
+      "trimmedTitle": "apple iphone 15 pro 512gb",
+      "predictedModel": "iphone 15 pro max",
+      "realModel": "iphone 15 pro",
+      "category": "mobile",
+      "distance": 11,
+      "correct": false
+    },
+    {
+      "title": "Apple iPhone 6s 64GB",
+      "trimmedTitle": "apple iphone 6s 64gb",
+      "predictedModel": "iphone 6s plus",
+      "realModel": "iphone 6s",
+      "category": "mobile",
+      "distance": 10,
+      "correct": false
+    },
+    {
+      "title": "Apple ipad 7th generation 2019 ",
+      "trimmedTitle": "apple ipad 7th generation 2019 ",
+      "predictedModel": "ipad air 1",
+      "realModel": "ipad 7",
+      "category": "tablet",
+      "distance": 22,
+      "correct": false
+    },
+    {
+      "title": "apple watch series 6 upgrade ",
+      "trimmedTitle": "apple watch series 6 upgrade ",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 6",
+      "category": "watches",
+      "distance": 20,
+      "correct": false
+    },
+    {
+      "title": "Apple Iphone 14Plus Midnight Blue 256Gb",
+      "trimmedTitle": "apple iphone 14plus midnight blue 256gb",
+      "predictedModel": "iphone 14 pro max",
+      "realModel": "iphone 14",
+      "category": "mobile",
+      "distance": 28,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Series 6 Nike Edition (GPS & CELLULAR)",
+      "trimmedTitle": "apple watch series 6 nike edition (gps & cellular)",
+      "predictedModel": "Not in database",
+      "realModel": "watch 6",
+      "category": "Not in database",
+      "distance": -1,
+      "correct": false
+    },
+    {
+      "title": "Apple Pencil (2nd Generation)",
+      "trimmedTitle": "apple pencil (2nd generation)",
+      "predictedModel": "pencil 2",
+      "realModel": "pencil 2",
+      "category": "tablet",
+      "distance": 21,
+      "correct": true
+    },
+    {
+      "title": "Apple Watch Series 9 41mm GPS",
+      "trimmedTitle": "apple watch series 9 41mm gps",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 9",
+      "category": "watches",
+      "distance": 20,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Series 8 45mm (Aluminium Case)",
+      "trimmedTitle": "apple watch series 8 45mm (aluminium case)",
+      "predictedModel": "iphone 8 plus",
+      "realModel": "watch 8",
+      "category": "mobile",
+      "distance": 33,
+      "correct": false
+    },
+    {
+      "title": "iphone 11 128GB Apple warranty till march",
+      "trimmedTitle": "iphone 11 128gb apple warranty till march",
+      "predictedModel": "iphone 11 pro max",
+      "realModel": "iphone 11",
+      "category": "mobile",
+      "distance": 26,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Series 7",
+      "trimmedTitle": "apple watch series 7",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 7",
+      "category": "watches",
+      "distance": 11,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Series 9 - 45 mm. GPS Pink",
+      "trimmedTitle": "apple watch series 9 - 45 mm. gps pink",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 9",
+      "category": "watches",
+      "distance": 29,
+      "correct": false
+    },
+    {
+      "title": "iPhone 13 Pro Max 256GB - Original Apple Ori Part",
+      "trimmedTitle": "iphone 13 pro max 256gb - original apple ori part",
+      "predictedModel": "iphone 13 pro max",
+      "realModel": "iphone 13 pro max",
+      "category": "mobile",
+      "distance": 32,
+      "correct": true
+    },
+    {
+      "title": "Apple Watch Series 6 40mm GPS - Fullset",
+      "trimmedTitle": "apple watch series 6 40mm gps - fullset",
+      "predictedModel": "iphone 6s plus",
+      "realModel": "watch 6",
+      "category": "mobile",
+      "distance": 30,
+      "correct": false
+    },
+    {
+      "title": "Apple Air 3",
+      "trimmedTitle": "apple air 3",
+      "predictedModel": "ipad air 3",
+      "realModel": "ipad air 3",
+      "category": "tablet",
+      "distance": 4,
+      "correct": true
+    },
+    {
+      "title": "iPad Air 5 256gb w Apple Pencil 2",
+      "trimmedTitle": "ipad air 5 256gb w apple pencil 2",
+      "predictedModel": "ipad air 2",
+      "realModel": "ipad air 5",
+      "category": "tablet",
+      "distance": 23,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch SE (Gen 2) Starlight AI Star 40mm",
+      "trimmedTitle": "apple watch se (gen 2) starlight ai star 40mm",
+      "predictedModel": "watch se 2",
+      "realModel": "watch se 2",
+      "category": "watches",
+      "distance": 35,
+      "correct": true
+    },
+    {
+      "title": "iPad Mini (6th Generation) & Apple Pencil",
+      "trimmedTitle": "ipad mini (6th generation) & apple pencil",
+      "predictedModel": "ipad mini 6",
+      "realModel": "ipad mini 6",
+      "category": "tablet",
+      "distance": 30,
+      "correct": true
+    },
+    {
+      "title": "apple 14 pro 256gb deep purple",
+      "trimmedTitle": "apple 14 pro 256gb deep purple",
+      "predictedModel": "iphone 14 pro max",
+      "realModel": "iphone 14 pro",
+      "category": "mobile",
+      "distance": 21,
+      "correct": false
+    },
+    {
+      "title": "Samsung Galaxy Watch 3 Swap Apple Watch",
+      "trimmedTitle": "samsung galaxy watch 3 swap apple watch",
+      "predictedModel": "watch se 2",
+      "realModel": "galaxy watch 3",
+      "category": "watches",
+      "distance": 30,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Nike Series 7 GPS, 45mm Aluminium Case",
+      "trimmedTitle": "apple watch nike series 7 gps, 45mm aluminium case",
+      "predictedModel": "iphone 6s plus",
+      "realModel": "watch 7",
+      "category": "mobile",
+      "distance": 39,
+      "correct": false
+    },
+    {
+      "title": "iphone XR 64gb apple",
+      "trimmedTitle": "iphone xr 64gb apple",
+      "predictedModel": "iphone 14 pro",
+      "realModel": "iphone xr",
+      "category": "mobile",
+      "distance": 10,
+      "correct": false
+    },
+    {
+      "title": "Apple watch se 1 gen (40mm,gps) read description \u2757\ufe0f",
+      "trimmedTitle": "apple watch se 1 gen (40mm,gps) read description \u2757\ufe0f",
+      "predictedModel": "Not in database",
+      "realModel": "watch se",
+      "category": "Not in database",
+      "distance": -1,
+      "correct": false
+    },
+    {
+      "title": "Apple wach series 6 44mm",
+      "trimmedTitle": "apple wach series 6 44mm",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 6",
+      "category": "watches",
+      "distance": 17,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Ultra",
+      "trimmedTitle": "apple watch ultra",
+      "predictedModel": "watch ultra",
+      "realModel": "watch ultra",
+      "category": "watches",
+      "distance": 6,
+      "correct": true
+    },
+    {
+      "title": "Apple Watch Series 7 45mm nike edition",
+      "trimmedTitle": "apple watch series 7 45mm nike edition",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 7",
+      "category": "watches",
+      "distance": 29,
+      "correct": false
+    },
+    {
+      "title": "apple watch se 1 44mm",
+      "trimmedTitle": "apple watch se 1 44mm",
+      "predictedModel": "watch se 2",
+      "realModel": "watch se",
+      "category": "watches",
+      "distance": 12,
+      "correct": false
+    },
+    {
+      "title": "Apple 10.9 10th Gen WiFi iPad Pink 256GB",
+      "trimmedTitle": "apple 10.9 10th gen wifi ipad pink 256gb",
+      "predictedModel": "ipad mini 2",
+      "realModel": "ipad 10",
+      "category": "tablet",
+      "distance": 31,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch SE Gen 2 44MM GPS (Open Nego)",
+      "trimmedTitle": "apple watch se gen 2 44mm gps (open nego)",
+      "predictedModel": "watch se 2",
+      "realModel": "watch se 2",
+      "category": "watches",
+      "distance": 31,
+      "correct": true
+    },
+    {
+      "title": "Apple Watch Se 44mm 1st gen",
+      "trimmedTitle": "apple watch se 44mm 1st gen",
+      "predictedModel": "watch se 2",
+      "realModel": "watch se",
+      "category": "watches",
+      "distance": 18,
+      "correct": false
+    },
+    {
+      "title": "apple watch SE GEN 2 (44 mm)",
+      "trimmedTitle": "apple watch se gen 2 (44 mm)",
+      "predictedModel": "watch se 2",
+      "realModel": "watch se 2",
+      "category": "watches",
+      "distance": 18,
+      "correct": true
+    },
+    {
+      "title": "Apple Watch 6 Series 40mm gps+ cellular",
+      "trimmedTitle": "apple watch 6 series 40mm gps+ cellular",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 6",
+      "category": "watches",
+      "distance": 30,
+      "correct": false
+    },
+    {
+      "title": "Selling iPad 9th Gen (64GB) + Apple Pencil",
+      "trimmedTitle": "selling ipad 9th gen (64gb) + apple pencil",
+      "predictedModel": "iphone 14 pro max",
+      "realModel": "ipad 9",
+      "category": "mobile",
+      "distance": 33,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Ultra",
+      "trimmedTitle": "apple watch ultra",
+      "predictedModel": "watch ultra",
+      "realModel": "watch ultra",
+      "category": "watches",
+      "distance": 6,
+      "correct": true
+    },
+    {
+      "title": "Apple Watch Series 8 Gold Stainless Steel",
+      "trimmedTitle": "apple watch series 8 gold stainless steel",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 8",
+      "category": "watches",
+      "distance": 32,
+      "correct": false
+    },
+    {
+      "title": "\uff3bNEW\uff3dApple Iphone 15 Pro 256GB blue",
+      "trimmedTitle": "\uff3bnew\uff3dapple iphone 15 pro 256gb blue",
+      "predictedModel": "iphone 15 pro max",
+      "realModel": "iphone 15 pro",
+      "category": "mobile",
+      "distance": 21,
+      "correct": false
+    },
+    {
+      "title": "Apple watch se 2 44mm",
+      "trimmedTitle": "apple watch se 2 44mm",
+      "predictedModel": "watch se 2",
+      "realModel": "watch se 2",
+      "category": "watches",
+      "distance": 11,
+      "correct": true
+    },
+    {
+      "title": "Apple Watch Series 8 (45MM) GPS",
+      "trimmedTitle": "apple watch series 8 (45mm) gps",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 8",
+      "category": "watches",
+      "distance": 22,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch Series 6",
+      "trimmedTitle": "apple watch series 6",
+      "predictedModel": "watch se 2",
+      "realModel": "watch 6",
+      "category": "watches",
+      "distance": 11,
+      "correct": false
+    },
+    {
+      "title": "Apple iPad (9th Gen) Wifi + Cellular",
+      "trimmedTitle": "apple ipad (9th gen) wifi + cellular",
+      "predictedModel": "iphone 6s plus",
+      "realModel": "ipad 9",
+      "category": "mobile",
+      "distance": 28,
+      "correct": false
+    },
+    {
+      "title": "Apple Watch SE",
+      "trimmedTitle": "apple watch se",
+      "predictedModel": "watch se",
+      "realModel": "watch se",
+      "category": "watches",
+      "distance": 6,
+      "correct": true
+    },
+    {
+      "title": "Apple Watch se 2 44",
+      "trimmedTitle": "apple watch se 2 44",
+      "predictedModel": "watch se 2",
+      "realModel": "watch se 2",
+      "category": "watches",
+      "distance": 9,
+      "correct": true
+    },
+    {
+      "title": "Apple Watch SE  40mm Starlight Aluminium Case ",
+      "trimmedTitle": "apple watch se  40mm starlight aluminium case ",
+      "predictedModel": "iphone 14 pro max",
+      "realModel": "watch se",
+      "category": "mobile",
+      "distance": 36,
+      "correct": false
+    }
+  ]
+}

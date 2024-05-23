@@ -1,6 +1,8 @@
 import Levenshtein
 from Database.TimmyDatabase import TimmyDatabase
 import re
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
 class ScrapyTermCompare:
     def __init__(self, category, brand):
@@ -17,8 +19,19 @@ class ScrapyTermCompare:
         self.wordDictionary = self.GetListWordDict(categoryBrandModelsList)
         self.UpdateListToDictWithCategory(categoryBrandModelsList, category)
 
+        print(self.wordDictionary)
+
         self.GetOtherCategory(category, brand)
 
+        self.corpus = list(self.modelDictionary.keys())
+
+        # 初始化CosineSimilarity
+        self.tfidf_vectorizer = TfidfVectorizer(use_idf=False, token_pattern=r"(?u)\b\w+\b")
+
+        # 计算TF-IDF矩阵
+        self.tfidf_matrix = self.tfidf_vectorizer.fit_transform(self.corpus)
+
+        print(self.modelDictionary)
 
         self.timmyDB.closeConnection()
 
@@ -73,49 +86,221 @@ class ScrapyTermCompare:
 
 
     # 对标题进行处理
-    def CleanTitle(self, title):
+    def CleanTitle1(self, title):
+        title = title.lower()
+
+        # 去除中文字
         title = re.sub(r'[\u4e00-\u9fff]', '', title)
-        split_words = re.findall(r'[a-zA-Z]+|[\d.]+|[^,.\-\s]+', title)
+
+        # 分割字符串，但是数字字符在一起
+        # 例如 6s等等
+        split_words = re.findall(r'[a-zA-Z0-9]+|[\d.]+|[^,.()\-\s]+', title)
+
+        # print(split_words)
 
         filtered_word = [word for word in split_words if word in self.wordDictionary]
 
+        # print(filtered_word)
+
         filtered_string = ' '.join(filtered_word)
 
+        # print("Filtered: " + filtered_string)
         return filtered_string
+
+    def CleanTitle2(self, title):
+        title = title.lower()
+
+        # 去除中文字
+        title = re.sub(r'[\u4e00-\u9fff]', '', title)
+
+        # 分割字符串，但是数字字符在一起
+        # 例如 6s等等
+        split_words = re.findall(r'[a-zA-Z0-9]+|[\d.]+|[^,.()\-\s]+', title)
+
+        # print(split_words)
+
+        # filtered_word = [word for word in split_words if word in self.wordDictionary]
+
+        filtered_string = ' '.join(split_words)
+
+        # print("Filtered: " + filtered_string)
+        return  filtered_string
+    
+    def CleanTitle(self, title):
+        title = title.lower()
+
+        # 去除中文字
+        title = re.sub(r'[\u4e00-\u9fff]', '', title)
+
+        # 分割字符串
+        split_words = re.findall(r'[a-zA-Z]+|[\d.]+|[^,.()\-\s]+', title)
+
+        # print(split_words)
+
+        filtered_word = [word for word in split_words if word in self.wordDictionary]
+
+        # print(filtered_word)
+
+        filtered_string = ' '.join(filtered_word)
+
+        # print("Filtered: " + filtered_string)
+        return filtered_string
+
+
 
     # 获取最相近的产品型号
     def GetMostSimilarProduct(self, title):
         title = title.lower()
+
+        cleaned_title1 = self.CleanTitle1(title)
+        most_similar_product1, distance1 = self.CosineSim(cleaned_title1)
+
+
         cleaned_title = self.CleanTitle(title)
-        most_similar_product = self.Levensthein(cleaned_title)
+        most_similar_product, distance = self.CosineSim(cleaned_title)
+        
+        # cleaned_title = self.CleanTitle(title)
+        # cleaned_title = title
+        # most_similar_product, distance = self.Levensthein(cleaned_title)
 
+
+        # if(most_similar_product == None or most_similar_product1 == None):
         if(most_similar_product == None):
-            return None, None
+            return None, None,cleaned_title,distance
 
-        return most_similar_product,self.modelDictionary[most_similar_product]
+        # return most_similar_product,self.modelDictionary[most_similar_product],cleaned_title,distance        
+
+
+        # print("Ori")
+        # print(title)
+
+        # print("6s")
+        # print(f'Cleaned: {cleaned_title1}')
+        # print(distance1)
+        # print(f'Most sim: {most_similar_product1}')
+
+        
+        # print("6 s")
+        # print(f'Cleaned: {cleaned_title}')
+        # print(distance)
+        # print(f'Most sim: {most_similar_product}')
+
+        # 如果两个长度不一样，用LD进行判断，选更小的
+        if(len(most_similar_product) != len(most_similar_product1)):
+            arr = []
+            arr.append(most_similar_product1)
+            arr.append(most_similar_product)
+            
+            most_similar_product2, distance2 = self.LevenstheinFinal(title, arr)
+
+            return most_similar_product2,self.modelDictionary[most_similar_product2], cleaned_title1, distance2
+
+        elif(distance1 > distance):
+
+            return most_similar_product1,self.modelDictionary[most_similar_product1],cleaned_title1,distance1
+        else:
+
+            return most_similar_product,self.modelDictionary[most_similar_product],cleaned_title,distance        
 
     # 对标题与型号列表进行比较
+    def LevenstheinFinal(self, title, decision):
+        title = title.replace(" ","")
+
+        distances = {model: Levenshtein.distance(title, model) for model in decision}
+        most_similar_product = min(distances, key=distances.get)
+        
+        # print(distances)
+        # print(f'By LD: {most_similar_product}')
+
+        return most_similar_product, distances[most_similar_product]
+    # 对标题与型号列表进行比较
     def Levensthein(self, cleaned_title):
+
         distances = {model: Levenshtein.distance(cleaned_title, model) for model in self.modelDictionary.keys()}
         most_similar_product = min(distances, key=distances.get)
         
+        print(most_similar_product)
+        print(distances[most_similar_product])
         if(distances[most_similar_product] > 3):
-            return None
+            return None, distances[most_similar_product]
 
-        return most_similar_product
+        return most_similar_product, distances[most_similar_product]
+    
+    def Nearest(self, cleaned_title, corpus):
 
-# 示例用法
-if __name__ == "__main__":
-    # 假设有一个型号列表
-    category = "mobile"
-    brand = "apple"
-    # 创建一个 ScrapyTermCompare 实例
-    comparer = ScrapyTermCompare(category, brand)
-    # 假设有一个标题
-    title = "iphone 15 pro max with free cases"
-    # 获取最相近的产品型号
-    most_similar_product, most_similar_category = comparer.GetMostSimilarProduct(title)
- 
-    if(most_similar_product != None):
-        print("Most similar product:", most_similar_product)
-        print("category:", most_similar_category)
+        mostSim = 0
+        minIndex = 999
+
+        corpus_words = [text.split() for text in corpus]
+
+        # Initialize the index of the first difference to None
+        first_different_index = None
+
+        # Iterate through each word index in the first string
+        for i in range(len(corpus_words[0])):
+            # Get the word at index i in the first string
+            word = corpus_words[0][i]
+            # Check if the word at index i is different in any other string
+            if any(i >= len(text) or word != text[i] for text in corpus_words[1:]):
+                first_different_index = i
+                break
+
+        # If no difference is found, set the first different index to the length of the shortest word
+        if first_different_index is None:
+            first_different_index = min(len(word) for word in (corpus_words[0]))
+
+
+        # After get first different index, see whose is lowest
+        for i in range(len(corpus)):
+            index = cleaned_title.find(corpus_words[i][first_different_index])
+
+            minIndex = index if index < minIndex else minIndex
+            mostSim = i if index<=minIndex else mostSim
+            
+        return corpus[mostSim]
+
+
+    def CosineSim(self, cleaned_title):
+
+        # print(f'Cleaned: {cleaned_title}')
+        # 将输入文本转换为TF-IDF向量
+        input_vector = self.tfidf_vectorizer.transform([cleaned_title])
+
+        # 计算余弦相似度
+        similarities = cosine_similarity(input_vector,self.tfidf_matrix)
+
+        # 查找最相似的文本
+        most_similar_index = similarities.argmax()
+        same_similarity_indices = [i for i, sim in enumerate(similarities[0]) if sim == similarities[0][most_similar_index]]
+
+
+        # 查找最相似的前几个
+        top_indices = similarities.argsort()[0][-3:][::1]
+        top_texts = [self.corpus[i] for i in top_indices]
+        top_similarities = similarities[0][top_indices]
+
+        most_similar_text = self.corpus[most_similar_index]
+
+        # print(cleaned_title)
+        # print(f'Top 3 most similar: {top_texts}' )
+        # for i, (text, similarity) in enumerate(zip(top_texts, top_similarities),1):
+        #     print(f"{i}. {text} - 相似度: {similarity}")
+
+
+        # 如果有相同比率的就进行下一步的执行
+        if(len(same_similarity_indices) > 1):
+            same_similarity_texts = [self.corpus[i] for i in same_similarity_indices]
+            item = self.Nearest(cleaned_title, same_similarity_texts)
+
+            # print("Passed 2nd filter")
+            # print(f'Most Similar: {item}')
+
+            return item, similarities[0][same_similarity_indices[0]]
+
+        else:
+            # print("Without second filter")
+            # print(f'Most Similar: {most_similar_text}')
+            return most_similar_text, similarities[0][most_similar_index]
+
+
+

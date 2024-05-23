@@ -7,7 +7,7 @@ namespace webapi.Services.ElasticSearchService
 	public interface IElasticSearchService
 	{
 		Task<PageEntity<ElasticProductDTO>> SearchProduct(ProductSearchTermDTO searchTermDTO, PageDTO pageDTO, string? userId);
-		Task<PageEntity<ElasticProductDTO>> GetRandom10Product(PageDTO pageDTO);
+		Task<PageEntity<ElasticProductDTO>> GetRandom10Product(PageDTO pageDTO, string category);
 		Task<List<ElasticProductDTO>> GetLowestPriceProduct(UserSubscription userSubscription);
 		Task<List<ElasticProductDTO>> GetLowPriceProductForPriceHistory(ProductSearchTermDTO productSearchTermDTO);
 		Task<bool> UpdateProduct(ElasticProductDTO elasticProduct);

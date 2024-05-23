@@ -20,10 +20,10 @@ public partial class PriceHistory
     public string? TimmyProductFullName { get; set; }
 
     [Column("price_history_price", TypeName = "decimal(10, 2)")]
-    public decimal? PriceHistoryPrice { get; set; }
+    public decimal PriceHistoryPrice { get; set; }
 
     [Column("price_history_effective_date", TypeName = "datetime")]
-    public DateTime? PriceHistoryEffectiveDate { get; set; }
+    public DateTime PriceHistoryEffectiveDate { get; set; }
 
     [Column("price_history_spider")]
     [StringLength(50)]

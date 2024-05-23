@@ -16,7 +16,7 @@ const SubscribedItemProduct = ({data, customStyle, customTextStyle}) => {
     }
 
   return (
-    <View className={`border-2 border-black-200 h-32 focus:bg-slate-300 flex-row rounded-2xl justify-center items-center ${customStyle} my-2 `}>
+    <View className={`focus:bg-slate-300 flex-row rounded-2xl justify-center items-center ${customStyle} `}>
 
             <TouchableOpacity
                 onPress={()=>{
@@ -33,11 +33,11 @@ const SubscribedItemProduct = ({data, customStyle, customTextStyle}) => {
                     
                     {/* Product information */}
                     <View className = "basis-3/6 flex flex-col gap-1">
-                        <Text className = "">{data.userSubscriptionProductTitle}</Text>
+                        <Text className = " font-pblack text-base">{data.userSubscriptionProductTitle}</Text>
                         
                         <View className = "flex flex-row">
-                            <Text>RMB {data.userSubscriptionProductPriceCny} - </Text>
-                            <Text >{data.userSubscriptionProductCondition}</Text>
+                            <Text className = "font-pmedium">RMB {data.userSubscriptionProductPriceCny} - </Text>
+                            <Text className = "font-pmedium text-secondary">{data.userSubscriptionProductCondition}</Text>
                         </View>
 
                         <Image
@@ -50,7 +50,7 @@ const SubscribedItemProduct = ({data, customStyle, customTextStyle}) => {
                 </View>
             </TouchableOpacity>
 
-            <View className = "flex flex-col justify-center items-center">
+            <View className = "flex ">
                 <TouchableOpacity 
                     onPress={() =>
                         {

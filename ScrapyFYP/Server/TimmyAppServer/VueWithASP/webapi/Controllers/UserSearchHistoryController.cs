@@ -36,5 +36,20 @@ namespace webapi.Controllers
                 return ResponseData<List<UserSearchHistory>>.Failure(ex.Message);
             }
         }
+
+        [HttpPost("ClearUserSearchHistory")]
+        public async Task<ResponseData<Boolean>> ClearUserSearchHistory(string jwtToken)
+        {
+            try
+            {
+                string userId = _jwtService.ParseJwtToUserId(jwtToken);
+                Boolean flag = await _userSearchHistoryService.ClearUserSearchHistory(userId);
+                return ResponseData<Boolean>.Success(flag);
+            }
+            catch(Exception ex)
+            {
+                return ResponseData<Boolean>.Failure(ex.Message);
+			}
+		}
     }
 }

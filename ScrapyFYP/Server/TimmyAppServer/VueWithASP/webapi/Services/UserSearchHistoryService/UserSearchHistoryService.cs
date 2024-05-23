@@ -12,7 +12,13 @@ namespace webapi.Services.UserSearchHistoryService
         {
             _userSearchHistoryDAO = userSearchHistoryDAO;
         }
-        public async Task<List<Models.UserSearchHistory>> GetUserSearchHistory(string userId)
+
+		public async Task<bool> ClearUserSearchHistory(string userId)
+		{
+			return await _userSearchHistoryDAO.ClearUserSearchHistory(userId);
+		}
+
+		public async Task<List<Models.UserSearchHistory>> GetUserSearchHistory(string userId)
 		{
 			return await _userSearchHistoryDAO.GetUserSearchHistory(userId);
 		}

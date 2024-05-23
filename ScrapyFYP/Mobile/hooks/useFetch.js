@@ -9,7 +9,7 @@ export default useFetch = (endpoint,method,query,params) => {
     const [error, setError] = useState(null)    
 
 
-    let url = "https://a68c-223-104-41-166.ngrok-free.app"
+    let url = "https://1046-114-246-197-132.ngrok-free.app"
 
     // let data
     // create the request header
@@ -50,14 +50,17 @@ export default useFetch = (endpoint,method,query,params) => {
                 // Alert.alert("Success", response.data.message)
             } else {
                 // Error response
+                setData(response.data)
+                console.log(response.data)
+                setIsLoading(false)
                 setError(response.data.message)
-                Alert.alert("Error", "Error status: " + response.data.message)
+                // Alert.alert("Error", "Error status: " + response.data.message)
             }
         } catch (error) {
             // Axios request failed
             setIsLoading(false)
             setError(error)
-            alert(`Error while fetching URL: ${error}`);
+            // alert(`Error while fetching URL: ${error}`);
         }
     };    
 

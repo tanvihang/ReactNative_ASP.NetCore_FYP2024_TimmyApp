@@ -1,97 +1,98 @@
-import { View, Text, Image } from 'react-native'
-import React from 'react'
-import { Tabs, Redirect } from 'expo-router'
-import { icons } from '../../constants'
+import { View, Text, Image } from "react-native";
+import React from "react";
+import { Tabs, Redirect } from "expo-router";
+import { icons } from "../../constants";
 
 // 创建组件For渲染图标
-const TabIcon = ({icon, color,name, focused}) => {
-  return(
-    <View className = "align-middle justify-center items-center gap-1">
+const TabIcon = ({ icon, color, name, focused }) => {
+  return (
+    <View className="align-middle justify-center items-center gap-1">
       <Image
         source={icon}
-        resizeMode='contain'
+        resizeMode="contain"
         tintColor={color}
         className="w-6 h-6"
       />
-      <Text className = {`${focused ? 'font-bold':'font-regular'} text-xs`}>{name}</Text>
+      <Text className={`${focused ? "font-bold" : "font-regular"} text-xs`}>
+        {name}
+      </Text>
     </View>
-  )
-}
+  );
+};
 
 const TabsLayout = () => {
   return (
     <Tabs
       screenOptions={{
-        tabBarShowLabel:false,
+        tabBarShowLabel: false,
         headerShown: false,
         tabBarActiveTintColor: "#000000",
-        tabBarStyle:{
-          height:64
-        }
+        tabBarStyle: {
+          height: 64,
+        },
       }}
     >
-      <Tabs.Screen 
-        name='search'
+      <Tabs.Screen
+        name="home"
         options={{
-          title: 'Search',
-          tabBarIcon: ({color, focused}) => (
+          title: "Home",
+          tabBarIcon: ({ color, focused }) => (
             <TabIcon
-              icon = {icons.search}
-              color = {color}
+              icon={icons.home}
+              color={color}
               focused={focused}
-              name= "Search"
+              name="Home"
             />
-          )
+          ),
         }}
       />
 
-      <Tabs.Screen 
-        name='home'
+      <Tabs.Screen
+        name="search"
         options={{
-          title: 'Home',
-          tabBarIcon: ({color, focused}) => (
+          title: "Search",
+          tabBarIcon: ({ color, focused }) => (
             <TabIcon
-              icon = {icons.home}
-              color = {color}
+              icon={icons.search}
+              color={color}
               focused={focused}
-              name= "Home"
+              name="Search"
             />
-          )
+          ),
         }}
       />
 
-      <Tabs.Screen 
-        name='subscribed'
+      <Tabs.Screen
+        name="subscribed"
         options={{
-          title: 'Subscribed',
-          tabBarIcon: ({color, focused}) => (
+          title: "Subscribed",
+          tabBarIcon: ({ color, focused }) => (
             <TabIcon
-              icon = {icons.bookmark}
-              color = {color}
+              icon={icons.bookmark}
+              color={color}
               focused={focused}
-              name= "Subscribed"
+              name="Subscribed"
             />
-          )
+          ),
         }}
       />
 
-    <Tabs.Screen 
-        name='profile'
+      <Tabs.Screen
+        name="profile"
         options={{
-          title: 'Profile',
-          tabBarIcon: ({color, focused}) => (
+          title: "Profile",
+          tabBarIcon: ({ color, focused }) => (
             <TabIcon
-              icon = {icons.profile}
-              color = {color}
+              icon={icons.profile}
+              color={color}
               focused={focused}
-              name= "Profile"
+              name="Profile"
             />
-          )
+          ),
         }}
       />
-
     </Tabs>
-  )
-}
+  );
+};
 
-export default TabsLayout
+export default TabsLayout;

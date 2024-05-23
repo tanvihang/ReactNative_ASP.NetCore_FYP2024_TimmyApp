@@ -39,7 +39,7 @@ namespace webapi.Controllers
 				}
 				else
 				{
-					return ResponseData<PageEntity<ElasticProductDTO>>.Failure("No product with the search term given");
+					return ResponseData<PageEntity<ElasticProductDTO>>.Success("No product with the search term given");
 				}
 
 			}
@@ -50,11 +50,11 @@ namespace webapi.Controllers
 		}
 
 		[HttpPost("GetRandom10Product")]
-		public async Task<ResponseData<PageEntity<ElasticProductDTO>>> GetRandom10Product(PageDTO pageDTO)
+		public async Task<ResponseData<PageEntity<ElasticProductDTO>>> GetRandom10Product(PageDTO pageDTO, string category)
 		{
 			try
 			{
-				PageEntity<ElasticProductDTO> products = await _elasticSearchService.GetRandom10Product(pageDTO);
+				PageEntity<ElasticProductDTO> products = await _elasticSearchService.GetRandom10Product(pageDTO, category);
 				
 				if(products.Count == 0)
 				{

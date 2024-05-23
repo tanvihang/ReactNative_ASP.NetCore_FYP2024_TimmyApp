@@ -12,14 +12,15 @@ from scrapy.utils.log import configure_logging
 from scrapy.exceptions import CloseSpider
 from forex_python.converter import CurrencyRates
 
+logging.basicConfig(level = logging.INFO, format='[%(asctime)s] {%(name)s} %(levelname)s:  %(message)s', 
+                    datefmt='%y-%m-%d %H:%M:%S',
+                    filename=f'./Log/mudah_{datetime.now().isoformat().replace(":","")}_logs.log')
+logger = logging.getLogger('Mudah_logger')
+
 # example execution with search parameter of iphone 12
 # scrapy crawl mudah -o mudahOutput.json -a search="iphone 12" 
 # scrapy crawl mudah -o "%(name)s_%(time)s.json" -a search="huawei mate 60"
 class MudahSpider(scrapy.Spider):
-
-    # logger = logging.getLogger()
-    # logger.setLevel(logging.WARNING)
-
     name = "mudah"
     allowed_domains = ["mudah.com"]
     page_exceed = False
@@ -27,7 +28,6 @@ class MudahSpider(scrapy.Spider):
 
     def __init__(self, *args, **kwargs):
         super(MudahSpider, self).__init__(*args, **kwargs)
-        self.logger.setLevel(logging.WARNING)
         self.dynamic_parameter = {
             "category": getattr(self, 'search', 'none')['category'],
             "brand": getattr(self, 'search', 'none')['brand'],
@@ -94,8 +94,12 @@ class MudahSpider(scrapy.Spider):
 
             # Create the full URL
             full_url = '{}?{}'.format(base_url, encoded_params)
-            logging.info(f"{self.count} page")
-            yield Request(full_url, method='GET',headers=headers, callback=self.parse)
+            try:
+                yield Request(full_url, method='GET',headers=headers, callback=self.parse)
+            except Exception as e:
+                logger.error(f"Error occured in request at spider {self.name}: {e} ")
+
+
 
 
     def parse(self, response):
@@ -165,6 +169,7 @@ class MudahSpider(scrapy.Spider):
                 yield loader.load_item()
         
         except Exception as e: 
-            logging.error(f"Error occured in parse at spider {self.name}: {e} ")
+            logger.error(f"Error occured in parse at spider {self.name}: {e} ")
+            raise Exception(f"Error occured in parse at spider {self.name}: {e}")
             raise CloseSpider(f"Error occured in parseat spider {self.name}: {e}")
         

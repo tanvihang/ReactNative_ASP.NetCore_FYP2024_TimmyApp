@@ -7,7 +7,7 @@ namespace webapi.DAO.ElasticSearchDAO
 	{
 		Task<List<ElasticProductDTO>> GetPaginationElasticProduct(ProductSearchTermDTO searchTermDTO, PageDTO pageDTO);
 		Task<List<ElasticProductDTO>> GetLowPriceElasticProduct(ProductSearchTermDTO searchTermDTO);
-		Task<PageEntity<ElasticProductDTO>> GetRandom10Product(PageDTO pageDTO);
+		Task<PageEntity<ElasticProductDTO>> GetRandom10Product(PageDTO pageDTO, string category);
 		Task<List<ElasticProductDTO>> GetLowPriceProductForUserSubscribe(UserSubscription userSubscription);
 		Task<List<ElasticProductDTO>> GetLowPriceProductForPriceHistory(ProductSearchTermDTO productSearchTermDTO);
 		Task<List<ElasticProductDTO>> GetUserFavourite(List<string> productUniqueId);

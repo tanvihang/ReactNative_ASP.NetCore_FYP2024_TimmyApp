@@ -1,45 +1,41 @@
-import { View, Text, ScrollView} from 'react-native'
-import React from 'react'
+import { View, Text, ScrollView, Animated} from 'react-native'
+import React, {useEffect, useState} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Link , Redirect, router} from 'expo-router'
 import CustomButton from '../components/CustomButton'
 import { useGlobalContext } from '../context/GlobalProvider'
+import Onboarding from '../components/OnBoarding/Onboarding'
+import TabsLayout from './(tabs)/_layout'
+import Home from './(tabs)/home'
+import * as SecureStore from 'expo-secure-store'
+
 
 const index = () => {
 
-  const {isLoggedIn, jwtToken} = useGlobalContext() 
+  const {isLoggedIn,setJwtToken, setIsLoggedIn} = useGlobalContext()   
 
-  if(isLoggedIn){
-    return <Redirect href='/home'/>
+  // Check login status
+  const checkLogin = async() => {
+    let result = await SecureStore.getItemAsync("jwtToken")
+
+    if(result !== null){
+        setJwtToken(result)
+        setIsLoggedIn(true)
+    }
   }
 
+  checkLogin()
+
   return (
-    <SafeAreaView className = "h-full bg-white ">
-      <ScrollView contentContainerStyle={{
-        height: '100%'
-      }}>
-
-        <View className = "w-full h-60 items-center justify-center">
-          <Text>
-              Timmy App
-          </Text>
-        </View>
-
-        <View className = "w-full justify-center items-center">
-          <CustomButton
-            title="Continue with Email"
-            handlePress = { ()=>{router.push("/sign-in")} }
-            containerStyles = "w-9/12 mt-7"
-          />
-          <CustomButton
-            title="Go to home page"
-            handlePress = { ()=>{router.push("/home")} }
-            containerStyles = "w-9/12 mt-7"
-          />
-
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <View className = "bg-white">
+       {
+          isLoggedIn ? (
+            <Redirect href='/home'/>
+          ):(
+            <Onboarding/>
+          )
+        }
+    </View>
   )
 }
 

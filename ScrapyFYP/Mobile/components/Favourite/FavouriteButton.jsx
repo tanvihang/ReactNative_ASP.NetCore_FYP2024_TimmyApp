@@ -21,7 +21,6 @@ const FavouriteButton = ({productId}) => {
         try{
             normalApiCall("UserFavourite/FavouriteProduct", "POST", {productUniqueId:productId} ,{jwtToken : jwtToken})
             // setUserFavourite(userFavourite.push(productId))
-            console.log("HI")
             setUserFavourite(userFavourite.concat([productId]))
             
         }catch(error){
@@ -32,6 +31,14 @@ const FavouriteButton = ({productId}) => {
 
     const unFavouriteApi = () => {
         normalApiCall("UserFavourite/UnFavouriteProduct", "POST", {productUniqueId:productId} ,{jwtToken : jwtToken})
+
+        // Remove it from userFavourite
+        let uf = userFavourite
+        let index = uf.indexOf(productId)
+        if(index > -1){
+            uf.splice(index,1)
+        }
+        setUserFavourite(uf)
     }
 
     const userPressFavourite = () => {

@@ -4,10 +4,12 @@ using webapi.Models;
 using webapi.Models.DTO;
 using webapi.Models.HangFireResponse;
 using webapi.Services.ElasticSearchService;
+using webapi.Services.NotificationService;
 using webapi.Services.PlatformService;
 using webapi.Services.PriceHistoryService;
 using webapi.Services.ScraperService;
 using webapi.Services.TimmyProductService;
+using webapi.Services.UserService;
 using webapi.Services.UserSubscriptionProductService;
 using webapi.Services.UserSubscriptionService;
 using webapi.Utilities.Linq;
@@ -23,10 +25,12 @@ namespace webapi.Services.SignalService
 		IPriceHistoryService _priceHistoryService;
 		IPlatformService _platformService;
 		IScraperService _scraperService;
+		INotificationService _notificationService;
+		IUserService _userService;
 
         public SignalService(IElasticSearchService elasticSearchService, IUserSubscriptionProductService userSubscriptionProductService, 
 			IUserSubscriptionService userSubscriptionService, ITimmyProductService timmyProductService, IPriceHistoryService priceHistoryService,
-			IPlatformService platformService, IScraperService scraperService)
+			IPlatformService platformService, IScraperService scraperService, INotificationService notificationService, IUserService userService)
         {
             _elasticSearchService = elasticSearchService;
 			_userSubscriptionProductService = userSubscriptionProductService;
@@ -34,7 +38,10 @@ namespace webapi.Services.SignalService
 			_timmyProductService = timmyProductService;
 			_priceHistoryService = priceHistoryService;
 			_platformService = platformService;
-        }
+			_notificationService = notificationService;
+			_userService = userService;
+			_scraperService = scraperService;
+		}
 
 		public async Task<bool> ExecuteScrapeAndGetLowestPrice()
 		{
@@ -107,71 +114,99 @@ namespace webapi.Services.SignalService
 			Dictionary<string, int> updatedUserSubscriptionProductDict = new Dictionary<string, int>();
 
 			// 1. get all userSubscription by time
-			List<UserSubscription> userSubscriptions = await _userSubscriptionService.GetUserSubscriptionByNotificationTime(time);
-
-            // 2. for loop get product price
-            foreach (UserSubscription userSubscription in userSubscriptions)
-			{
-
-                await Console.Out.WriteLineAsync($"Getting lowest price for product {userSubscription.UserSubscriptionProductFullName}");
-
-                // 3. Search low price product
-                List<ElasticProductDTO> elasticProductDTOs = await _elasticSearchService.GetLowPriceProductForUserSubscribe(userSubscription);
-
-				// 4. filter already added elasticProduct
-				// Filter out already added products from elasticProductDTOs
-				List<UserSubscriptionProduct> usp = await _userSubscriptionProductService.GetUserSubscriptionProductsByUserSubscriptionId(userSubscription.UserSubscriptionId);
-				
-				string[] uniqueIdsArray = usp.Select(u => u.UserSubscriptionProductUniqueId!).ToArray();
-				List<ElasticProductDTO> filteredProducts = elasticProductDTOs
-					.Where(product => !uniqueIdsArray.Contains(product.unique_id))
-					.ToList();
-
-				// Sort filteredProducts by Price_CNY and remove duplicate item
-				filteredProducts = filteredProducts
-									.OrderBy(product => product.price_CNY)
-									.Distinct(new ElasticProductDTOUniqueIdComparer())
-									.ToList();
-
-				// 5. add products into UserSubscribedProduct
-				foreach(ElasticProductDTO elasticProduct in filteredProducts)
+			try 
+			{ 
+				List<UserSubscription> userSubscriptions = await _userSubscriptionService.GetUserSubscriptionByNotificationTime(time);
+				// 2. for loop get product price
+				foreach (UserSubscription userSubscription in userSubscriptions)
 				{
-					UserSubscriptionProduct addSubscriptionProduct = await _userSubscriptionProductService.AddUserSubscriptionProduct(new AddUserSubscriptionProductDTO
-					{
-						userSubscriptionId = userSubscription.UserSubscriptionId,
-						productPrice = elasticProduct.price,
-						productPriceCNY = elasticProduct.price_CNY,
-						productTitle = elasticProduct.title,
-						productDescription = elasticProduct.description,
-						productCondition = elasticProduct.condition,
-						productSpider = elasticProduct.spider,
-						productCurrency = elasticProduct.currency,
-						productAddedDate = DateTime.Now,
-						productUserPreference = 1,
-						productURL = elasticProduct.product_url,
-						productImage = elasticProduct.product_image,
-						productUniqueId = elasticProduct.unique_id
-					});
+					int updated = 0;
 
-					if(addSubscriptionProduct != null)
-					{
-						if (updatedUserSubscriptionProductDict.ContainsKey(userSubscription.UserSubscriptionId))
-						{
-							// Key exists, set the value to 1
-							updatedUserSubscriptionProductDict[userSubscription.UserSubscriptionId] = updatedUserSubscriptionProductDict[userSubscription.UserSubscriptionId] + 1;
-						}
-						else
-						{
-							// Key doesn't exist, initialize it with a value of 1
-							updatedUserSubscriptionProductDict[userSubscription.UserSubscriptionId] = 1;
-						}
+					await Console.Out.WriteLineAsync($"Getting lowest price for product {userSubscription.UserSubscriptionProductFullName}");
 
+					// 3. Search low price product
+					List<ElasticProductDTO> elasticProductDTOs = await _elasticSearchService.GetLowPriceProductForUserSubscribe(userSubscription);
+
+					// 4. filter already added elasticProduct
+					// Filter out already added products from elasticProductDTOs
+					List<UserSubscriptionProduct> usp = await _userSubscriptionProductService.GetUserSubscriptionProductsByUserSubscriptionId(userSubscription.UserSubscriptionId);
+
+					string[] uniqueIdsArray = usp.Select(u => u.UserSubscriptionProductUniqueId!).ToArray();
+					List<ElasticProductDTO> filteredProducts = elasticProductDTOs
+						.Where(product => !uniqueIdsArray.Contains(product.unique_id))
+						.ToList();
+
+					// Sort filteredProducts by Price_CNY and remove duplicate item
+					filteredProducts = filteredProducts
+										.OrderBy(product => product.price_CNY)
+										.Distinct(new ElasticProductDTOUniqueIdComparer())
+										.ToList();
+
+					// 5. add products into UserSubscribedProduct
+					foreach (ElasticProductDTO elasticProduct in filteredProducts)
+					{
+						UserSubscriptionProduct addSubscriptionProduct = await _userSubscriptionProductService.AddUserSubscriptionProduct(new AddUserSubscriptionProductDTO
+						{
+							userSubscriptionId = userSubscription.UserSubscriptionId,
+							productPrice = elasticProduct.price,
+							productPriceCNY = elasticProduct.price_CNY,
+							productTitle = elasticProduct.title,
+							productDescription = elasticProduct.description,
+							productCondition = elasticProduct.condition,
+							productSpider = elasticProduct.spider,
+							productCurrency = elasticProduct.currency,
+							productAddedDate = DateTime.Now,
+							productUserPreference = 1,
+							productURL = elasticProduct.product_url,
+							productImage = elasticProduct.product_image,
+							productUniqueId = elasticProduct.unique_id
+						});
+
+						if (addSubscriptionProduct != null)
+						{
+							// Got updated product
+							updated = 1;
+
+							if (updatedUserSubscriptionProductDict.ContainsKey(userSubscription.UserSubscriptionId))
+							{
+								// Key exists, set the value to 1
+								updatedUserSubscriptionProductDict[userSubscription.UserSubscriptionId] = updatedUserSubscriptionProductDict[userSubscription.UserSubscriptionId] + 1;
+							}
+							else
+							{
+								// Key doesn't exist, initialize it with a value of 1
+								updatedUserSubscriptionProductDict[userSubscription.UserSubscriptionId] = 1;
+							}
+
+						}
 					}
+
+					// 5. Send notification to user about better product
+					if (updated == 1)
+					{
+
+						PublicUserDTO userinfo = await _userService.GetUserInfo(userSubscription.UserId);
+
+						await _notificationService.SendOneMail(new SendMailDTO
+						{
+							title = "New Updated Product",
+							content = "Check out your subscription list for new updated product",
+						},
+							userinfo.UserEmail!
+						);
+					}
+
 				}
 
+				return updatedUserSubscriptionProductDict;
+			}
+			catch (Exception ex)
+			{
+                await Console.Out.WriteLineAsync(ex.Message);
+                return null;
+				
 			}
 
-			return updatedUserSubscriptionProductDict;
 		}
 
 		public async Task<HangFireExecuteUpdateElasticProductDTO> ExecuteUpdateElasticProduct()

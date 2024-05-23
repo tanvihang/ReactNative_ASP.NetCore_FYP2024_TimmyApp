@@ -10,7 +10,7 @@ const SubscribedItem = ({data,customStyle}) => {
     const {jwtToken} = useGlobalContext()
 
   return (
-    <View className={`border-2 border-black-200 h-44 focus:bg-slate-300 flex-row rounded-2xl justify-center items-center ${customStyle} my-2 `}>
+    <View className={`focus:bg-slate-300 flex-row rounded-2xl justify-center items-center ${customStyle} `}>
 
             <TouchableOpacity
                 onPress={() =>
@@ -19,13 +19,13 @@ const SubscribedItem = ({data,customStyle}) => {
                     }}
             >
                 <View>
-                    <Text className="font-bold text-base">Product: {data.userSubscriptionProductFullName}</Text>
-                    <Text className="font-bold text-base">Price range: {data.userSubscriptionProductLowestPrice} ~ {data.userSubscriptionProductHighestPrice}</Text>   
-                    <Text className="font-bold text-base">Description: {data.userSubscriptionProductDescription}</Text>
-                    <Text className="font-bold text-base">Platform: {data.userSubscriptionSpiders == "" ? "No selected platform" : data.userSubscriptionSpiders}</Text>
-                    <Text className="font-bold text-base">Inform Time: {data.userSubscriptionNotificationTime} UTC</Text>
-                    <Text className="font-bold text-base">Condition: {data.userSubscriptionProductCondition == "" ? "No selected condition" : data.userSubscriptionProductCondition}</Text>
-                    <Text className="font-bold text-base">Subscription Date: {data.userSubscriptionDate}</Text>
+                    <Text className="font-pbold text-sm">Product: {<Text className = "font-pmedium">{data.userSubscriptionProductFullName}</Text>} </Text>
+                    <Text className="font-pbold text-sm">Price range: {<Text className = "font-pmedium">{data.userSubscriptionProductLowestPrice} ~ {data.userSubscriptionProductHighestPrice}</Text>} </Text>   
+                    <Text className="font-pbold text-sm">Description: {<Text className = "font-pmedium">{data.userSubscriptionProductDescription}</Text>} </Text>
+                    <Text className="font-pbold text-sm">Platform: {<Text className = "font-pmedium">{data.userSubscriptionSpiders == "" ? "No selected platform" : data.userSubscriptionSpiders}</Text>} </Text>
+                    <Text className="font-pbold text-sm">Inform Time: {<Text className = "font-pmedium">{data.userSubscriptionNotificationTime} UTC</Text>} </Text>
+                    <Text className="font-pbold text-sm">Condition: {<Text className = "font-pmedium">{data.userSubscriptionProductCondition == "" ? "No selected condition" : data.userSubscriptionProductCondition}</Text>} </Text>
+                    <Text className="font-pbold text-sm">Subscription Date: {<Text className = "font-pmedium">{data.userSubscriptionDate}</Text>} </Text>
                 </View>
             </TouchableOpacity>
 

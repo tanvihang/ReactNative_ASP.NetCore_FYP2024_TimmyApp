@@ -1,95 +1,140 @@
-import { View, Text, Image } from 'react-native'
-import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { useGlobalContext } from '../../context/GlobalProvider'
-import TouchableBento from '../../components/TouchableBento'
-import { icons, images } from '../../constants'
+import { View, Text, Image, Alert } from "react-native";
+import React from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { useGlobalContext } from "../../context/GlobalProvider";
+import TouchableBento from "../../components/TouchableBento";
+import { icons, images } from "../../constants";
+import { router } from "expo-router";
+import * as SecureStore from "expo-secure-store";
 
 const Profile = () => {
+  const { user, setJwtToken, setIsLoggedIn } = useGlobalContext();
 
-  const {user} = useGlobalContext()
+  const pressSetting = () => {
+    router.push("/user-setting");
+  };
 
-  // TODO api call to fetch user
-  const data = {
-    "statusCode": 200,
-    "message": "Success",
-    "data": {
-      "userId": "U_ce9de9cd-c183-404e-900c-d72da4e17aa5",
-      "userName": "tvh",
-      "userEmail": "tvhang7@gmail.com",
-      "userLevel": 1,
-      "userRegisterDate": "2024-04-15T16:05:53.707",
-      "userPhoneNo": "1111"
-    }
-  }
+  const pressFavourite = () => {
+    router.push(`/favourite`);
+  };
+
+  const pressRequestProduct = () => {
+    router.push("/requestProduct");
+  };
+
+  const pressSubscription = () => {
+    router.push("/subscribed");
+  };
+
+  const pressHistory = () => {
+    router.push("/searchHistory");
+  };
+
+  const pressLogout = () => {
+
+    Alert.alert(
+      "Warning",
+      "Are you sure you want Logout?",
+      [
+        {
+          text: "Confirm",
+          onPress: () => {
+            try {
+              setJwtToken(null);
+              setIsLoggedIn(false);
+              SecureStore.deleteItemAsync("jwtToken");
+              router.push("/");
+            } catch (error) {
+              console.log(error);
+            }
+          },
+        },
+        {
+          text: "Cancel",
+          onPress: () => console.log("cancel"),
+        },
+      ],
+      { cancelable: true }
+    );
+  };
 
   return (
     <View>
-      <SafeAreaView>
-        <View className = "flex flex-col justify-center items-center mt-10 mb-5">
-              <Text className = "font-semibold text-2xl">Hello,</Text>
-              <Text className = "font-bold text-6xl">{user}</Text>
-      
-              {/* Profile Picture, can be added later on */}
-              <Image
-                source={images.profilepic}
-                className = "mt-4 w-44 h-44 rounded-full"
-              />
+      <SafeAreaView className="flex justify-around h-full">
+        <View className="flex flex-col justify-center items-center mt-10 mb-5">
+          <Text className="font-psemibold text-2xl">Hello,</Text>
+          <Text className="font-pbold text-6xl">{user.userName}</Text>
 
-              {/* profile details */}
-              <View className = "flex flex-col mt-3">
-                <Text className="">Userid: {data.data.userId}</Text>
-                <Text className="">UserEmail: {data.data.userEmail}</Text>
-                <Text className="">UserLevel: {data.data.userLevel}</Text>
-                <Text className="">JoinedDate: {data.data.userRegisterDate}</Text>
-              </View>
+          {/* Profile Picture, can be added later on */}
+          <Image
+            source={images.guitarPerson}
+            className="mt-4 w-44 h-44 "
+            resizeMode="contain"
+          />
 
         </View>
 
+        <View>
+        <Text className = " font-psemibold text-xl text-center">Browse product {<Text className = " text-teal-700">"seamlessly"</Text>} </Text>
+        <Text className = " font-psemibold text-xl text-center">with {<Text className = " text-secondary">Timmy App</Text>} </Text>
 
+        </View>
 
         {/* Bento box design */}
-        <View  className = "flex flex-row flex-wrap w-full justify-center">
-              <TouchableBento
-                title = "Settings"
-                bentoHref="/user-setting"
-                customStyle= ""
-                image = {icons.settings}
-              />
+        <View className="flex flex-row flex-wrap w-full justify-center">
+          <TouchableBento
+            title="Settings"
+            handlePress={pressSetting}
+            containerStyle="mr-3 bg-primary-100 py-3"
+            textStyle="font-pregular text-xl"
+            className="bg-primary-100  "
+            imageStyle="text-white-100"
+            image={icons.settings}
+          />
 
-            <TouchableBento
-                title = "Favourites"
-                bentoHref={`/favourite/${user}`}
-                customStyle= ""
-                image = {icons.favourite}
-              />
+          <TouchableBento
+            title="Favourites"
+            handlePress={pressFavourite}
+            containerStyle="ml-3 bg-primary-100 py-3"
+            textStyle="font-pregular text-xl"
+            image={icons.favourite}
+          />
 
-            <TouchableBento
-                title = "Req Product"
-                bentoHref="/requestProduct"
-                customStyle= ""
-                image = {icons.upgrade}
-              />
+          <TouchableBento
+            title="Req Product"
+            handlePress={pressRequestProduct}
+            containerStyle="mr-3 bg-primary-100 py-3"
+            textStyle="font-pregular text-xl"
+            image={icons.upgrade}
+          />
 
-            <TouchableBento
-                title = "Subscription"
-                bentoHref="/subscribed"
-                customStyle= ""
-                image = {icons.bookmark}
-              />
+          <TouchableBento
+            title="Subscription"
+            handlePress={pressSubscription}
+            containerStyle="ml-3 bg-primary-100 py-3"
+            textStyle="font-pregular text-xl"
+            image={icons.bookmark}
+          />
 
-            <TouchableBento
-                title = "Logout"
-                bentoHref="/"
-                customStyle= "w-10/12"
-                image = {icons.about}
-              />
+          <TouchableBento
+            title="History"
+            handlePress={pressHistory}
+            containerStyle="mr-3 bg-primary-100 py-3"
+            textStyle="font-pregular text-xl"
+            image={icons.history}
+          />
 
+          <TouchableBento
+            title="Logout"
+            handlePress={pressLogout}
+            containerStyle="ml-3 bg-primary-200 py-3"
+            textStyle="font-pbold text-xl text-red-300"
+            // image={icons.about}
+          />
         </View>
-
       </SafeAreaView>
     </View>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;

@@ -3,7 +3,7 @@ import {React, useEffect, useState} from 'react'
 
 const CustomSelector = ({title, customStyle, handleClick,state}) => {
 
-  const [color, setcolor] = useState("bg-black-100")
+  const [color, setcolor] = useState("bg-primary-100")
 
   useEffect(()=>{
 
@@ -14,18 +14,18 @@ const CustomSelector = ({title, customStyle, handleClick,state}) => {
     switch(typeof(state)){
       case "object":
         if(state.indexOf(title) !== -1){
-          setcolor("bg-purple-900")
+          setcolor("bg-secondary-100")
         }
         else{
-          setcolor("bg-black-100")
+          setcolor("bg-primary-100")
         }
         break;
 
       case "string":
         if(state == title){
-          setcolor("bg-purple-900")
+          setcolor("bg-secondary-100")
         }else{
-          setcolor("bg-black-100")
+          setcolor("bg-primary-100")
         }
         break;
 
@@ -44,7 +44,7 @@ const CustomSelector = ({title, customStyle, handleClick,state}) => {
           className = {`h-20 mt-3 ${customStyle}`}
       >
           <View className = {`h-20 flex items-center justify-center rounded-2xl ${color}`}>
-            <Text className = "font-bold text-primary text-2xl italic text-center tracking-wide">{title}</Text>
+            <Text className = "font-pbold text-primary text-xl text-center tracking-wide">{title}</Text>
           </View>
       </TouchableOpacity>
     </View>

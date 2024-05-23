@@ -572,10 +572,10 @@ namespace webapi.DAO.ElasticSearchDAO
 			if (!string.IsNullOrEmpty(searchTermDTO.sort))
 			{
 				if (searchTermDTO.sort == "priceasc")
-					sortClauses = ss => ss.Ascending(p => p.price);
+					sortClauses = ss => ss.Ascending(p => p.price_CNY);
 
 				if (searchTermDTO.sort == "pricedesc")
-					sortClauses = ss => ss.Descending(p => p.price);
+					sortClauses = ss => ss.Descending(p => p.price_CNY);
 			}
 
 			try
@@ -651,7 +651,7 @@ namespace webapi.DAO.ElasticSearchDAO
 			}
 		}
 
-		public async Task<PageEntity<ElasticProductDTO>> GetRandom10Product(PageDTO pageDTO)
+		public async Task<PageEntity<ElasticProductDTO>> GetRandom10Product(PageDTO pageDTO, string category)
 		{
 			try
 			{
@@ -661,11 +661,16 @@ namespace webapi.DAO.ElasticSearchDAO
 				.From(pageDTO.CurrentPage * pageDTO.PageSize)
 				.Query(q => q
 					.FunctionScore(fs => fs
+						.Query(query => query
+							.Bool(b => b
+								.Filter(f => f
+									.Term(t => t.category, category))))
 						.Functions(fsf => fsf
 							.RandomScore()
 							)
 						.BoostMode(FunctionBoostMode.Replace)
-						))
+						)
+					)
 				);
 
 				Console.WriteLine(searchResponse.Hits.Count);

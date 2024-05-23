@@ -13,10 +13,12 @@ import logging
 from scrapy.utils.log import configure_logging 
 from scrapy.exceptions import CloseSpider
 
-class AihuishouSpider(scrapy.Spider):
+logging.basicConfig(level = logging.INFO, format='[%(asctime)s] {%(name)s} %(levelname)s:  %(message)s', 
+                    datefmt='%y-%m-%d %H:%M:%S',
+                    filename=f'./Log/aihuishou_{datetime.now().isoformat().replace(":","")}_logs.log')
+logger = logging.getLogger('Aihuishou_logger')
 
-    # logger = logging.getLogger()
-    # logger.setLevel(logging.WARNING)
+class AihuishouSpider(scrapy.Spider):
 
     name = "aihuishou"
     allowed_domains = ["aihuishou.com"]
@@ -25,7 +27,6 @@ class AihuishouSpider(scrapy.Spider):
 
     def __init__(self, *args, **kwargs):
         super(AihuishouSpider, self).__init__(*args, **kwargs)
-        self.logger.setLevel(logging.WARNING)
         self.dynamic_parameter = {
             "category": getattr(self, 'search', 'none')['category'],
             "brand": getattr(self, 'search', 'none')['brand'],
@@ -83,8 +84,11 @@ class AihuishouSpider(scrapy.Spider):
                 "gaeaCategoryId": self.categoryId
             }
             self.page_index = self.page_index + 1
-            yield Request(base_url, method="POST", headers=headers, body=json.dumps(payload), callback=self.parse)
-
+            
+            try:
+                yield Request(base_url, method="POST", headers=headers, body=json.dumps(payload), callback=self.parse)
+            except Exception as e:
+                logger.error(f"Error occured in request at spider {self.name}: {e}")
 
     def parse(self, response):
         
@@ -135,7 +139,8 @@ class AihuishouSpider(scrapy.Spider):
                 yield loader.load_item()
 
         except Exception as e: 
-            logging.error(f"Error occured in parse at spider {self.name}: {e}")
+            logger.error(f"Error occured in parse at spider {self.name}: {e}")
+            raise Exception(f"Error occured in parse at spider {self.name}: {e}")
             raise CloseSpider(f"Error occured in parse at spider {self.name}: {e}")
         # with open('output.json','w', encoding='utf-8') as json_file:
         #     json.dump(json_data, json_file, indent=4, ensure_ascii=False)

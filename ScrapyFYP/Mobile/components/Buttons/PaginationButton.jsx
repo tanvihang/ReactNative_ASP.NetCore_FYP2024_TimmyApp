@@ -23,7 +23,7 @@ const PaginationButton = ({page, setPage}) => {
             />
         </TouchableOpacity>
         
-        <Text >{page}</Text>
+        <Text className ="font-pblack text-2xl">{page}</Text>
 
         <TouchableOpacity 
             className = ""

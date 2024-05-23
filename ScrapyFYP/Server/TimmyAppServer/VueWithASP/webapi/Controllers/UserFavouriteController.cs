@@ -66,7 +66,7 @@ namespace webapi.Controllers
 
 				if(elasticProductDTOs.Count == 0)
 				{
-					return ResponseData<List<ElasticProductDTO>>.Failure($"User {userId} no favourite item");
+					return ResponseData<List<ElasticProductDTO>>.Success($"User {userId} no favourite item");
 				}
 
 				return ResponseData<List<ElasticProductDTO>>.Success(elasticProductDTOs);

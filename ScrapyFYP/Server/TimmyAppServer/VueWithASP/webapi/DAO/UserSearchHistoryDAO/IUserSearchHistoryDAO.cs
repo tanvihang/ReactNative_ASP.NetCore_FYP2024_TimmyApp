@@ -6,6 +6,7 @@ namespace webapi.DAO.UserSearchHistoryDAO
 	{
 		Task<bool> SaveUserSearchHistory(UserSearchHistory userSearchHistory);
 		Task<List<UserSearchHistory>> GetUserSearchHistory(string userId);
+		Task<bool> ClearUserSearchHistory(string userId);
 
 	}
 }

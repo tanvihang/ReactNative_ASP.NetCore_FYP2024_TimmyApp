@@ -43,7 +43,7 @@ namespace webapi.Controllers
 		}
 
         [HttpPost("Login")]
-        public async Task<ResponseData<string>> Register(UserLoginDTO userLoginDTO)
+        public async Task<ResponseData<string>> Login(UserLoginDTO userLoginDTO)
         {
             try
             {

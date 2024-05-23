@@ -87,11 +87,11 @@ namespace webapi.Services.ElasticSearchService
 			return productList;
 		}
 
-		public async Task<PageEntity<ElasticProductDTO>> GetRandom10Product(PageDTO pageDTO)
+		public async Task<PageEntity<ElasticProductDTO>> GetRandom10Product(PageDTO pageDTO, string category)
 		{
 			try
 			{
-				return await _elasticSearchDAO.GetRandom10Product(pageDTO);
+				return await _elasticSearchDAO.GetRandom10Product(pageDTO, category);
             }
 			catch(Exception ex)
 			{

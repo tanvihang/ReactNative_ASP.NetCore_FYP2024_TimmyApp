@@ -2,10 +2,17 @@ from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 import argparse
 import sys
+import logging
+from datetime import datetime
+
+logging.basicConfig(level = logging.CRITICAL, format='[%(asctime)s] {%(name)s} %(levelname)s:  %(message)s', 
+                    datefmt='%y-%m-%d %H:%M:%S',
+                    filename=f'./Log/Crawler_Process_{datetime.now().isoformat().replace(":","")}_logs.log')
+logger = logging.getLogger('CrawlerProcess_logger')
+
 
 # EXECUTE script
 # python .\Product\crawlerProcess.py -c mobile -b apple -m iphone 15 pro max -s mudah aihuishou -t 1 -i 10
-
 def crawl_spiders(category = "", brandName = "", modelName = "", spiders = "", isTest = 0, iteration = 25):
     process = CrawlerProcess(get_project_settings())
 
@@ -22,6 +29,7 @@ def crawl_spiders(category = "", brandName = "", modelName = "", spiders = "", i
             process.crawl(spider, search = {"category":category, "brand":brandName,"model": modelName, "isTest": isTest, "iteration": iteration})
         except Exception as e:
             print(f"Exception occured while calling crawl : {e}")
+            logger.critical(e)
             error_spiders.append(spider)
 
     process.start()

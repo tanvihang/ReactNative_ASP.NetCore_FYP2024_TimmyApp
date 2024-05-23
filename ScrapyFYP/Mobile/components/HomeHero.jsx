@@ -1,89 +1,107 @@
-import { View, Text, Image, TouchableOpacity, SafeAreaView } from 'react-native'
-import React from 'react'
-import { images, icons } from "../constants"
-import { router } from 'expo-router'
-import { useGlobalContext } from '../context/GlobalProvider'
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  SafeAreaView,
+  FlatList,
+} from "react-native";
+import React, { useState, useRef, useEffect } from "react";
+import { images, icons } from "../constants";
+import { router } from "expo-router";
+import { useGlobalContext } from "../context/GlobalProvider";
+import TouchableBento from "./TouchableBento";
 
-const HomeHero = ({user}) => {
+const HomeHero = ({ user }) => {
+  const { jwtToken, category, setCategory, categoryBrand } = useGlobalContext();
 
-  const {jwtToken} = useGlobalContext()
+  const pressFavItem = () => {
+    router.push(`/favourite`);
+  };
 
-    return (
-        <SafeAreaView className = "mx-3 mt-7">
-            
-            {/* Hero welcome */}
-            <View className = "flex flex-row justify-between">
-              <View>
-                <Text className = "font-semibold text-2xl">Welcome Back,</Text>
-                <Text className = "font-bold text-6xl">{user}</Text>
-              </View>
-    
-              <View className="flex items-center justify-center">
-                <Image
-                 source={images.placeHolder}
-                 className = "w-15 h-15"
-                 tintColor= "#000000"
-                />
-              </View>
-            </View>
-    
-        {/* Fake search button to guide user to the search section */}
-        <TouchableOpacity 
-                onPress={() =>
-                router.push("/search")
-              }
-            >
-          <View className="border-2 border-black-200 w-full h-16 items-center focus:bg-slate-300 flex-row justify-between px-3 rounded-2xl">
-            <Text className="font-bold">Search Product</Text>
-            <Image
-                 source={icons.search}
-                 className = "w-8 h-8 "
-                 tintColor= "#000000"
-              />
-          </View>
-        </TouchableOpacity>
-    
-        {/* Subscribe Item and My Fav hahahha */}
-        <View className = " h-40 mt-5 flex flex-row w-full items-center justify-around rounded-2xl">
-            <TouchableOpacity 
-                onPress={() =>
-                router.push(`/favourite/${jwtToken}`)}
-                className = "h-40 basis-2/6"
-            >
-                <View className = "bg-black-100 h-40 flex items-center justify-center rounded-2xl">
-                  <Text className = "font-bold text-primary text-5xl italic text-center tracking-wide">Fav Item</Text>
-                </View>
-            </TouchableOpacity>
-    
-            <TouchableOpacity 
-                onPress={() =>
-                router.push("/subscribe")}
-                className = "h-40 basis-3/6"
-            >
-              <View className = "bg-black-100 h-40 flex items-center justify-center rounded-2xl">
-                <Text className = "font-bold text-primary text-5xl italic text-center tracking-wider">Go Subscribe Product!</Text>
-              </View>
-            </TouchableOpacity>
-    
+  const pressSubscribeItem = () => {
+    router.push("/subscribe");
+  };
+
+  const pressCategory = (item) => {
+    if (item === category) {
+      setCategory(null);
+    } else {
+      setCategory(item);
+    }
+  };
+
+  const categoryList = categoryBrand.categories
+
+  return (
+    <SafeAreaView className="mx-3 mt-7">
+      {/* Hero welcome */}
+      <View className="flex flex-row justify-between py-4">
+        <View>
+          <Text className="font-psemibold text-2xl text-primary-200">
+            Welcome,
+          </Text>
+          <Text className="font-pbold text-6xl text-primary-200">
+            {user.userName}
+          </Text>
         </View>
-    
-        {/* ElasticProductPagination */}
-        {/* <ElasticProductPagination
-          page = {page}
-        /> */}
-    
-        {/* <TouchableOpacity 
-                onPress={() =>
-                setPage(page + 1)}
-                className = "h-40 basis-3/6"
-            >
-              <View className = "bg-black-100 h-40 flex items-center justify-center rounded-2xl">
-                <Text className = "font-bold text-primary text-5xl italic text-center tracking-wider">Next Page!</Text>
-              </View>
-        </TouchableOpacity> */}
-    
-        </SafeAreaView>
-      )
-}
+      </View>
 
-export default HomeHero
+      <TouchableOpacity onPress={() => router.push("/search")}>
+        <View className=" border-2 w-full h-16 items-center focus:bg-slate-300 flex-row justify-between px-3 rounded-2xl">
+          <Text className="font-pbold">Search Product</Text>
+          <Image
+            source={icons.search}
+            className="w-8 h-8 "
+            tintColor="#000000"
+          />
+        </View>
+      </TouchableOpacity>
+
+      <View className=" py-3 flex flex-row w-full items-center justify-around">
+        <TouchableBento
+          title="Fav"
+          handlePress={pressFavItem}
+          containerStyle="bg-primary-100 mr-2 py-5"
+          textStyle="text-white text-3xl font-pextrabold text-center"
+          className=" bg-primary-100 font-pextrabold"
+        />
+        <TouchableBento
+          title="Subscribe"
+          handlePress={pressSubscribeItem}
+          containerStyle="flex-grow bg-secondary py-5"
+          textStyle="text-white text-3xl font-pextrabold text-center"
+          className=" "
+        />
+      </View>
+
+      <View className="flex flex-row w-full">
+        {
+          <FlatList
+            data={categoryList}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                className={`w-fit px-2 py-1 bg-black rounded-full flex items-center ${
+                  item === category ? "bg-primary-200" : ""
+                } `}
+                onPress={() => {
+                  pressCategory(item);
+                }}
+              >
+                <Text className="text-white-100 font-psemibold">{item}</Text>
+              </TouchableOpacity>
+            )}
+            keyExtractor={(item) => item}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            className=""
+            ItemSeparatorComponent={<Text> </Text>}
+            initialNumToRender={10}
+          />
+        }
+      </View>
+    </SafeAreaView>
+  );
+};
+
+export default HomeHero;

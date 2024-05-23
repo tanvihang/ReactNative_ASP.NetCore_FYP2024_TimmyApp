@@ -15,6 +15,7 @@ import upgrade from "../assets/icons/upgrade.png"
 import favourite from "../assets/icons/favourite.png"
 import about from "../assets/icons/about.png"
 import remove from "../assets/icons/remove.png"
+import history from "../assets/icons/history.png"
 
 export default {
   play,
@@ -33,5 +34,6 @@ export default {
   upgrade,
   favourite,
   about,
-  remove
+  remove,
+  history
 };

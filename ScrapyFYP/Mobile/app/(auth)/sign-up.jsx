@@ -1,37 +1,64 @@
-import { View, Text, ScrollView } from 'react-native'
+import { View, Text, ScrollView, Alert } from 'react-native'
 import { React,  useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import FormField from '../../components/FormField'
 import CustomButton from '../../components/CustomButton'
 import { Link } from 'expo-router'
+import CTAButton from '../../components/Buttons/CTAButton'
+import apiCall from '../../api/apiCall'
+import normalApiCall from '../../hooks/normalApiCall'
 
 const SignUp = () => {
 
   // user form state
   const [form, setForm] = useState({
-    userToken : '',
-    password : '',
+    userEmail : '',
+    userPassword : '',
     userName: '',
+    userPhone: '',
     verificationCode:''
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmittintCode, setIsSubmittintCode] = useState(false)
+  const [isSubmittingCode, setIsSubmittingCode] = useState(false)
+
+  const sendCode = async (email) => {
+    try{
+      setIsSubmittingCode(true)
+      const data = await normalApiCall("UserVerificationCode/SendVerificationCode", "GET", {},{email: email})
+      setIsSubmittingCode(false)
+    }catch(error){
+      Alert.alert("Error", error.message)
+      setIsSubmittingCode(false)
+    }
+  }
+
+  const sendRegister = async(form) => {
+    try{
+      setIsSubmitting(true)
+      const data = await normalApiCall("User/Register","POST",form,{})
+      setIsSubmitting(false)
+    }catch(error){
+      Alert.alert("Error", error.message)
+      setIsSubmitting(false)
+    }
+  }
+  
+
 
   return (
     <SafeAreaView className = "h-full ">
       <ScrollView
-      contentContainerStyle={{
-        height: '100%'
-      }}>
+        showsVerticalScrollIndicator = {false}
+      >
 
       <View className ="justify-center w-full min-h-[85vh]">
-        <Text className = "text-2xl mt-10 font-semibold">Sign up an account!</Text>
+        <Text className = "text-3xl mt-10 font-semibold text-primary-200">Sign up an account!</Text>
       
         <FormField
           title="Email"
-          value = {form.email}
-          handleChangeText = {(e)=>setForm({...form, email:e})} 
+          value = {form.userEmail}
+          handleChangeText = {(e)=>setForm({...form, userEmail:e})} 
           otherStyles= "mt-7"
           placeholder="email"
           keyboardType = "email-address"
@@ -45,6 +72,14 @@ const SignUp = () => {
           placeholder="username"
         />
 
+        <FormField
+          title="Phone"
+          value = {form.userPhone}
+          handleChangeText = {(e)=>setForm({...form, userPhone:e})} 
+          otherStyles= "mt-7"
+          placeholder="phone"
+        />
+
         <View className="flex-row mt-7 justify-between">
           <FormField
             title="Verification Code"
@@ -54,11 +89,15 @@ const SignUp = () => {
             placeholder="verification code"
           />
 
-          <CustomButton
+          <CTAButton
               title = "GET CODE"
-              handlePress={()=>{}}
-              containerStyles= "mt-7 w-36"
-              isLoading={isSubmitting}
+              handlePress={()=>{
+                sendCode(form.userEmail)
+              }}
+              containerStyles= "mt-7 w-40"
+              textStyles= "text-white-100"
+              className = "text-white-100"
+              isLoading={isSubmittingCode}
           />
 
         </View>
@@ -66,22 +105,23 @@ const SignUp = () => {
 
         <FormField
             title="Password"
-            value = {form.password}
-            handleChangeText = {(e)=>setForm({...form, password:e})} 
+            value = {form.userPassword}
+            handleChangeText = {(e)=>setForm({...form, userPassword:e})} 
             otherStyles= "mt-7"
             placeholder="password"
         />
 
-        <CustomButton 
+        <CTAButton 
           title = "SIGN UP"
-          handlePress={()=>{}}
+          handlePress={()=>{sendRegister(form)}}
           containerStyles= "mt-7"
+          textStyles= "text-white-100"
           isLoading={isSubmitting}
         />
 
         <View className = "items-center justify-center flex-row gap-1 pt-3">
           <Text className="text-lg font-regular">Return to</Text>
-          <Link href="/sign-in" className='text-lg font-regular text-secondary-100'>Sign In</Link>
+          <Link href="/sign-in" className='text-lg font-regular text-secondary'>Sign In</Link>
         </View>
 
       </View>
