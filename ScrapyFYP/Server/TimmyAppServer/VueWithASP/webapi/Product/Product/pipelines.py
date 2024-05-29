@@ -17,6 +17,7 @@ import json
 from datetime import datetime
 
 
+
 logging.basicConfig(level = logging.INFO, format='[%(asctime)s] {%(name)s} %(levelname)s:  %(message)s', 
                     datefmt='%y-%m-%d %H:%M:%S',
                     filename=f'./Log/pipeline_{datetime.now()}_logs.log')
@@ -34,9 +35,8 @@ class MyProductPipeline:
         dynamic_parameter = spider.dynamic_parameter
         self.category = dynamic_parameter['category']
         self.brandName = dynamic_parameter['brand']
-
-        self.productCount = 0
         self.modelOfProduct = {}
+        self.averagePrice = {}
 
         # Create Bloom Filter        
         file_path = f"./BloomFilter/{spider.name}BloomFilter.bin"
@@ -52,14 +52,14 @@ class MyProductPipeline:
             self.converter = json.load(file)
 
         # Use ScrapyTermCompare
-        self.termCompare = ScrapyTermCompare(self.category, self.brandName)
+        self.termCompare = ScrapyTermCompare(self.category, self.brandName, spider.name)
 
         # Open connection to ElasticSearch
         self.es = MyElasticSearch()
 
     def close_spider(self, spider):
         # Send bulk request to elasticSearch
-        isSuccessfullyIndexed = self.es.bulkIndex(spider)
+        isSuccessfullyIndexed, count = self.es.bulkIndex(spider)
 
         # Close and save Bloom Filter
         if(isSuccessfullyIndexed):
@@ -67,16 +67,18 @@ class MyProductPipeline:
             if os.path.exists(file_path):
                 self.bloomFilter.save_to_file(file_path)
 
-            print(f'{spider.name} scraped: {self.productCount} item, models included: {self.modelOfProduct}')
-            logger.info(f'{spider.name} scraped: {self.productCount} item, models included: {self.modelOfProduct}')
+            logger.info(f'Scrape item {self.category} {self.brandName}')
+            print(f'{spider.name} scraped: {count} item, models included: {self.modelOfProduct}')
+            logger.info(f'{spider.name} scraped: {count} item, models included: {self.modelOfProduct}')
         else:
             logger.error("Failed to index product to ElasticSearch")
             print("Failed to index product to ElasticSearch")
 
     def process_item(self, item, spider):
         try:
+            alreadyInDB = False
+            # Adapter is used to ensure data scraped by spiders is in correct format
             adapter = ItemAdapter(item)
-            self.productCount += 1
 
             # checking is same url
             unique_id = str(adapter['unique_id'][0])
@@ -86,17 +88,21 @@ class MyProductPipeline:
             if hasItem:
                 elasticProduct = self.es.search(uniqueId=unique_id, index=0)
                 
-                # 经过双从测试，才丢弃，否则继续添加
-                elastic_price = int(elasticProduct[0]['_source']['price_CNY'])
-                item_price = int(item['price_CNY'])
-
                 if(elasticProduct):
-                    if(elastic_price != item_price):
-                        # Remove the product inside es
-                        self.es.delete_one_document(unique_id)
-                    else:
-                        raise DropItem(f"Price not changed ori: {item['price_CNY']}, another price {elasticProduct[0]['_source']['price_CNY']}")
-        
+                    # 经过双从测试，才丢弃，否则继续添加
+                    alreadyInDB = True
+                    try:
+                        elastic_price = int(elasticProduct[0]['_source']['price_CNY'])
+                        item_price = int(item['price_CNY'])
+                        if(elastic_price != item_price):
+                            # Remove the product inside es
+                            self.es.delete_one_document(unique_id)
+                        else:
+                            raise DropItem(f"Price not changed ori: {item['price_CNY']}, another price {elasticProduct[0]['_source']['price_CNY']}")          
+                    except Exception as e:
+                        logger.error(f'Error occured in getting Elastic Price: {e}')
+                        raise Exception(f'Error occured in Elastic Price: {e}')
+                    
             item = self.generalize(item)
 
             # 判断商品型号（两次判断，确保数据正确）
@@ -107,6 +113,16 @@ class MyProductPipeline:
             if(mostSimilarModel == None and mostSimilarCategory == None):
                 raise DropItem(f"Model not in json: {item['title']}, dropping..., Consider to add the model into json")
             
+            # 3. 字符串匹配后，通过比较平均价格去除商品价格不合理的商品
+            # 基于百分位数法进行过滤
+            if mostSimilarModel not in self.averagePrice:
+                price = self.es.get_average_price(mostSimilarModel)
+                self.averagePrice[mostSimilarModel] = price
+            
+            isValidPrice = self.filterByPrice(item, mostSimilarModel)    
+
+            if not isValidPrice:
+                raise DropItem(f"Price not in average range : {item['title']}, item price: {item['price_CNY']}, average price: {self.averagePrice[mostSimilarModel]}, dropping...")                
 
             item['model'] = mostSimilarModel
             item['category'] = mostSimilarCategory
@@ -118,7 +134,8 @@ class MyProductPipeline:
             self.es.appendProduct(item)
 
             # add item to bloomfilter
-            self.bloomFilter.add(unique_id)
+            if(not alreadyInDB):
+                self.bloomFilter.add(unique_id)
             return item
         except Exception as e:
             logger.error(f'Error occured in generalizing item: {e}')
@@ -128,6 +145,20 @@ class MyProductPipeline:
             self.modelOfProduct[mostSimilarModel] = self.modelOfProduct[mostSimilarModel] + 1
         else:
             self.modelOfProduct[mostSimilarModel] = 1
+
+    def filterByPrice(self, item, mostSimilarModel):
+        # 未能判断，直接返回
+        averagePrice = self.averagePrice[mostSimilarModel]
+        
+        if averagePrice == 0:
+            return True
+        else:
+            itemPrice = item['price_CNY']
+            if itemPrice < averagePrice * 0.2 or itemPrice > averagePrice * 2.5:
+                return False
+            else:
+                return True
+                
 
     def generalize(self, item):
         

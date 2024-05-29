@@ -6,11 +6,22 @@ import InputRange from "../InputRange";
 import FormField from "../FormField";
 import CustomButton from "../CustomButton";
 import { router } from "expo-router";
-import CTAButton from '../Buttons/CTAButton'
+import CTAButton from "../Buttons/CTAButton";
 
 const SearchFooter = ({ form, setForm, category, brand, model }) => {
-  const { user, spiders, condition, searchParams, setSearchParams } =
-    useGlobalContext();
+  const {
+    user,
+    spiders,
+    condition,
+    searchParams,
+    setSearchParams,
+    searchBrand,
+    searchModel,
+    searchCategory,
+    setSearchBrand,
+    setSearchModel,
+    setSearchCategory
+  } = useGlobalContext();
 
   const [platform, setPlatform] = useState([]);
   const [pcondition, setPCondition] = useState(null);
@@ -51,6 +62,14 @@ const SearchFooter = ({ form, setForm, category, brand, model }) => {
     setPCondition(selItem);
   };
 
+  const resetHandler = () => {
+    setSearchBrand("")
+    setSearchCategory("")
+    setSearchModel("")
+    setPCondition("")
+    setPlatform("")
+  }
+
   const searchHandler = () => {
     var low = parseInt(lowPrice);
     var high = parseInt(highPrice);
@@ -62,6 +81,9 @@ const SearchFooter = ({ form, setForm, category, brand, model }) => {
       spider: platform,
       condition: pcondition,
       description: description,
+      category: searchCategory,
+      brand: searchBrand,
+      model: searchModel,
     };
     setSearchParams({
       ...searchParams,
@@ -121,7 +143,7 @@ const SearchFooter = ({ form, setForm, category, brand, model }) => {
         <View className="flex flex-row justify-around">
           <CustomSelector
             title={condition[0]}
-            customStyle="w-32"
+            customStyle="w-4/5"
             handleClick={() => {
               selectPCondition(condition[0]);
             }}
@@ -129,7 +151,7 @@ const SearchFooter = ({ form, setForm, category, brand, model }) => {
           />
           <CustomSelector
             title={condition[1]}
-            customStyle="w-32"
+            customStyle="w-4/5"
             handleClick={() => {
               selectPCondition(condition[1]);
             }}
@@ -137,7 +159,8 @@ const SearchFooter = ({ form, setForm, category, brand, model }) => {
           />
           <CustomSelector
             title={condition[2]}
-            customStyle="w-32"
+            customStyle="w-4/5"
+            className=""
             handleClick={() => {
               selectPCondition(condition[2]);
             }}
@@ -184,7 +207,17 @@ const SearchFooter = ({ form, setForm, category, brand, model }) => {
             setDescription(e);
           }}
           otherStyles="mt-7"
-          placeholder="20000"
+          placeholder="128 gb"
+        />
+
+        <CTAButton
+          title="Reset Filter"
+          handlePress={() => {
+            resetHandler();
+          }}
+          className ="bg-secondary"
+          containerStyles="mt-4 bg-secondary"
+          textStyles="text-white text-2xl font-pextrabold text-center"
         />
 
         <CTAButton

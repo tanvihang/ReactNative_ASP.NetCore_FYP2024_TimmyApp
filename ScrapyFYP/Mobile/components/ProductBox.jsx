@@ -20,7 +20,7 @@ const ProductBox = ({data}) => {
                
                 {/* Product information */}
                 <View className = " basis-3/6 flex flex-col gap-1">
-                    <Text className = " font-pblack text-base">{data.title}</Text>
+                    <Text className = " font-pblack text-sm">{data.title}</Text>
                     
                     <View className = "flex flex-row">
                         <Text className = " font-pmedium">RMB {data.price_CNY} - </Text>

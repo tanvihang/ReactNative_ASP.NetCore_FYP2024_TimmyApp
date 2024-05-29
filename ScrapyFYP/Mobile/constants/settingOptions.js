@@ -14,8 +14,8 @@ const settingOptions = [
 const AccountAndSecurityOptions = [
     {
         name: "General",
-        items: ["Change Password"],
-        fileName: ["ChangePassword"]
+        items: ["Change Password", "Change Personal Info"],
+        fileName: ["ChangePassword", "ChangePersonalInfo"]
     },
     {
         name: "Critical",

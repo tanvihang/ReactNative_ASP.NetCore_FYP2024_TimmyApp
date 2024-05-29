@@ -96,5 +96,96 @@ namespace webapi.Controllers
                 return ResponseData<PublicUserDTO>.Failure(ex.Message);       
             }
         }
+
+        [HttpPost("DeleteUser")]
+        public async Task<ResponseData<Boolean>> DeleteUser(string validation, string jwtToken)
+        {
+            try
+            {
+                string userId = _jwtService.ParseJwtToUserId(jwtToken);
+                bool isTrue = await _userService.ValidateUserName(userId, validation);
+
+                if (isTrue)
+                {
+                    bool isDeleted = await _userService.DeleteUser(userId);
+                    return ResponseData<Boolean>.Success(isDeleted);
+                }
+                else
+                {
+                    return ResponseData<Boolean>.Failure("Not same user");
+                }
+
+            }
+            catch(Exception ex)
+            {
+                return ResponseData<Boolean>.Failure(ex.Message);
+            }
+        }
+
+		[HttpPost("DeleteUserAdmin")]
+		public async Task<ResponseData<Boolean>> DeleteUserAdmin(string userId)
+		{
+			try
+			{		
+				bool isDeleted = await _userService.DeleteUser(userId);
+				return ResponseData<Boolean>.Success(isDeleted);
+			}
+			catch (Exception ex)
+			{
+				return ResponseData<Boolean>.Failure(ex.Message);
+			}
+		}
+
+		[HttpPost("ChangeUserInfo")]
+        public async Task<ResponseData<Boolean>> ChangeUserInfo(ChangeUserInfoDTO changeUserInfoDTO, string jwtToken)
+        {
+            try
+            {
+                string userId = _jwtService.ParseJwtToUserId(jwtToken);
+
+                Boolean isChanged = await _userService.ChangeUserInfo(changeUserInfoDTO, userId);
+            
+                return ResponseData<Boolean>.Success(isChanged);
+            }
+            catch(Exception ex)
+            {
+                return ResponseData<Boolean>.Failure(ex.Message);
+            }
+        }
+
+		[HttpPost("ChangeUserInfoAdmin")]
+		public async Task<ResponseData<Boolean>> ChangeUserInfoAdmin(changeUserInfoAdminDTO changeUserInfoAdminDTO)
+		{
+			try
+			{
+				Boolean isChanged = await _userService.ChangeUserInfoAdmin(new ChangeUserInfoDTO
+                {
+                    verificationCode = "",
+                    email = changeUserInfoAdminDTO.email,
+                    newPhoneNo = changeUserInfoAdminDTO.newPhoneNo,
+                    newUserEmail = changeUserInfoAdminDTO.newUserEmail,
+                    newUserName = changeUserInfoAdminDTO.newUserName,
+                }, changeUserInfoAdminDTO.userId);
+
+				return ResponseData<Boolean>.Success(isChanged);
+			}
+			catch (Exception ex)
+			{
+				return ResponseData<Boolean>.Failure(ex.Message);
+			}
+		}
+
+		[HttpPost("GetUserPagination")]
+        public async Task<ResponseData<PageEntity<PublicUserDTO>>> GetUserPagination(PageDTO pageDTO)
+        {
+            try
+            {
+                PageEntity<PublicUserDTO> users = await _userService.UserPagination(pageDTO);
+                return ResponseData<PageEntity<PublicUserDTO>>.Success(users);
+            }catch(Exception ex) 
+            { 
+                return ResponseData<PageEntity<PublicUserDTO>>.Failure(ex.Message);
+            }
+        }
 	}
 }

@@ -192,5 +192,15 @@ namespace webapi.Services.TimmyProductService
 			List<string> listOfName = await _timmyProductDAO.GetAllUnAdoptedTimmyProductName();
 			return listOfName;
 		}
+
+		public async Task<PageEntity<TimmyProduct>> GetUnAdoptedTimmyProductPagination(PageDTO pageDTO)
+		{
+			return await _timmyProductDAO.GetUnAdoptedPagination(pageDTO);
+		}
+
+		public async Task<PageEntity<TimmyProduct>> GetAdoptedTimmyProductPagination(PageDTO pageDTO, string category, string brand)
+		{
+			return await _timmyProductDAO.GetAdoptedPagination(pageDTO, category, brand);
+		}
 	}
 }

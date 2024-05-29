@@ -30,7 +30,7 @@ const index = () => {
     <View className = "bg-white">
        {
           isLoggedIn ? (
-            <Redirect href='/home'/>
+            <Redirect href='/searchV1'/>
           ):(
             <Onboarding/>
           )

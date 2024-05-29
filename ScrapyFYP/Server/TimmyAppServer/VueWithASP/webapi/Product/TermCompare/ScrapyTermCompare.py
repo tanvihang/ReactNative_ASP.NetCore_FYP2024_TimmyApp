@@ -3,9 +3,10 @@ from Database.TimmyDatabase import TimmyDatabase
 import re
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+from TermCompare.LanguageConverter import LanguageConverter
 
 class ScrapyTermCompare:
-    def __init__(self, category, brand):
+    def __init__(self, category, brand, spider):
         self.category = category
         self.brand = brand
 
@@ -34,6 +35,9 @@ class ScrapyTermCompare:
         print(self.modelDictionary)
 
         self.timmyDB.closeConnection()
+        
+        self.languageConverter = LanguageConverter(self.category, self.brand, spider)
+
 
     # 获取当前爬取种类品牌底下的型号
     def GetCategoryBrandModelsList(self, category, brand):
@@ -152,46 +156,33 @@ class ScrapyTermCompare:
     def GetMostSimilarProduct(self, title):
         title = title.lower()
 
+        # Convert other language to english
+        if(self.languageConverter.original is not None):
+            title = self.languageConverter.convertToEnglish(title)
+
         cleaned_title1 = self.CleanTitle1(title)
         most_similar_product1, distance1 = self.CosineSim(cleaned_title1)
 
 
         cleaned_title = self.CleanTitle(title)
         most_similar_product, distance = self.CosineSim(cleaned_title)
-        
-        # cleaned_title = self.CleanTitle(title)
-        # cleaned_title = title
-        # most_similar_product, distance = self.Levensthein(cleaned_title)
-
 
         # if(most_similar_product == None or most_similar_product1 == None):
-        if(most_similar_product == None):
+        if(most_similar_product == "" and most_similar_product1 == ""):
             return None, None,cleaned_title,distance
 
-        # return most_similar_product,self.modelDictionary[most_similar_product],cleaned_title,distance        
-
-
-        # print("Ori")
-        # print(title)
-
-        # print("6s")
-        # print(f'Cleaned: {cleaned_title1}')
-        # print(distance1)
-        # print(f'Most sim: {most_similar_product1}')
-
-        
-        # print("6 s")
-        # print(f'Cleaned: {cleaned_title}')
-        # print(distance)
-        # print(f'Most sim: {most_similar_product}')
-
+        if(distance < 0.2 and distance1 < 0.2):
+            return None, None, "",0
         # 如果两个长度不一样，用LD进行判断，选更小的
-        if(len(most_similar_product) != len(most_similar_product1)):
+        elif(len(most_similar_product) != len(most_similar_product1) and (distance == distance1)):
             arr = []
             arr.append(most_similar_product1)
             arr.append(most_similar_product)
             
             most_similar_product2, distance2 = self.LevenstheinFinal(title, arr)
+            
+            if(distance2 > 20):
+                return None, None,cleaned_title1,distance2
 
             return most_similar_product2,self.modelDictionary[most_similar_product2], cleaned_title1, distance2
 
@@ -208,9 +199,6 @@ class ScrapyTermCompare:
 
         distances = {model: Levenshtein.distance(title, model) for model in decision}
         most_similar_product = min(distances, key=distances.get)
-        
-        # print(distances)
-        # print(f'By LD: {most_similar_product}')
 
         return most_similar_product, distances[most_similar_product]
     # 对标题与型号列表进行比较
@@ -219,8 +207,8 @@ class ScrapyTermCompare:
         distances = {model: Levenshtein.distance(cleaned_title, model) for model in self.modelDictionary.keys()}
         most_similar_product = min(distances, key=distances.get)
         
-        print(most_similar_product)
-        print(distances[most_similar_product])
+        # print(most_similar_product)
+        # print(distances[most_similar_product])
         if(distances[most_similar_product] > 3):
             return None, distances[most_similar_product]
 
@@ -261,8 +249,6 @@ class ScrapyTermCompare:
 
 
     def CosineSim(self, cleaned_title):
-
-        # print(f'Cleaned: {cleaned_title}')
         # 将输入文本转换为TF-IDF向量
         input_vector = self.tfidf_vectorizer.transform([cleaned_title])
 
@@ -273,34 +259,26 @@ class ScrapyTermCompare:
         most_similar_index = similarities.argmax()
         same_similarity_indices = [i for i, sim in enumerate(similarities[0]) if sim == similarities[0][most_similar_index]]
 
-
         # 查找最相似的前几个
         top_indices = similarities.argsort()[0][-3:][::1]
-        top_texts = [self.corpus[i] for i in top_indices]
-        top_similarities = similarities[0][top_indices]
 
         most_similar_text = self.corpus[most_similar_index]
-
-        # print(cleaned_title)
-        # print(f'Top 3 most similar: {top_texts}' )
-        # for i, (text, similarity) in enumerate(zip(top_texts, top_similarities),1):
-        #     print(f"{i}. {text} - 相似度: {similarity}")
-
 
         # 如果有相同比率的就进行下一步的执行
         if(len(same_similarity_indices) > 1):
             same_similarity_texts = [self.corpus[i] for i in same_similarity_indices]
             item = self.Nearest(cleaned_title, same_similarity_texts)
-
-            # print("Passed 2nd filter")
-            # print(f'Most Similar: {item}')
-
+            
+            # 相似度太差
+            if(similarities[0][same_similarity_indices[0]] < 0.1):
+                return "", 0
+            
             return item, similarities[0][same_similarity_indices[0]]
 
         else:
-            # print("Without second filter")
-            # print(f'Most Similar: {most_similar_text}')
+            # 相似度太差
+            if(similarities[0][same_similarity_indices[0]] < 0.1):
+                return "", 0
+            
             return most_similar_text, similarities[0][most_similar_index]
-
-
-
+    

@@ -14,10 +14,17 @@ const GlobalProvider = ({children}) => {
     const [user, setUser] = useState(null)
     const [categoryBrand, setCategoryBrand] = useState(null)
     const [modelDictionary, setModelDictionary] = useState(null)
-    const [category, setCategory] = useState("mobile")
+    const [category, setCategory] = useState("computer")
     const [spiders, setSpiders] = useState([])
     const [condition, setCondition] = useState([])
     const [userFavourite, setUserFavourite] = useState([])
+    const [allModel, setAllModel] = useState()
+    
+    // global search state
+    const [searchCategory, setSearchCategory] = useState(null)
+    const [searchBrand, setSearchBrand] = useState(null)
+    const [searchModel, setSearchModel] = useState(null)
+    
     const [searchParams, setSearchParams] = useState({
       productSearchTerm: {
         category: "",
@@ -76,6 +83,16 @@ const GlobalProvider = ({children}) => {
       }
     }
 
+    const getAllModel = async() => {
+      try{
+        const data = await normalApiCall("TimmyProduct/GetAllAdoptedTimmyProductDict","GET",{},{})
+        setAllModel(data.data)
+      }
+      catch(error){
+        console.log(error)
+      }
+    }
+
     const getCategoryBrand = async () => {
       try{
         const data = await normalApiCall("TimmyProduct/GetCategoryBrandList","GET",{},{})
@@ -105,6 +122,7 @@ const GlobalProvider = ({children}) => {
         getUserInfo(jwtToken)    
         getCategoryBrand()
         getModelDictionary()
+        getAllModel()
 
         setSpiders(["mudah", "aihuishou"])
         setCondition(["new", "mint", "used"])
@@ -135,7 +153,14 @@ const GlobalProvider = ({children}) => {
                 subscribeParams,
                 setSubscribeParams,
                 category,
-                setCategory
+                setCategory,
+                searchCategory,
+                setSearchCategory,
+                searchBrand,
+                setSearchBrand,
+                allModel,
+                searchModel,
+                setSearchModel
             }}
         >
             {children}

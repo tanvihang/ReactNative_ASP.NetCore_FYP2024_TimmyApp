@@ -9,7 +9,7 @@ export default useFetch = (endpoint,method,query,params) => {
     const [error, setError] = useState(null)    
 
 
-    let url = "https://1046-114-246-197-132.ngrok-free.app"
+    let url = "https://5cd5-114-246-197-5.ngrok-free.app"
 
     // let data
     // create the request header

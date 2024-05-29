@@ -12,6 +12,7 @@ import socket
 import logging
 from scrapy.utils.log import configure_logging 
 from scrapy.exceptions import CloseSpider
+from TermCompare.LanguageConverter import LanguageConverter
 
 logging.basicConfig(level = logging.INFO, format='[%(asctime)s] {%(name)s} %(levelname)s:  %(message)s', 
                     datefmt='%y-%m-%d %H:%M:%S',
@@ -44,20 +45,24 @@ class AihuishouSpider(scrapy.Spider):
         self.isTest = self.searchAttr['isTest']
         self.iteration = self.searchAttr['iteration']
 
+
         if(self.category == 'none' or self.brandName == 'none'):
             raise ValueError("search parameter(category/brandName) cannot be 'none'")
-        
-        # translate brandname to chinese
-        with open('./Utils/ProductChinese.json', 'r', encoding='utf-8') as file:
-            jsonData = json.load(file)
-            self.chineseBrandName = jsonData[self.brandName]
         
         # get category code
         with open('./Utils/PlatformCategory.json', 'r', encoding='utf-8') as file:
             jsonData2 = json.load(file)
             self.categoryId = jsonData2['aihuishou'][self.category]
 
-        self.searchTerm = self.chineseBrandName + " " + self.modelName
+        oriSearchTerm = self.brandName + " " + self.modelName
+        
+        # translated name
+        lc = LanguageConverter(self.category, self.brandName, "aihuishou")
+        self.searchTerm = lc.convertToCorrespondingPlatformLanguage(oriSearchTerm)
+        print(self.searchTerm)
+        self.searchTerm = self.brandName + " " + self.searchTerm
+        logger.info(f"Aihuishou search term {self.searchTerm}")
+
 
         base_url = "https://dubai.aihuishou.com/dubai-gateway/yanxuan-products/search-goods-v2"
 
@@ -109,7 +114,8 @@ class AihuishouSpider(scrapy.Spider):
                 loader.add_value('price', item['price'])
                 loader.add_value('price_CNY', item['price'])
                 loader.add_value('condition',item['gaeaFinenessName'])
-                product_tags = ' '.join(item['productTag'])
+                # product_tags = ' '.join(item['productTag'])
+                product_tags = " "
                 loader.add_value('description', product_tags)
                 loader.add_value('product_url','https://m.aihuishou.com/n/ofn/strict-selected/product/detail?productNo='+item['productNo'])
                 loader.add_value('product_detail_url','https://dubai.aihuishou.com/dubai-gateway/yanxuan-products/goods-detail?productNo='+item['productNo'])

@@ -16,5 +16,8 @@ namespace webapi.DAO.ElasticSearchDAO
 		Task<bool> UpdateProduct(ElasticProductDTO elasticProduct);
 		Task<bool> DeleteAllProduct();
 		Task<bool> RemoveOneProduct(string unique_id);
+		Task<List<ElasticCategoryCountDTO>> GetElasticProductCategoriesCount();
+		Task<List<ElasticCategoryCountDTO>> GetElasticProductBrandCount(string category);
+		Task<ElasticSearchModelDTO> GetElasticProductModelCount(string category, string model);
 	}
 }

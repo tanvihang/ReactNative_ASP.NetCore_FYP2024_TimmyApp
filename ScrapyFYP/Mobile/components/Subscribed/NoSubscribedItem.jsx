@@ -12,18 +12,14 @@ const NoSubscribedItem = () => {
 
   const userReleasePressSubscribe = () => {
     setPressSubscribe(false);
-    router.push("/subscribe");
   };
   return (
-    <View className="bg-secondary-100 h-full flex justify-center items-center">
-      <Text className="font-pbold text-7xl text-center pt-5">
+    <View className=" h-full flex justify-center items-center">
+      <Text className="font-pbold text-2xl text-center pt-5">
         No Subscribed Item
       </Text>
 
       <TouchableOpacity
-        onPressIn={userPressSubscribe}
-        onPressOut={userReleasePressSubscribe}
-        activeOpacity={1}
         className="h-52 w-1/2 mx-auto"
       >
         <Image
@@ -39,9 +35,6 @@ const NoSubscribedItem = () => {
         />
       </TouchableOpacity>
 
-      <Text className=" font-pthin text-3xl mt-10 text-center text-secondary">
-        Go Subscribe Item
-      </Text>
     </View>
   );
 };

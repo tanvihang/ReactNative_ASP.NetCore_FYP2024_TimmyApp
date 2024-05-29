@@ -13,7 +13,6 @@ const SubscribedHeader = () => {
         jwtToken:jwtToken
     })
 
-
     const [refreshing, setRefreshing] = useState(false);
     const onRefresh = useCallback(()=>{
         setRefreshing(true);
@@ -37,9 +36,9 @@ const SubscribedHeader = () => {
                 isLoading ? (
                     <ActivityIndicator size='large'></ActivityIndicator>
                 ) : error ? (
-                    <Text>Something went wrong while fetching</Text>
-                ) : data.data.length === 0 ? (
                     <NoSubscribedItem/>
+                ) : data.data === null ? (
+                    <Text>Hi</Text>
                 )
                 :(
                     <FlatList

@@ -91,6 +91,7 @@ const SignIn = () => {
           handlePress={()=>{
             submit()
           }}
+          textStyles= "text-white-100"
           containerStyles= "mt-7"
           isLoading={isSubmitting}
         />

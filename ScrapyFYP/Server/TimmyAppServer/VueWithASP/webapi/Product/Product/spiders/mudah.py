@@ -57,6 +57,8 @@ class MudahSpider(scrapy.Spider):
             self.categoryId = jsonData['mudah'][self.category]
 
         searchTerm = self.brandName + " " + self.modelName
+        print(searchTerm)
+        logger.info(searchTerm)
 
         base_url = "https://search.mudah.my/v1/search"
 

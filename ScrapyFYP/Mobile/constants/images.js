@@ -10,6 +10,10 @@ import favouriteHeart from "../assets/images/heart.png"
 import noFavourite from "../assets/images/NoFavourite.png"
 import PressFavourite from "../assets/images/PressFavourite.png"
 import chattingPerson from "../assets/images/chatting.png"
+import sleepingHeart from "../assets/images/sleepingHeart.png"
+import workoutHeart from "../assets/images/workoutHeart.png"
+import shockedHeart from "../assets/images/shockedHeart.png"
+import deadHeart from "../assets/images/deadHeart.png"
 
 export default{
     placeHolder,
@@ -23,5 +27,9 @@ export default{
     favouriteHeart,
     noFavourite,
     PressFavourite,
-    chattingPerson
+    chattingPerson,
+    sleepingHeart,
+    workoutHeart,
+    shockedHeart,
+    deadHeart
 };

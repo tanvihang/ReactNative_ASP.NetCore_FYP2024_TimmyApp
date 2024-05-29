@@ -10,6 +10,8 @@ namespace webapi.DAO.TimmyProductDAO
 		Task<List<CategoryBrandDTO>> GetCategoryBrandList();
 		Task<List<TimmyProduct>> GetAllAdoptedTimmyProduct();
 		Task<List<TimmyProduct>> GetAllUnAdoptedTimmyProduct();
+		Task<PageEntity<TimmyProduct>> GetUnAdoptedPagination(PageDTO pageDTO);
+		Task<PageEntity<TimmyProduct>> GetAdoptedPagination(PageDTO pageDTO, string category, string brand);
 		Task<List<string>> GetAllUnAdoptedTimmyProductName();
 		Task<bool> AdoptTimmyProduct(string productFullName);
 		Task<List<TimmyProduct>> GetAllProductList();

@@ -58,7 +58,7 @@ namespace webapi.Services.ScraperService
 					model = "",
 					spiders = this.spiders,
 					isTest = 0,
-					iteration = 2
+					iteration = 4
 				};
 
 				await this.ScrapeProduct(productScrapeParamsDTO);

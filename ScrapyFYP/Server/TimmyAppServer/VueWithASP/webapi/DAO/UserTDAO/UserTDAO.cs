@@ -128,7 +128,28 @@ namespace webapi.DAO.UserTDAO
 
 		public async Task<PageEntity<PublicUserDTO>> GetUsers(PageDTO pageDTO)
 		{
-			throw new NotImplementedException();
+			try
+			{
+				// page starts from 1
+				List<UserT> userList = await _context.UserTs.Skip((pageDTO.CurrentPage -1 ) * pageDTO.PageSize).Take(pageDTO.PageSize).ToListAsync();
+
+				PageEntity<PublicUserDTO> userPages = new PageEntity<PublicUserDTO>();
+
+				userPages.Count = userList.Count;
+				userPages.rows = new List<PublicUserDTO>();
+
+				foreach (UserT user in userList)
+				{
+					PublicUserDTO userDTO = DTOFactory.ConvertToPublicUserDTO(user);
+                    userPages.rows.Add(userDTO);
+				}
+
+				return userPages;
+			}
+			catch(Exception ex)
+			{
+				throw new Exception(StaticGenerator.GenerateDTOErrorMessage("UserTDAO", "GetUsers", ex.Message));
+			}
 		}
 
 		public async Task<bool> CheckEmailOrUsernameExist(string userName, string userEmail)
@@ -166,6 +187,73 @@ namespace webapi.DAO.UserTDAO
                 //throw new Exception(StaticGenerator.GenerateDTOErrorMessage("UserTDAO", "GetUserIdByEmail", "Email not exist"));
                 await Console.Out.WriteLineAsync(StaticGenerator.GenerateDTOErrorMessage("UserTDAO", "GetUserIdByEmail", "Email not exist"));
 				return null;
+			}
+		}
+
+		public async Task<string> CheckUserNameReturnId(string userName)
+		{
+			UserT user= await _context.UserTs.FirstOrDefaultAsync(us => us.UserName == userName);
+
+			if(user != null)
+			{
+				return user.UserId;
+			}
+			else
+			{
+				return "";
+			}
+		}
+
+		public async Task<string> CheckEmailReturnId(string email)
+		{
+			UserT user = await _context.UserTs.FirstOrDefaultAsync(us => us.UserEmail == email);
+
+			if (user != null)
+			{
+				return user.UserId;
+			}
+			else
+			{
+				return "";
+			}
+		}
+
+		public async Task<string> CheckPhoneReturnId(string phone)
+		{
+			UserT user = await _context.UserTs.FirstOrDefaultAsync(us => us.UserPhoneNo== phone);
+
+			if (user != null)
+			{
+				return user.UserId;
+			}
+			else
+			{
+				return "";
+			}
+		}
+
+		public async Task<bool> UpdateUserInfo(ChangeUserInfoDTO changeUserInfoDTO, string userId)
+		{
+			try
+			{
+				UserT user = await _context.UserTs.FirstOrDefaultAsync(us => us.UserId == userId);
+				UserT newUser = user;
+
+				if (user != null)
+				{
+					user.UserEmail = changeUserInfoDTO.newUserEmail;
+					user.UserPhoneNo = changeUserInfoDTO.newPhoneNo;
+					user.UserName = changeUserInfoDTO.newUserName;
+				}
+
+				_context.UserTs.Update(user);
+				await _context.SaveChangesAsync();
+
+				return true;
+			}
+			catch(Exception ex)
+			{
+				throw new Exception(StaticGenerator.GenerateDTOErrorMessage("UserTDAO", "UpdateUserInfo", ex.Message));
 			}
 		}
 	}

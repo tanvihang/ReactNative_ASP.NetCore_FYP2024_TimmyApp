@@ -123,8 +123,8 @@ class BloomFilter:
         - The hash value of the element.
         """
         hash_val = hashlib.md5((element + str(seed)).encode()).hexdigest()
-        print(hash_val)
-        print(type(hash_val))
+        # print(hash_val)
+        # print(type(hash_val))
         # add more hash function here to make it more unique for each input
         return int(hash_val, 16)
     

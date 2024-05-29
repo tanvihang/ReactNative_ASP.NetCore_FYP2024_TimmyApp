@@ -1,5 +1,5 @@
 import { View, Text, Image, Alert } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useGlobalContext } from "../../context/GlobalProvider";
 import TouchableBento from "../../components/TouchableBento";
@@ -9,6 +9,9 @@ import * as SecureStore from "expo-secure-store";
 
 const Profile = () => {
   const { user, setJwtToken, setIsLoggedIn } = useGlobalContext();
+
+  useEffect(()=>{
+  },[user])
 
   const pressSetting = () => {
     router.push("/user-setting");

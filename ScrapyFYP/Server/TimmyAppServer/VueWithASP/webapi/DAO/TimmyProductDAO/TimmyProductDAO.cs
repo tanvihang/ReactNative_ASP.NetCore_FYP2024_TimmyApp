@@ -59,6 +59,48 @@ namespace webapi.DAO.TimmyProductDAO
 			}
 		}
 
+		public async Task<PageEntity<TimmyProduct>> GetAdoptedPagination(PageDTO pageDTO, string category, string brand)
+		{
+			try
+			{
+				var query = _context.TimmyProducts.AsQueryable();
+
+				query = query.Where(tp => tp.TimmyProductAdopted == 1);
+
+				if (!string.IsNullOrEmpty(category))
+				{
+					query = query.Where(tp => tp.TimmyProductCategory == category);
+				}
+
+				if(!string.IsNullOrEmpty(brand))
+				{
+					query = query.Where(tp => tp.TimmyProductBrand == brand);
+				}
+
+				query = query.Skip((pageDTO.CurrentPage - 1) * pageDTO.PageSize).Take(pageDTO.PageSize);
+
+				List<TimmyProduct> timmyProducts = await query.ToListAsync();
+
+				PageEntity<TimmyProduct> pageEntity = new PageEntity<TimmyProduct>();
+				pageEntity.rows = new List<TimmyProduct>();
+
+
+				pageEntity.Count = timmyProducts.Count();
+
+				foreach (var item in timmyProducts)
+				{
+					pageEntity.rows.Add(item);
+				}
+
+				return pageEntity;
+
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(StaticGenerator.GenerateDTOErrorMessage("TimmyProductDAO", "GetUnAdoptedPagination", ex.Message));
+			}
+		}
+
 		public async Task<List<TimmyProduct>> GetAllAdoptedTimmyProduct()
 		{
 			List<TimmyProduct> tpl = await _context.TimmyProducts.Where(tp => tp.TimmyProductAdopted == 1).ToListAsync();
@@ -154,6 +196,31 @@ namespace webapi.DAO.TimmyProductDAO
 			{
 				throw new Exception(StaticGenerator.GenerateDTOErrorMessage("TimmyProductDAO", "GetTimmyProductByName", ex.Message));
 
+			}
+		}
+
+		public async Task<PageEntity<TimmyProduct>> GetUnAdoptedPagination(PageDTO pageDTO)
+		{
+			try
+			{
+				List<TimmyProduct> timmyProducts = await _context.TimmyProducts.Where(tp => tp.TimmyProductAdopted == 0).Skip((pageDTO.CurrentPage - 1) * pageDTO.PageSize).Take(pageDTO.PageSize).ToListAsync();
+			
+				PageEntity<TimmyProduct> pageEntity = new PageEntity<TimmyProduct>();
+				pageEntity.rows = new List<TimmyProduct>();
+
+
+				pageEntity.Count = timmyProducts.Count();
+
+				foreach (var item in timmyProducts)
+				{
+					pageEntity.rows.Add(item);
+				}
+
+				return pageEntity;
+
+			}catch(Exception ex)
+			{
+				throw new Exception(StaticGenerator.GenerateDTOErrorMessage("TimmyProductDAO", "GetUnAdoptedPagination", ex.Message));
 			}
 		}
 

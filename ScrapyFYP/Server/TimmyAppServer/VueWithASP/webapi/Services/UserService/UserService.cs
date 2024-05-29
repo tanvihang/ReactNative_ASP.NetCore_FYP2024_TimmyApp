@@ -30,6 +30,82 @@ namespace webapi.Services.UserService
 			_jwtService = jwtService;
 		}
 
+		public async Task<bool> ChangeUserInfo(ChangeUserInfoDTO changeUserInfoDTO, string userId)
+		{
+			// check verification
+			Boolean validCode = await _userVerificationCodeService.VerifyVerificationCode(new VerifyUserVerificationCodeDTO
+			{
+				UserEmail = changeUserInfoDTO.email,
+				VerificationCode = changeUserInfoDTO.verificationCode
+
+			});
+
+			if(!validCode)
+			{
+				throw new Exception("Verification code not correct");
+			}
+
+			// check if username exist
+			string id1 = await _userTDao.CheckUserNameReturnId(userId);
+			if (id1 != userId && id1 != "") {
+				throw new Exception("Username Exist");
+			}
+
+			// check if useremail exist
+			string id2 = await _userTDao.CheckEmailReturnId(userId);
+			if(id2 != userId && id2 != "")
+			{
+				throw new Exception("Email Exist");
+			}
+
+			// check if phone no exist
+			string id3 = await _userTDao.CheckPhoneReturnId(userId);
+			if(id3 != userId && id3 != "")
+			{
+				throw new Exception("Phone No Exist");
+			}
+
+			// Change user info
+			Boolean changed = await _userTDao.UpdateUserInfo(changeUserInfoDTO, userId);
+
+			return changed;
+		}
+
+		public async Task<bool> ChangeUserInfoAdmin(ChangeUserInfoDTO changeUserInfoDTO, string userId)
+		{
+
+			// check if username exist
+			string id1 = await _userTDao.CheckUserNameReturnId(userId);
+			if (id1 != userId && id1 != "")
+			{
+				throw new Exception("Username Exist");
+			}
+
+			// check if useremail exist
+			string id2 = await _userTDao.CheckEmailReturnId(userId);
+			if (id2 != userId && id2 != "")
+			{
+				throw new Exception("Email Exist");
+			}
+
+			// check if phone no exist
+			string id3 = await _userTDao.CheckPhoneReturnId(userId);
+			if (id3 != userId && id3 != "")
+			{
+				throw new Exception("Phone No Exist");
+			}
+
+			// Change user info
+			Boolean changed = await _userTDao.UpdateUserInfo(changeUserInfoDTO, userId);
+
+			return changed;
+		}
+
+		public Task<bool> DeleteUser(string userId)
+		{
+			return _userTDao.DeleteUser(userId);
+		}
+
 		public async Task<PublicUserDTO> GetUserInfo(string userId)
 		{
 			PublicUserDTO publicUserDTO = await _userTDao.GetUserInfo(userId);
@@ -129,6 +205,27 @@ namespace webapi.Services.UserService
 			{
 				return false;
 			}
+		}
+
+		public async Task<PageEntity<PublicUserDTO>> UserPagination(PageDTO page)
+		{
+			PageEntity<PublicUserDTO> pagination = await _userTDao.GetUsers(page);
+
+			return pagination;
+		}
+
+		public async Task<bool> ValidateUserName(string userId, string userName)
+		{
+			PublicUserDTO userDTO = await _userTDao.GetUserInfo(userId);
+			string realUserName = userDTO.UserName!;
+
+			if(realUserName == userName) {
+				return true;
+			}
+			else
+			{
+				return false;
+			}			
 		}
 	}
 }

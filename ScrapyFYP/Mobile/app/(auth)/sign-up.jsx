@@ -80,25 +80,27 @@ const SignUp = () => {
           placeholder="phone"
         />
 
-        <View className="flex-row mt-7 justify-between">
+        <View className="flex flex-row mt-7">
           <FormField
             title="Verification Code"
             value = {form.verificationCode}
             handleChangeText = {(e)=>setForm({...form, verificationCode:e})} 
-            otherStyles= "w-56"
+            otherStyles= "w-2/3"
             placeholder="verification code"
           />
 
-          <CTAButton
-              title = "GET CODE"
-              handlePress={()=>{
-                sendCode(form.userEmail)
-              }}
-              containerStyles= "mt-7 w-40"
-              textStyles= "text-white-100"
-              className = "text-white-100"
-              isLoading={isSubmittingCode}
-          />
+          <View className="w-1/3">
+            <CTAButton
+                title = "GET CODE"
+                handlePress={()=>{
+                  sendCode(form.userEmail)
+                }}
+                containerStyles= "mt-7 w-full"
+                textStyles= "text-white-100"
+                className = "text-white-100"
+                isLoading={isSubmittingCode}
+            />
+          </View>
 
         </View>
         
@@ -119,7 +121,7 @@ const SignUp = () => {
           isLoading={isSubmitting}
         />
 
-        <View className = "items-center justify-center flex-row gap-1 pt-3">
+        <View className = "items-center justify-center flex-row gap-1 py-3">
           <Text className="text-lg font-regular">Return to</Text>
           <Link href="/sign-in" className='text-lg font-regular text-secondary'>Sign In</Link>
         </View>

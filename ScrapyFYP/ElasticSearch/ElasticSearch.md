@@ -16,7 +16,7 @@ Tutorial: https://www.elastic.co/guide/en/elasticsearch/reference/current/docker
 | country            | keyword |
 | created_date       | date    |
 | currency           | keyword |
-| description        | keyword |
+| description        | text    |
 | is_test            | keyword |
 | model              | keyword |
 | price              | float   |

@@ -15,6 +15,9 @@ namespace webapi.DAO.UserTDAO
 		Task<PageEntity<PublicUserDTO>> GetUsers(PageDTO pageDTO);
 		Task<Boolean> CheckEmailOrUsernameExist(string userName, string userEmail);
 		Task<string> GetUserIdByEmail(string email);
-
+		Task<string> CheckUserNameReturnId(string userName);
+		Task<string> CheckEmailReturnId(string email);
+		Task<string> CheckPhoneReturnId(string phone);
+		Task<Boolean> UpdateUserInfo(ChangeUserInfoDTO changeUserInfoDTO, string userId);
 	}
 }

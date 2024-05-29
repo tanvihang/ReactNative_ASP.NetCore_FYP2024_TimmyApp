@@ -7,7 +7,7 @@ const PersonalInformation = () => {
   const { user } = useGlobalContext();
 
   return (
-    <View className = "h-full">
+    <View className = "h-full w-full flex items-start">
       <Text className="w-full text-center pt-10 font-pbold text-5xl">
         Personal Information
       </Text>
@@ -15,6 +15,7 @@ const PersonalInformation = () => {
       <PersonalInfoItem title="UserId" item={user.userId} />
       <PersonalInfoItem title="UserName" item={user.userName} />
       <PersonalInfoItem title="UserEmail" item={user.userEmail} />
+      <PersonalInfoItem title="UserPhoneNo" item={user.userPhoneNo} />
       <PersonalInfoItem title="Joined Date" item={user.userRegisterDate} />
       <PersonalInfoItem title="User Level" item={user.userLevel} />
     </View>

@@ -1,0 +1,73 @@
+{
+    "platform":{
+        "aihuishou":"chinese",
+        "mudah":"english"
+    },
+    "mobile":{
+        "apple":{
+            "english":["apple"],
+            "chinese":["苹果"]
+        },
+        "xiaomi":{
+            "english":["xiaomi", "redmi","pad"],
+            "chinese":["小米", "红米","平板"]
+        },
+        "huawei":{
+            "english":["huawei"],
+            "chinese":["华为"]
+        },
+        "vivo":{
+            "english":["vivo"],
+            "chinese":["vivo"]
+        },
+        "asus":{
+            "english":["asus"],
+            "chinese":["华硕"]
+        },
+        "samsung":{
+            "english":["samsung"],
+            "chinese":["三星"]
+        }
+    },
+    "camera":{
+        "canon":{
+            "english":["canon","ii","2"],
+            "chinese":["佳能","二","二"]
+        },
+        "nikon":{
+            "brand":"尼康",
+            "english":["nikon"],
+            "chinese":["尼康"]
+        },
+        "olympus":{
+            "english":["olympus"],
+            "chinese":["奥林巴森"]
+        }
+    },
+    "computer":{
+        "apple":{
+            "english":["apple"],
+            "chinese":["苹果"]
+        }
+    },
+    "tablet":{
+        "apple":{
+            "english":["apple"],
+            "chinese":["苹果"]
+        },
+        "xiaomi":{
+            "english":["xiaomi","redmi","pad"],
+            "chinese":["小米","红米","平板"]
+        }
+    },
+    "watches":{
+        "apple":{
+            "english":["apple"],
+            "chinese":["苹果"]
+        },
+        "xiaomi":{
+            "english":["xiaomi", "redmi","pad"],
+            "chinese":["小米", "红米","平板"]
+        }
+    }
+}

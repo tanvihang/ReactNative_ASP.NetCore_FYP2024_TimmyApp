@@ -40,6 +40,16 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
+
+
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy("AllowAllOrigin",
+		builder => builder.AllowAnyOrigin() // 指定你的前端应用的URL
+						  .AllowAnyMethod()
+						  .AllowAnyHeader());
+});
+
 // Search for controller that have attributes [ApiController]
 // 添加控制器
 builder.Services.AddControllers();
@@ -59,6 +69,7 @@ builder.Services.AddHangfire(config => config
     .UseSqlServerStorage(builder.Configuration.GetConnectionString("HangfireConnection")));
 
 builder.Services.AddHangfireServer();
+
 
 //添加数据持久层
 builder.Services.AddScoped<IUserTDAO, UserTDAO>();
@@ -115,8 +126,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("AllowAllOrigin");
 app.MapControllers();
-
 
 app.UseHangfireDashboard();
 app.MapHangfireDashboard("/hangfire");
@@ -127,7 +138,10 @@ using(var serviceScope = app.Services.CreateScope())
 
     ISignalService signalService = services.GetRequiredService<ISignalService>();
 	Console.WriteLine("Adding recurring job");
-	
+
+	// Auto update
+	RecurringJob.AddOrUpdate("ExecuteUpdateElasticProduct", () => signalService.ExecuteUpdateElasticProduct(), Cron.HourInterval(1));
+
 	// Create hangfire for these jobs
 	RecurringJob.AddOrUpdate("ExecuteScrapeAndGetLowestPrice", () => signalService.ExecuteScrapeAndGetLowestPrice(), Cron.Weekly);
 

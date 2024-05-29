@@ -212,6 +212,52 @@ namespace webapi.Controllers
 			}
 		}
 
+		[HttpGet("GetElasticProductCategoriesCount")]
+		public async Task<ResponseData<List<ElasticCategoryCountDTO>>> GetElasticProductCategoriesCount()
+		{
+			try
+			{
+				List<ElasticCategoryCountDTO> categories = await _elasticSearchService.GetElasticProductCategoriesCount();
 
+				return ResponseData<List<ElasticCategoryCountDTO>>.Success(categories);
+
+			}
+			catch (Exception ex)
+			{
+				return ResponseData<List<ElasticCategoryCountDTO>>.Failure(ex.Message);
+			}
+		}
+
+		[HttpPost("GetElasticProductBrandCount")]
+		public async Task<ResponseData<List<ElasticCategoryCountDTO>>> GetElasticProductBrandCount(string category)
+		{
+			try
+			{
+				List<ElasticCategoryCountDTO> categories = await _elasticSearchService.GetElasticProductBrandCount(category);
+
+				return ResponseData<List<ElasticCategoryCountDTO>>.Success(categories);
+
+			}
+			catch (Exception ex)
+			{
+				return ResponseData<List<ElasticCategoryCountDTO>>.Failure(ex.Message);
+			}
+		}
+
+		[HttpPost("GetElasticProductModelCount")]
+		public async Task<ResponseData<ElasticSearchModelDTO>> GetElasticProductModelCount(string category, string brand)
+		{
+			try
+			{
+				ElasticSearchModelDTO categories = await _elasticSearchService.GetElasticProductModelCount(category, brand);
+
+				return ResponseData<ElasticSearchModelDTO>.Success(categories);
+
+			}
+			catch (Exception ex)
+			{
+				return ResponseData<ElasticSearchModelDTO>.Failure(ex.Message);
+			}
+		}
 	}
 }

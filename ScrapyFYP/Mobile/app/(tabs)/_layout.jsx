@@ -48,7 +48,7 @@ const TabsLayout = () => {
       />
 
       <Tabs.Screen
-        name="search"
+        name="searchV1"
         options={{
           title: "Search",
           tabBarIcon: ({ color, focused }) => (

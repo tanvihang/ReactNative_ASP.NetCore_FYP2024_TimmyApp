@@ -150,5 +150,35 @@ namespace webapi.Controllers
 				return ResponseData<List<string>>.Failure(ex.Message);
 			}
 		}
+
+		[HttpPost("GetUnAdoptedTimmyProductPagination")]
+		public async Task<ResponseData<PageEntity<TimmyProduct>>> GetUnAdoptedTimmyProductPagination(PageDTO pageDTO)
+		{
+			try
+			{
+				PageEntity<TimmyProduct> list = await _timmyProductService.GetUnAdoptedTimmyProductPagination(pageDTO);
+
+				return ResponseData<PageEntity<TimmyProduct>>.Success(list);
+			}
+			catch(Exception ex)
+			{
+				return ResponseData<PageEntity<TimmyProduct>>.Failure(ex.Message);
+			}
+		}
+
+		[HttpPost("GetAdoptedTimmyProductPagination")]
+		public async Task<ResponseData<PageEntity<TimmyProduct>>> GetAdoptedTimmyProductPagination(PageDTO pageDTO, string category = "", string brand = "")
+		{
+			try
+			{
+				PageEntity<TimmyProduct> list = await _timmyProductService.GetAdoptedTimmyProductPagination(pageDTO, category, brand);
+
+				return ResponseData<PageEntity<TimmyProduct>>.Success(list);
+			}
+			catch (Exception ex)
+			{
+				return ResponseData<PageEntity<TimmyProduct>>.Failure(ex.Message);
+			}
+		}
 	}
 }

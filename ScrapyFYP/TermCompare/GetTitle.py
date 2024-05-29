@@ -3,7 +3,7 @@ import json
 import time
 
 class GetTitle:
-    def __init__(self, fileName, outputFileName, output2, category, brand):
+    def __init__(self, fileName, outputFileName, output2, category, brand, spider):
         self.title = {}
         self.filePath = f'./Dataset/{fileName}'
         self.outputPath = f'./Result/{outputFileName}'
@@ -14,7 +14,7 @@ class GetTitle:
         # Mock the realtime scraping
         # 1. scrape by category brand
         # 2. scrape by category brand model
-        self.termCompare = ScrapyTermCompare(category, brand)
+        self.termCompare = ScrapyTermCompare(category, brand,spider)
 
 
     def InitializeEmpty(self):
@@ -100,7 +100,7 @@ class GetTitle:
 
 
 # gt = GetTitle("mobile_apple.json", "test_set_init.json","test_set_out_cosine_6.json")
-gt = GetTitle("mobile_xiaomi_1.json", "test_set_init_xiaomi.json","out_xiaomi_6.json","mobile","xiaomi")
+gt = GetTitle("mobile_xiaomi_1.json", "test_set_init_xiaomi.json","out_xiaomi_7.json","mobile","xiaomi","mudah")
 
 # gt.InitializeEmpty()
 gt.Compare()

@@ -72,14 +72,14 @@ class MyElasticSearch:
             print(f"{spider.name} Successfully indexed: {success}")
             print(f'scraped: {success}')
 
-            return True
+            return True, success
         
         except ApiError as e:
             print(f"Failed to index documents: {e}")
             for idx, error in e.errors.items():
                 print(f"Error for document {idx}: {error}")
 
-            return False
+            return False, 0
 
     def indexOne(self):
         # Define the document data
@@ -228,3 +228,40 @@ class MyElasticSearch:
         except Exception as e:
             print(f"An error occurred while deleting document with ID {product_unique_id}: {e}")
             return False
+
+    def get_average_price(self, model):
+        try:
+            search_query = {
+                "size": 0,
+                "aggs": {
+                    "specific_product": {
+                        "filter": {
+                            "term": {
+                                "model": model
+                            }
+                        },
+                        "aggs": {
+                            "average_price": {
+                                "avg": {
+                                    "field": "price_CNY"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            response = self.es.search(index = "product", body=search_query)
+            average_price = response['aggregations']['specific_product']['average_price']['value']
+
+            if(average_price == None and response['aggregations']['specific_product']['doc_count'] < 10):
+                return 0
+            else:
+                return average_price
+            
+        except Exception as e:
+            print(f'An error occured while getting average price for model: {model}, {e}')
+            return False
+        
+myEs = MyElasticSearch()
+myEs.get_average_price("iphone 12")

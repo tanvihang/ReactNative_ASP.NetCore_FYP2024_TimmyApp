@@ -4,6 +4,7 @@ import { Stack, useLocalSearchParams } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import SubscribedItemProduct from "../../components/Subscribed/SubscribedItemProduct";
 import useFetch from "../../hooks/useFetch";
+import NoSubscriptionProduct from "../../components/SubscriptionProduct/NoSubscriptionProduct";
 
 const UserSubscriptionProduct = () => {
   const { userSubscriptionId } = useLocalSearchParams();
@@ -26,14 +27,14 @@ const UserSubscriptionProduct = () => {
   }
 
   return (
-    <SafeAreaView className = "mt-7">
+    <SafeAreaView className = "">
       <Stack.Screen options={{ header: () => null }} />
       {isLoading ? (
         <ActivityIndicator size="large"></ActivityIndicator>
       ) : error ? (
         <Text>Something went wrong while fetching</Text>
       ) : data.data.length === 0 ? (
-        <Text>No favourited product</Text>
+        <NoSubscriptionProduct/>
       ) : (
         <FlatList
           data={data?.data}
@@ -45,7 +46,7 @@ const UserSubscriptionProduct = () => {
             />
           )}
           keyExtractor={(item) => item.userSubscriptionProductId}
-          className="mx-3"
+          className="mx-3 mt-7"
           showsVerticalScrollIndicator = {false}
           ListHeaderComponent={header()}
         ></FlatList>

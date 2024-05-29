@@ -12,7 +12,7 @@ const SearchHero = () => {
       <View>
         <Text className="font-pbold text-6xl text-primary pt-3">TimmyApp</Text>
         <Text className="font-psemibold text-primary text-2xl">
-          Search any item, {user.userName}
+          Search any item
         </Text>
       </View>
     </View>

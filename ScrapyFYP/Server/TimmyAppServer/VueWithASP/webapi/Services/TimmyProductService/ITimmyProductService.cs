@@ -17,5 +17,7 @@ namespace webapi.Services.TimmyProductService
 		Task<TimmyProduct> GetTimmyProductByName(string fullName);
 		Task<List<string>> GetBrandList(string category);
 		Task<List<string>> GetCategoryList();
+		Task<PageEntity<TimmyProduct>> GetUnAdoptedTimmyProductPagination(PageDTO pageDTO);
+		Task<PageEntity<TimmyProduct>> GetAdoptedTimmyProductPagination(PageDTO pageDTO, string category, string brand);
 	}
 }

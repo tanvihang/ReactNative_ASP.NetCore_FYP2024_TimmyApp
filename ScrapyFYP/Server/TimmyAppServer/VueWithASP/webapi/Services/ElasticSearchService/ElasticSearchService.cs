@@ -26,6 +26,21 @@ namespace webapi.Services.ElasticSearchService
 			return isDeleted;
 		}
 
+		public async Task<List<ElasticCategoryCountDTO>> GetElasticProductBrandCount(string category)
+		{
+			return await _elasticSearchDAO.GetElasticProductBrandCount(category);
+		}
+
+		public async Task<List<ElasticCategoryCountDTO>> GetElasticProductCategoriesCount()
+		{
+			return await _elasticSearchDAO.GetElasticProductCategoriesCount();
+		}
+
+		public async Task<ElasticSearchModelDTO> GetElasticProductModelCount(string category, string model)
+		{
+			return await _elasticSearchDAO.GetElasticProductModelCount(category, model);
+		}
+
 		public async Task<List<ElasticProductDTO>> GetLowestPriceProduct(UserSubscription userSubscription)
 		{
 			// 1. Get Product

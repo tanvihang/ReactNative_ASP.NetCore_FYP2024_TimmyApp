@@ -60,20 +60,22 @@ const ChangePassword = () => {
             title="Verification Code"
             value={form.verificationCode}
             handleChangeText={(e) => setForm({ ...form, verificationCode: e })}
-            otherStyles="w-56"
+            otherStyles="w-2/3"
             placeholder="verification code"
             />
 
-            <CTAButton
-            title="GET CODE"
-            handlePress={() => {
-                sendCode(user.userEmail);
-            }}
-            containerStyles="mt-7 w-40 ml-2"
-            textStyles="text-white-100"
-            className="text-white-100"
-            isLoading={isSubmittingCode}
-            />
+            <View className="w-1/3">
+              <CTAButton
+              title="GET CODE"
+              handlePress={() => {
+                  sendCode(user.userEmail);
+              }}
+              containerStyles="mt-7 ml-2 w-full"
+              textStyles="text-white-100"
+              className="text-white-100"
+              isLoading={isSubmittingCode}
+              />
+            </View>
         </View>
 
         <View>

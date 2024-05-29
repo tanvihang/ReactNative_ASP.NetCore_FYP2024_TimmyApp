@@ -3,9 +3,10 @@ from TimmyDatabase import TimmyDatabase
 import re
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+from LanguageConverter import LanguageConverter
 
 class ScrapyTermCompare:
-    def __init__(self, category, brand):
+    def __init__(self, category, brand, spider):
         self.category = category
         self.brand = brand
 
@@ -43,6 +44,8 @@ class ScrapyTermCompare:
         print(self.modelDictionary)
 
         self.timmyDB.closeConnection()
+        
+        self.languageConverter = LanguageConverter(self.category, self.brand, spider)
 
     # 获取当前爬取种类品牌底下的型号
     def GetCategoryBrandModelsList(self, category, brand):
@@ -105,13 +108,11 @@ class ScrapyTermCompare:
         # 例如 6s等等
         split_words = re.findall(r'[a-zA-Z0-9]+|[\d.]+|[^,.()\-\s]+', title)
 
-        print("111")
         print(split_words)
 
         filtered_word = [word for word in split_words if word in self.wordDictionary]
 
         print(filtered_word)
-        print("111")
 
         filtered_string = ' '.join(filtered_word)
 
@@ -146,13 +147,11 @@ class ScrapyTermCompare:
         # 分割字符串
         split_words = re.findall(r'[a-zA-Z]+|[\d.]+|[^,.()\-\s]+', title)
 
-        print("000")
         print(split_words)
 
         filtered_word = [word for word in split_words if word in self.wordDictionary]
 
         print(filtered_word)
-        print("000")
 
         filtered_string = ' '.join(filtered_word)
 
@@ -165,20 +164,21 @@ class ScrapyTermCompare:
     def GetMostSimilarProduct(self, title):
         title = title.lower()
 
+        if(self.languageConverter.original is not None):
+            title = self.languageConverter.convertToEnglish(title)
+            
+        print("Converted title")
+        print(title)    
+            
         cleaned_title1 = self.CleanTitle1(title)
         most_similar_product1, distance1 = self.CosineSim(cleaned_title1)
 
 
         cleaned_title = self.CleanTitle(title)
         most_similar_product, distance = self.CosineSim(cleaned_title)
-        
-        # cleaned_title = self.CleanTitle(title)
-        # cleaned_title = title
-        # most_similar_product, distance = self.Levensthein(cleaned_title)
-
 
         # if(most_similar_product == None or most_similar_product1 == None):
-        if(most_similar_product == None):
+        if(most_similar_product == "" and most_similar_product1 == ""):
             return None, None,cleaned_title,distance
 
         # return most_similar_product,self.modelDictionary[most_similar_product],cleaned_title,distance        
@@ -198,8 +198,10 @@ class ScrapyTermCompare:
         print(distance)
         print(f'Most sim: {most_similar_product}')
 
-        # 如果两个长度不一样，用LD进行判断，选更小的
-        if(len(most_similar_product) != len(most_similar_product1) or (distance <= 0.2 and distance1 <= 0.2) ):
+        if(distance < 0.2 and distance1 < 0.2):
+            return None, None, "",0
+        # 如果两个长度不一样,但是相似度一样，用LD进行判断，选更小的
+        elif(len(most_similar_product) != len(most_similar_product1) and (distance == distance1) ):
             arr = []
             arr.append(most_similar_product1)
             arr.append(most_similar_product)
@@ -208,7 +210,6 @@ class ScrapyTermCompare:
 
             if(distance2 > 20):
                 return None, None,cleaned_title1,distance2
-
 
             return most_similar_product2,self.modelDictionary[most_similar_product2], cleaned_title1, distance2
 
@@ -312,11 +313,18 @@ class ScrapyTermCompare:
             # print("Passed 2nd filter")
             # print(f'Most Similar: {item}')
 
+            if(similarities[0][same_similarity_indices[0]] < 0.1):
+                return "", 0
+
             return item, similarities[0][same_similarity_indices[0]]
 
         else:
             # print("Without second filter")
             # print(f'Most Similar: {most_similar_text}')
+            
+            if(similarities[0][same_similarity_indices[0]] < 0.1):
+                return "", 0
+            
             return most_similar_text, similarities[0][most_similar_index]
 
 
@@ -325,10 +333,12 @@ class ScrapyTermCompare:
 if __name__ == "__main__":
     # 假设有一个型号列表
     category = "mobile"
-    brand = "xiaomi"
+    brand = "asus"
     # 创建一个 ScrapyTermCompare 实例
-    comparer = ScrapyTermCompare(category, brand)
+    comparer = ScrapyTermCompare(category, brand,"aihuishou")
 
-    title = "Xiaomi 13t Pro 12GB/512Gb Blue Leather"
+    title = "zenfone 10 pro"
 
-    comparer.GetMostSimilarProduct(title)
+    model,_,_,_ = comparer.GetMostSimilarProduct(title)
+    print(f'Result: {model}')
+    # comparer.Levensthein(title)

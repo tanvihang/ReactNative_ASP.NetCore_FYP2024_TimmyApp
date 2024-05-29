@@ -19,7 +19,7 @@ namespace webapi.DAO.ElasticSearchDAO
 		private readonly string[] _spiders;
 
 		public ElasticSearchDAO(IConfiguration configuration)
-        {
+		{
 			_configuration = configuration;
 
 			_url = _configuration["Elasticsearch:Url"];
@@ -61,6 +61,163 @@ namespace webapi.DAO.ElasticSearchDAO
 			}
 		}
 
+		public async Task<List<ElasticCategoryCountDTO>> GetElasticProductBrandCount(string category)
+		{
+			{
+				try
+				{
+
+                    List<ElasticCategoryCountDTO> elasticCategoryCountDTO = new List<ElasticCategoryCountDTO>();
+
+					var searchResponse = _client.Search<ElasticProductDTO>(s => s
+						.Size(0)
+						.Aggregations(a => a
+							.Filter("brands", f => f
+								.Filter(q => q
+									.Term(t => t
+										.Field("category")
+										.Value(category)
+									)
+								)
+								.Aggregations(aa => aa
+									.Terms("byBrand", t => t
+										.Field("brand")
+										.Size(20)
+									)
+								)
+							)
+						)
+					);
+
+					if (searchResponse.IsValid)
+					{
+						var brandsAgg = searchResponse.Aggregations.Filter("brands");
+						var byBrandAgg = brandsAgg.Terms("byBrand");
+						foreach (var brandBucket in byBrandAgg.Buckets)
+						{
+                            await Console.Out.WriteLineAsync(brandBucket.Key);
+                            elasticCategoryCountDTO.Add(new ElasticCategoryCountDTO
+							{
+								name = brandBucket.Key,
+								value = (long)brandBucket.DocCount
+							});
+						}
+
+						return elasticCategoryCountDTO;
+					}
+					else
+					{
+						throw new Exception(StaticGenerator.GenerateDTOErrorMessage("ElasticSearchDAO", "GetElasticProductCategoriesCount", "No Product"));
+					}
+
+				}
+				catch (Exception ex)
+				{
+					throw new Exception(StaticGenerator.GenerateDTOErrorMessage("ElasticSearchDAO", "GetElasticProductCategoriesCount", ex.Message));
+				}
+			}
+		}
+
+		public async Task<List<ElasticCategoryCountDTO>> GetElasticProductCategoriesCount()
+		{
+			try
+			{
+				List<ElasticCategoryCountDTO> elasticCategoryCountDTO = new List<ElasticCategoryCountDTO>();
+
+				var searchResponse = await _client.SearchAsync<ElasticProductDTO>(s => s
+					.Size(0)
+					.Aggregations(a => a
+						.Terms("categories", t => t
+							.Field(f => f.category)
+							.Size(20))
+						)
+					);
+
+				if (searchResponse.IsValid)
+				{
+					var categories = searchResponse.Aggregations.Terms("categories").Buckets;
+
+					foreach (var category in categories)
+					{
+						elasticCategoryCountDTO.Add(
+								new ElasticCategoryCountDTO
+								{
+									name = category.Key,
+									value = (long)category.DocCount
+								});
+					}
+
+					return elasticCategoryCountDTO;
+				}
+				else
+				{
+					throw new Exception(StaticGenerator.GenerateDTOErrorMessage("ElasticSearchDAO", "GetElasticProductCategoriesCount", "No Product"));
+				}
+
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(StaticGenerator.GenerateDTOErrorMessage("ElasticSearchDAO", "GetElasticProductCategoriesCount", ex.Message));
+			}
+
+		}
+
+		public async Task<ElasticSearchModelDTO> GetElasticProductModelCount(string category, string model)
+		{
+			try
+			{
+				ElasticSearchModelDTO elasticSearchModelDTOs = new ElasticSearchModelDTO();
+				elasticSearchModelDTOs.data = new List<string>();
+				elasticSearchModelDTOs.value = new List<long>();
+
+				var searchResponse = _client.Search<ElasticProductDTO>(s => s
+					.Size(0)
+					.Aggregations(a => a
+						.Filter("brands", f => f
+							.Filter(a => a
+								.Bool(b => b
+									.Must(
+										m => m.Term(t => t.Field("category").Value(category)),
+										m => m.Term(t => t.Field("brand").Value(model))
+									)
+								)
+							)
+								.Aggregations(aa => aa
+									.Terms("byModel", t => t
+										.Field("model")
+										.Size(20)
+									)
+								)
+							
+						)
+					)
+				);
+
+				if (searchResponse.IsValid)
+				{
+					var brandsAgg = searchResponse.Aggregations.Filter("brands");
+					var byModelAgg = brandsAgg.Terms("byModel");
+
+					foreach (var bucket in byModelAgg.Buckets)
+					{
+						elasticSearchModelDTOs.data.Add(bucket.Key);
+						elasticSearchModelDTOs.value.Add((long)bucket.DocCount);
+					}
+
+					return elasticSearchModelDTOs;
+				}
+				else
+				{
+					throw new Exception(StaticGenerator.GenerateDTOErrorMessage("ElasticSearchDAO", "GetElasticProductCategoriesCount", "No Product"));
+				}
+
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(StaticGenerator.GenerateDTOErrorMessage("ElasticSearchDAO", "GetElasticProductCategoriesCount", ex.Message));
+			}
+		}
+
 		public async Task<List<ElasticProductDTO>> GetLowPriceElasticProduct(ProductSearchTermDTO searchTermDTO)
 		{
 
@@ -70,7 +227,7 @@ namespace webapi.DAO.ElasticSearchDAO
 			var shouldClauses = new List<Func<QueryContainerDescriptor<ElasticProductDTO>, QueryContainer>>();
 			var mustClauses = new List<Func<QueryContainerDescriptor<ElasticProductDTO>, QueryContainer>>();
 			var mustClauses2 = new List<Func<QueryContainerDescriptor<ElasticProductDTO>, QueryContainer>>();
-			
+
 			Func<SortDescriptor<ElasticProductDTO>, SortDescriptor<ElasticProductDTO>> sortClauses = null;
 
 			// 1. must Title
@@ -221,8 +378,8 @@ namespace webapi.DAO.ElasticSearchDAO
 					foreach (string spider in _spiders)
 					{
 
-                        await Console.Out.WriteLineAsync(spider);
-                        mustClause.Add(must => must.Match(t => t.Field(f => f.spider).Query(spider)));
+						await Console.Out.WriteLineAsync(spider);
+						mustClause.Add(must => must.Match(t => t.Field(f => f.spider).Query(spider)));
 
 						try
 						{
@@ -241,8 +398,8 @@ namespace webapi.DAO.ElasticSearchDAO
 							// Check if the search was successful and if there are any results
 							if (searchResponse.IsValid && searchResponse.Hits.Count > 0)
 							{
-                                await Console.Out.WriteLineAsync(searchResponse.Hits.First().Source.spider);
-                                listOfProduct.Add(searchResponse.Hits.First().Source);
+								await Console.Out.WriteLineAsync(searchResponse.Hits.First().Source.spider);
+								listOfProduct.Add(searchResponse.Hits.First().Source);
 							}
 							else
 							{
@@ -270,75 +427,99 @@ namespace webapi.DAO.ElasticSearchDAO
 			throw new Exception(StaticGenerator.GenerateDTOErrorMessage("ElasticSearchDAO", "GetLowPriceProductForPriceHistory", "no spider"));
 		}
 
+		// TODO 增强这边的算法，如何去比价（根据商品的品质）
 		public async Task<List<ElasticProductDTO>> GetLowPriceProductForUserSubscribe(UserSubscription userSubscription)
 		{
 
 			// Func<Descriptor<ElasticProductDTO>>
 			// Used to describe in a fluent and type-safe manner, with document type of ElasticProductDTO
 			var filterClauses = new List<Func<QueryContainerDescriptor<ElasticProductDTO>, QueryContainer>>();
-			var shouldClauses = new List<Func<QueryContainerDescriptor<ElasticProductDTO>, QueryContainer>>();
+
+			int shouldCount = 0;
+
+			var shouldClausesCondition = new List<Func<QueryContainerDescriptor<ElasticProductDTO>, QueryContainer>>();
+			var shouldClausesDescription = new List<Func<QueryContainerDescriptor<ElasticProductDTO>, QueryContainer>>();
+			var shouldClausesSpider = new List<Func<QueryContainerDescriptor<ElasticProductDTO>, QueryContainer>>();
+
 			var mustClauses = new List<Func<QueryContainerDescriptor<ElasticProductDTO>, QueryContainer>>();
-			var mustClauses1 = new List<Func<QueryContainerDescriptor<ElasticProductDTO>, QueryContainer>>();
 
 			Func<SortDescriptor<ElasticProductDTO>, SortDescriptor<ElasticProductDTO>> sortClauses = null;
 
-			// 1. must Title
+			// 1. must include user description
 			if (!string.IsNullOrEmpty(userSubscription.UserSubscriptionProductDescription))
 			{
-				mustClauses.Add(must => must.Match(m => m.Field(f => f.title).Query(userSubscription.UserSubscriptionProductDescription)));
-				mustClauses1.Add(must => must.Match(m => m.Field(f => f.description).Query(userSubscription.UserSubscriptionProductDescription)));
+				shouldCount += 1;
+				// Title have user description
+				shouldClausesDescription.Add(should => should.Match(m => m.Field(f => f.title).Query(userSubscription.UserSubscriptionProductDescription)));
+
+				// Description have user description
+				shouldClausesDescription.Add(should => should.Match(m => m.Field(f => f.description).Query(userSubscription.UserSubscriptionProductDescription)));
 			}
 
 			// 2. must Category
 			if (!string.IsNullOrEmpty(userSubscription.UserSubscriptionProductCategory))
 			{
-				filterClauses.Add(must => must.Term(term => term.Field(f => f.category).Value(userSubscription.UserSubscriptionProductCategory)));
+				mustClauses.Add(must => must.Term(term => term.Field(f => f.category).Value(userSubscription.UserSubscriptionProductCategory)));
 			}
 
 			// 3. must Brand
 			if (!string.IsNullOrEmpty(userSubscription.UserSubscriptionProductBrand))
 			{
-				filterClauses.Add(must => must.Term(term => term.Field(f => f.brand).Value(userSubscription.UserSubscriptionProductBrand)));
+				mustClauses.Add(must => must.Term(term => term.Field(f => f.brand).Value(userSubscription.UserSubscriptionProductBrand)));
 			}
 
 			// 4. must Model
 			if (!string.IsNullOrEmpty(userSubscription.UserSubscriptionProductModel))
 			{
-				filterClauses.Add(must => must.Term(term => term.Field(f => f.model).Value(userSubscription.UserSubscriptionProductModel)));
+				mustClauses.Add(must => must.Term(term => term.Field(f => f.model).Value(userSubscription.UserSubscriptionProductModel)));
 			}
 
-			// 5. should Description
-			if (!string.IsNullOrEmpty(userSubscription.UserSubscriptionProductDescription))
-			{
-				shouldClauses.Add(should => should.Match(m => m.Field(f => f.description).Query(userSubscription.UserSubscriptionProductDescription)));
-			}
-
-			// 6. Price range
+			// 5. Price range
 			if (userSubscription.UserSubscriptionProductHighestPrice.HasValue)
 			{
-				shouldClauses.Add(should => should.Range(r => r.Field(f => f.price).LessThanOrEquals((double?)userSubscription.UserSubscriptionProductHighestPrice)));
+				mustClauses.Add(must => must.Range(r => r.Field(f => f.price_CNY).LessThanOrEquals((double?)userSubscription.UserSubscriptionProductHighestPrice)));
 			}
-			if (userSubscription.UserSubscriptionProductLowestPrice.HasValue)
-			{
-				shouldClauses.Add(should => should.Range(r => r.Field(f => f.price).LessThanOrEquals((double?)userSubscription.UserSubscriptionProductLowestPrice)));
-			}
+			//if (userSubscription.UserSubscriptionProductLowestPrice.HasValue)
+			//{
+			//	mustClauses.Add(must => must.Range(r => r.Field(f => f.price).GreaterThanOrEquals((double?)userSubscription.UserSubscriptionProductLowestPrice)));
+			//}
 
 			// 7. must Country
 			if (!string.IsNullOrEmpty(userSubscription.UserSubscriptionProductCountry))
 			{
-				filterClauses.Add(must => must.Term(term => term.Field(f => f.country).Value(userSubscription.UserSubscriptionProductCountry)));
+				mustClauses.Add(must => must.Term(term => term.Field(f => f.country).Value(userSubscription.UserSubscriptionProductCountry)));
 			}
 
 			// 8. must State
 			if (!string.IsNullOrEmpty(userSubscription.UserSubscriptionProductState))
 			{
-				filterClauses.Add(must => must.Term(term => term.Field(f => f.state).Value(userSubscription.UserSubscriptionProductState)));
+				mustClauses.Add(must => must.Term(term => term.Field(f => f.state).Value(userSubscription.UserSubscriptionProductState)));
 			}
 
-			// 9. must Condition
+			// 9. should Condition
 			if (!string.IsNullOrEmpty(userSubscription.UserSubscriptionProductCondition))
 			{
-				filterClauses.Add(must => must.Term(term => term.Field(f => f.condition).Value(userSubscription.UserSubscriptionProductCondition)));
+				shouldCount += 1;
+
+				// used 
+				switch (userSubscription.UserSubscriptionProductCondition)
+				{
+					case "used":
+						shouldClausesCondition.Add(should => should.Match(t => t.Field(f => f.condition).Query("used")));
+						shouldClausesCondition.Add(should => should.Match(t => t.Field(f => f.condition).Query("mint")));
+						shouldClausesCondition.Add(should => should.Match(t => t.Field(f => f.condition).Query("new")));
+						break;
+					case "mint":
+						shouldClausesCondition.Add(should => should.Match(t => t.Field(f => f.condition).Query("mint")));
+						shouldClausesCondition.Add(should => should.Match(t => t.Field(f => f.condition).Query("new")));
+						break;
+					case "new":
+						shouldClausesCondition.Add(should => should.Match(t => t.Field(f => f.condition).Query("new")));
+						break; 
+					default:
+						throw new Exception("No responding condition " + userSubscription.UserSubscriptionProductCondition);
+				}
+
 			}
 
 			// 10. should Spider
@@ -346,11 +527,13 @@ namespace webapi.DAO.ElasticSearchDAO
 			{
 				try
 				{
+					shouldCount += 1;
+
 					string[] spiders = userSubscription.UserSubscriptionSpiders.Split(",");
 
 					foreach (string spider in spiders)
-					{ 
-						shouldClauses.Add(should => should.Match(t => t.Field(f => f.spider).Query(userSubscription.UserSubscriptionSpiders)));
+					{
+						shouldClausesSpider.Add(should => should.Match(t => t.Field(f => f.spider).Query(userSubscription.UserSubscriptionSpiders)));
 					}
 				}
 				catch
@@ -367,33 +550,40 @@ namespace webapi.DAO.ElasticSearchDAO
 			{
 				List<ElasticProductDTO> productList = new List<ElasticProductDTO>();
 
-				for (int i = 1; i <=2; i++)
-				{
+
 					ISearchResponse<ElasticProductDTO> searchResponse = await _client.SearchAsync<ElasticProductDTO>(s => s
 					.Index("product")
 					.Query(q => q
 					.Bool(b => b
-						.Should(shouldClauses)
-						.Filter(filterClauses)
 						.Must(mustClauses)
-					)
+						.Should(sh => sh
+							.Bool(b1 => b1
+								.Should(shouldClausesDescription).MinimumShouldMatch(shouldClausesDescription.Count > 0 ? 1 : 0)
+								), sh2 => sh2
+							.Bool(b2 => b2
+								.Should(shouldClausesCondition).MinimumShouldMatch(shouldClausesDescription.Count > 0 ? 1 : 0)
+								), sh3 => sh3
+							.Bool(b3 => b3
+								.Should(shouldClausesSpider).MinimumShouldMatch(shouldClausesDescription.Count > 0 ? 1 : 0)
+								)
+							).MinimumShouldMatch(shouldCount)
+						)
 					)
 					.From(0)
 					.Size(5)
 					.Sort(sortClauses)
 					);
 
-                    await Console.Out.WriteLineAsync(searchResponse.Hits.Count.ToString());
+					await Console.Out.WriteLineAsync(searchResponse.Hits.Count.ToString());
 
-                    foreach (var hit in searchResponse.Hits)
+					foreach (var hit in searchResponse.Hits)
 					{
 						productList.Add(hit.Source);
 					}
 
-                    await Console.Out.WriteLineAsync(productList.Count.ToString());
+					await Console.Out.WriteLineAsync(productList.Count.ToString());
 
-                    mustClauses = mustClauses1;
-				}
+				
 
 				return productList;
 			}
@@ -446,7 +636,7 @@ namespace webapi.DAO.ElasticSearchDAO
 				}
 				catch
 				{
-					throw new Exception(StaticGenerator.GenerateDTOErrorMessage("ElasticSearchDAO", "GetPaginationElasticProduct", "spider"));
+					throw new Exception(StaticGenerator.GenerateDTOErrorMessage("ElasticSearchDAO", "GetOneLowestPriceProduct", "spider"));
 				}
 			}
 
@@ -486,81 +676,107 @@ namespace webapi.DAO.ElasticSearchDAO
 
 		public async Task<List<ElasticProductDTO>> GetPaginationElasticProduct(ProductSearchTermDTO searchTermDTO, PageDTO pageDTO)
 		{
+			int shouldMatch = 0;
+
+			await Console.Out.WriteLineAsync(searchTermDTO.ToString());
 
 			// Func<Descriptor<ElasticProductDTO>>
 			// Used to describe in a fluent and type-safe manner, with document type of ElasticProductDTO
-			var filterClauses = new List<Func<QueryContainerDescriptor<ElasticProductDTO>, QueryContainer>>();
-			var shouldClauses = new List<Func<QueryContainerDescriptor<ElasticProductDTO>, QueryContainer>>();
+			var mustClauses = new List<Func<QueryContainerDescriptor<ElasticProductDTO>, QueryContainer>>();
+			var shouldClausesDescription = new List<Func<QueryContainerDescriptor<ElasticProductDTO>, QueryContainer>>();
+			var shouldClausesCondition = new List<Func<QueryContainerDescriptor<ElasticProductDTO>, QueryContainer>>();
+			var shouldClausesSpiders = new List<Func<QueryContainerDescriptor<ElasticProductDTO>, QueryContainer>>();
 			Func<SortDescriptor<ElasticProductDTO>, SortDescriptor<ElasticProductDTO>> sortClauses = null;
 
-			// 1. should Title
-			if (!string.IsNullOrEmpty(searchTermDTO.model))
+			// 1. should one description
+			if (!string.IsNullOrEmpty(searchTermDTO.description))
 			{
-				shouldClauses.Add(should => should.Match(m => m.Field(f => f.title).Query(searchTermDTO.model)));
+				shouldMatch += 1;
+				// Title have user description
+				shouldClausesDescription.Add(should => should.Match(m => m.Field(f => f.title).Query(searchTermDTO.description)));
+
+				// Description have user description
+				shouldClausesDescription.Add(should => should.Match(m => m.Field(f => f.description).Query(searchTermDTO.description)));
 			}
 
 			// 2. must Category
 			if (!string.IsNullOrEmpty(searchTermDTO.category))
 			{
-				filterClauses.Add(must => must.Term(term => term.Field(f => f.category).Value(searchTermDTO.category)));
+				await Console.Out.WriteLineAsync(searchTermDTO.category);
+				mustClauses.Add(must => must.Match(m => m.Field(f => f.category).Query(searchTermDTO.category)));
 			}
 
 			// 3. must Brand
 			if (!string.IsNullOrEmpty(searchTermDTO.brand))
 			{
-				filterClauses.Add(must => must.Term(term => term.Field(f => f.brand).Value(searchTermDTO.brand)));
+				await Console.Out.WriteLineAsync(searchTermDTO.brand);
+				mustClauses.Add(must => must.Match(m => m.Field(f => f.brand).Query(searchTermDTO.brand)));
 			}
 
 			// 4. must Model
 			if (!string.IsNullOrEmpty(searchTermDTO.model))
 			{
-				filterClauses.Add(must => must.Term(term => term.Field(f => f.model).Value(searchTermDTO.model)));
+				await Console.Out.WriteLineAsync(searchTermDTO.model);
+				mustClauses.Add(must => must.Match(m => m.Field(f => f.model).Query(searchTermDTO.model)));
 			}
 
-			// 5. should Description
-			if (!string.IsNullOrEmpty(searchTermDTO.description))
-			{
-				shouldClauses.Add(should => should.Match(m => m.Field(f => f.description).Query(searchTermDTO.description)));
-			}
 
-			// 6. Price range
-			if (searchTermDTO.highest_price.HasValue)
-			{
-				shouldClauses.Add(should => should.Range(r => r.Field(f => f.price).LessThanOrEquals((double?)searchTermDTO.highest_price)));
-			}
-			if (searchTermDTO.lowest_price.HasValue)
-			{
-				shouldClauses.Add(should => should.Range(r => r.Field(f => f.price).LessThanOrEquals((double?)searchTermDTO.lowest_price)));
-			}
+			// 5. Price range
+			//if (searchTermDTO.highest_price.HasValue)
+			//{
+			//	mustClauses.Add(must => must.Range(r => r.Field(f => f.price_CNY).LessThanOrEquals((double?)searchTermDTO.highest_price)));
+			//}
+
 
 			// 7. must Country
-			if (!string.IsNullOrEmpty(searchTermDTO.country))
-			{
-				filterClauses.Add(must => must.Term(term => term.Field(f => f.country).Value(searchTermDTO.country)));
-			}
+			//if (!string.IsNullOrEmpty(searchTermDTO.country))
+			//{
+			//	filterClauses.Add(must => must.Term(term => term.Field(f => f.country).Value(searchTermDTO.country)));
+			//}
 
 			// 8. must State
-			if (!string.IsNullOrEmpty(searchTermDTO.state))
-			{
-				filterClauses.Add(must => must.Term(term => term.Field(f => f.state).Value(searchTermDTO.state)));
-			}
+			//if (!string.IsNullOrEmpty(searchTermDTO.state))
+			//{
+			//	filterClauses.Add(must => must.Term(term => term.Field(f => f.state).Value(searchTermDTO.state)));
+			//}
 
 			// 9. must Condition
 			if (!string.IsNullOrEmpty(searchTermDTO.condition))
 			{
-				filterClauses.Add(must => must.Term(term => term.Field(f => f.condition).Value(searchTermDTO.condition)));
+				shouldMatch += 1;
+				// used 
+				switch (searchTermDTO.condition)
+				{
+					case "used":
+						shouldClausesCondition.Add(should => should.Match(t => t.Field(f => f.condition).Query("used")));
+						shouldClausesCondition.Add(should => should.Match(t => t.Field(f => f.condition).Query("mint")));
+						shouldClausesCondition.Add(should => should.Match(t => t.Field(f => f.condition).Query("new")));
+						break;
+					case "mint":
+						shouldClausesCondition.Add(should => should.Match(t => t.Field(f => f.condition).Query("mint")));
+						shouldClausesCondition.Add(should => should.Match(t => t.Field(f => f.condition).Query("new")));
+						break;
+					case "new":
+						shouldClausesCondition.Add(should => should.Match(t => t.Field(f => f.condition).Query("new")));
+						break;
+					default:
+						throw new Exception("No responding condition " + searchTermDTO.condition);
+				}
+
 			}
 
 			// 10. should Spider
 			if (searchTermDTO.spider != null)
 			{
+				shouldMatch += 1;
 				try
 				{
-
 					foreach (string spider in searchTermDTO.spider)
 					{
-						shouldClauses.Add(should => should.Match(t => t.Field(f => f.spider).Query(spider)));
+						await Console.Out.WriteLineAsync(spider);
+						shouldClausesSpiders.Add(should => should.Match(t => t.Field(f => f.spider).Query(spider)));
 					}
+
 				}
 				catch
 				{
@@ -580,25 +796,40 @@ namespace webapi.DAO.ElasticSearchDAO
 
 			try
 			{
-				ISearchResponse<ElasticProductDTO> searchResponse = await _client.SearchAsync<ElasticProductDTO>(s => s
+				await Console.Out.WriteLineAsync(pageDTO.CurrentPage.ToString());
+				await Console.Out.WriteLineAsync(pageDTO.PageSize.ToString());
+                await Console.Out.WriteLineAsync(shouldMatch.ToString());
+
+                ISearchResponse<ElasticProductDTO> searchResponse = await _client.SearchAsync<ElasticProductDTO>(s => s
 				.Index("product")
 				.Query(q => q
 				.Bool(b => b
-					.Should(shouldClauses)
-					.Filter(filterClauses)
+						.Must(mustClauses)
+						.Should(sh => sh
+							.Bool(b1 => b1
+								.Should(shouldClausesDescription).MinimumShouldMatch(shouldClausesDescription.Count > 0 ? 1: 0)
+								), sh2 => sh2
+							.Bool(b2 => b2
+								.Should(shouldClausesCondition).MinimumShouldMatch(shouldClausesCondition.Count > 0 ? 1 : 0)
+								), sh3 => sh3
+							.Bool(b3 => b3
+								.Should(shouldClausesSpiders).MinimumShouldMatch(shouldClausesSpiders.Count > 0 ? 1 : 0)
+								)
+							).MinimumShouldMatch(shouldMatch)
+						)
 				)
-				)
-				.From((pageDTO.CurrentPage * pageDTO.PageSize))
+				.From(((pageDTO.CurrentPage - 1) * pageDTO.PageSize))
 				.Size(pageDTO.PageSize)
 				.Sort(sortClauses)
 				);
 
 
 				List<ElasticProductDTO> productList = new List<ElasticProductDTO>();
+                await Console.Out.WriteLineAsync(productList.Count().ToString());
 
 				foreach (var hit in searchResponse.Hits)
 				{
-					productList.Add(hit.Source);
+                    productList.Add(hit.Source);
 				}
 
 				return productList;
@@ -607,7 +838,7 @@ namespace webapi.DAO.ElasticSearchDAO
 			{
 				throw new Exception(StaticGenerator.GenerateServiceErrorMessage("ElasticSearchService", "SearchProduct", ex.Message));
 			}
-		
+
 		}
 
 		public async Task<List<ElasticProductDTO>> GetProductOver7Days()
@@ -627,17 +858,17 @@ namespace webapi.DAO.ElasticSearchDAO
 									.LessThanOrEquals(sevenDaysAgo)
 									)
 								)
-					
+
 							)
 						)
-					.Size(100)
+					.Size(300)
 					);
 
-                await Console.Out.WriteLineAsync(searchResponse.Hits.Count.ToString());
+				await Console.Out.WriteLineAsync(searchResponse.Hits.Count.ToString());
 
-                List<ElasticProductDTO> productsOver7Days = new List<ElasticProductDTO>();
+				List<ElasticProductDTO> productsOver7Days = new List<ElasticProductDTO>();
 
-				foreach(var hit in searchResponse.Hits)
+				foreach (var hit in searchResponse.Hits)
 				{
 					productsOver7Days.Add(hit.Source);
 				}
@@ -645,7 +876,7 @@ namespace webapi.DAO.ElasticSearchDAO
 				return productsOver7Days;
 
 			}
-			catch(Exception ex)
+			catch (Exception ex)
 			{
 				throw new Exception(StaticGenerator.GenerateDTOErrorMessage("ElasticSearchDAO", "GetProductOver7Days", ex.Message));
 			}
@@ -663,7 +894,7 @@ namespace webapi.DAO.ElasticSearchDAO
 					.FunctionScore(fs => fs
 						.Query(query => query
 							.Bool(b => b
-								.Filter(f => f
+								.Must(f => f
 									.Term(t => t.category, category))))
 						.Functions(fsf => fsf
 							.RandomScore()
@@ -698,9 +929,9 @@ namespace webapi.DAO.ElasticSearchDAO
 		{
 			List<ElasticProductDTO> favouriteProducts = new List<ElasticProductDTO>();
 
-            await Console.Out.WriteLineAsync("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			await Console.Out.WriteLineAsync("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
-            try
+			try
 			{
 				foreach (var productId in productUniqueIds)
 				{
@@ -791,3 +1022,5 @@ namespace webapi.DAO.ElasticSearchDAO
 		}
 	}
 }
+
+

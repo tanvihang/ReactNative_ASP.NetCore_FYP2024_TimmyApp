@@ -34,7 +34,7 @@ const HomeHero = ({ user }) => {
   const categoryList = categoryBrand.categories
 
   return (
-    <SafeAreaView className="mx-3 mt-7">
+    <SafeAreaView className="mx-3">
       {/* Hero welcome */}
       <View className="flex flex-row justify-between py-4">
         <View>
@@ -47,7 +47,7 @@ const HomeHero = ({ user }) => {
         </View>
       </View>
 
-      <TouchableOpacity onPress={() => router.push("/search")}>
+      <TouchableOpacity onPress={() => router.push("/searchV1")}>
         <View className=" border-2 w-full h-16 items-center focus:bg-slate-300 flex-row justify-between px-3 rounded-2xl">
           <Text className="font-pbold">Search Product</Text>
           <Image

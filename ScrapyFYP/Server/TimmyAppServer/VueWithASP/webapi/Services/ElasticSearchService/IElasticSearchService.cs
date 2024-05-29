@@ -17,6 +17,10 @@ namespace webapi.Services.ElasticSearchService
 		Task<List<ElasticProductDTO>> GetProductOver7Days();
 		Task<bool> DeleteAllProduct();
 		Task<bool> RemoveOneProduct(string unique_id);
+		Task<List<ElasticCategoryCountDTO>> GetElasticProductCategoriesCount();
+		Task<List<ElasticCategoryCountDTO>> GetElasticProductBrandCount(string category);
+		Task<ElasticSearchModelDTO> GetElasticProductModelCount(string category, string model);
+
 
 
 	}

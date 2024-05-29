@@ -5,13 +5,13 @@ import {images} from '../../constants/index'
 const FavouriteHeader = () => {
   return (
     <View className = "flex flex-row items-center mx-3">
-        <Text className = "flex-grow text-6xl font-bold text-center font-pextrabold">
+        <Text className = " w-2/3 text-4xl text-center font-pextrabold">
             Favourited Product
         </Text>
       <Image
         source={images.favouriteHeart}
         resizeMode = "contain"
-        className = " w-32 h-32"
+        className = " w-1/3 h-40"
       />
     </View>
   )

@@ -38,13 +38,13 @@ const CustomSelector = ({title, customStyle, handleClick,state}) => {
   },[state])
 
   return (
-    <View>
+    <View className="grow items-center">
       <TouchableOpacity 
           onPress={() =>{handleClick()}}
           className = {`h-20 mt-3 ${customStyle}`}
       >
           <View className = {`h-20 flex items-center justify-center rounded-2xl ${color}`}>
-            <Text className = "font-pbold text-primary text-xl text-center tracking-wide">{title}</Text>
+            <Text className = "font-pbold text-primary text-xl text-center tracking-wide px-2">{title}</Text>
           </View>
       </TouchableOpacity>
     </View>
