@@ -17,7 +17,7 @@ const OnboardingItem = ({ item }) => {
       <Text className="text-lg font-semibold">{item.description}</Text>
 
       {
-        (item.id == 1)?
+        (item.id == 3)?
           (
             <View className = "mt-14 ">
               <CTAButton title = "Register" handlePress = {handlePressRegister} containerStyles = "min-w-[200px]" textStyles = "text-lg text-white-100" className = " "/>

@@ -1,0 +1,90 @@
+DAO 专门与数据库交流的部分
+DTO 数据传输对象（封装的更加漂亮），可以与Model放在一起
+
+DAO
+1. 这边处理的可以有增删改查，不过注意像是登录这种比较复杂的业务过程，就交给Service去处理。
+2. 但是这边抛出异常利用 if, else throw new Exception（对于异常处理的让上层去处理！），抛出问题
+
+业务逻辑层Service
+-处理重要功能
+
+控制层Controller
+-尽量少，只是调用Service就够了
+-捕获报错（catch）
+
+4月7日目标
+- 尝试实现主键删除看看对应得副键会不会删除（例如：用户删除、相应得用户搜索记录会不会消失）在设计数据库式需要On delete cascade
+- 数据库得最后决定，没有完美得，尽量就好，时间不多了。
+- 生成了数据库，直接实现每个类得DAO层
+
+如何解决
+User（用户功能 - 登入、注册、忘记密码等等）
+- Normal（）
+- Administrator （在用户的基础上加上其他功能，那么我是不是可以不用分开啊）
+
+测试ElasticSearch查询分页（index以及page）
+
+4月8以及9日目标
+- 实现DAO，并且快速完成简单的功能。
+
+4月9日任务
+完成ElasticSearchService部分
+完成UserSubscriptionService
+完成DailySearchService
+
+4月13日任务
+完成字符匹配的算法
+- 利用去除不在词典内的词
+- 进行最短编辑距离
+- 获取最相似的型号
+
+完成自动爬取的功能
+- 种类商品爬取（完成）
+- 订阅商品爬取（完成）
+
+- 更新功能（完成）
+
+4月15日任务
+- 用户订阅商品获取数据（会使用到getLowestPriceProduct）
+- 好好处理商品获取的过程（获取低价的，或者少于用户给定的价格）
+- 用户更改用户是否保存
+- 后台程序自动爬取种类品牌
+- 后台程序自动爬取用户订阅商品（完成）
+
+
+后台比价
+1. 获取最便宜价格商品，获取最低价格的商品将其加入进去用户订阅的商品物品列表（完成）
+	2. 记得比价的时候避免添加同样的数据进去，可以去除拥有相同的数据。（完成）
+2. 后台程序自动爬取用户订阅商品（完成）
+3. 后台程序自动爬取种类品牌商品（完成）
+4. 保存历史价格
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJVX2NlOWRlOWNkLWMxODMtNDA0ZS05MDBjLWQ3MmRhNGUxN2FhNSIsInVuaXF1ZV9uYW1lIjoidHZoIiwibmJmIjoxNzEzMzE1MDQ0LCJleHAiOjE3MTM5MTk4NDQsImlhdCI6MTcxMzMxNTA0NH0.cNhhWVLOVtZZv01M1ziQakuCKQpSS2yPezEFFiBJSL0
+
+- 更改自动爬取返回的数据（最好能够返回上传的数据数量）
+- 让爬取变成每一次都调用一个hangfire，容易让管理员看到正在爬取的数据。
+
+保存历史价格 - 首先索引获取最低的价格，加入进去历史价格表（完成）
+
+Scrapy模块 - 对于BloomFilter的文件，只有再成功index到elasticSearch的时候才进行更新的操作，否则不会更新。（已完成）
+
+https://dubai.aihuishou.com/dubai-gateway/yanxuan-products/goods-detail?productNo=20240305235642469856
+
+4月19日任务
+- 完成BloomFilter进行商品的删除等等
+- 然后就对每个接口进行再次测试，能跑就开始写论文了
+
+- 接口测试（ElasticSearch、TimmyProductService、UserService、UserVerificationCodeService、UserFavouriteService、UserSubscription）
+
+一直到4月30日
+- 开发手机端程序，并且完成论文！！ 加油欧里给
+
+4月20日
+- 发现少了通知用户的方法，就是进行爬取数据后
+- 比价（可以提供各个平台的最低价格）
+
+---------------------------------------------------------------------------------------------------------
+可添加的功能（可选择性看时间增加）
+1. 用户点击记录
+2. 历史价格（全部平台有自己的）
+3. 分词的详细做法

@@ -37,6 +37,9 @@ const SignUp = () => {
     try{
       setIsSubmitting(true)
       const data = await normalApiCall("User/Register","POST",form,{})
+
+      Alert.alert("Success", "Register success")
+
       setIsSubmitting(false)
     }catch(error){
       Alert.alert("Error", error.message)
@@ -122,7 +125,7 @@ const SignUp = () => {
         />
 
         <View className = "items-center justify-center flex-row gap-1 py-3">
-          <Text className="text-lg font-regular">Return to</Text>
+          <Text className="text-lg font-regular">Go to</Text>
           <Link href="/sign-in" className='text-lg font-regular text-secondary'>Sign In</Link>
         </View>
 

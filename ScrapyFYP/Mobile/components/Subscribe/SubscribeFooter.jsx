@@ -146,7 +146,7 @@ const SubscribeFooter = ({ form, setForm, category, brand, model }) => {
         <View className="flex flex-row justify-around">
           <CustomSelector
             title={condition[0]}
-            customStyle="w-32"
+            customStyle="w-4/5"
             handleClick={() => {
               selectPCondition(condition[0]);
             }}
@@ -154,7 +154,7 @@ const SubscribeFooter = ({ form, setForm, category, brand, model }) => {
           />
           <CustomSelector
             title={condition[1]}
-            customStyle="w-32"
+            customStyle="w-4/5"
             handleClick={() => {
               selectPCondition(condition[1]);
             }}
@@ -162,7 +162,7 @@ const SubscribeFooter = ({ form, setForm, category, brand, model }) => {
           />
           <CustomSelector
             title={condition[2]}
-            customStyle="w-32"
+            customStyle="w-4/5"
             handleClick={() => {
               selectPCondition(condition[2]);
             }}
