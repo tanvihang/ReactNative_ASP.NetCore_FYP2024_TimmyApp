@@ -103,9 +103,9 @@ Stores all project-related codes, including server, react-native, elastic search
 | ------------- | --------------------------------------------------------------------- |
 | C#            | <image src = "./Assets/TechStackIcon/CS.svg" height="40"/>            |
 | Docker        | <image src = "./Assets/TechStackIcon/Docker.svg" height="40"/>        |
-| SQL Server    | <image src = "./Assets/TechStackIcon/SqlServer.png" height="40"/>     |
+| SQL Server    | <image src = "./Assets/TechStackIcon/sqlserver.png" height="40"/>     |
 | ElasticSearch | <image src = "./Assets/TechStackIcon/elasticsearch.svg" height="40"/> |
-| Scrapy        | <image src = "./Assets/TechStackIcon/Scrapy.png" height="40"/>        |
+| Scrapy        | <image src = "./Assets/TechStackIcon/scrapy.png" height="40"/>        |
 | Python        | <image src = "./Assets/TechStackIcon/Python.svg" height="40"/>        |
 
 ---
