@@ -1,9 +1,0 @@
-{
-    "product":{
-        "condition":{
-            "new": ["New", "99"],
-            "mint": ["New", "95", "9"],
-            "used": ["Used","8", "7"]
-        }
-    }
-}

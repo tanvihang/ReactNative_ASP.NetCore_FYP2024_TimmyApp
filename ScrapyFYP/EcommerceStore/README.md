@@ -9,6 +9,7 @@ Holds the codebase for the Scrapy module, responsible for scraping product from 
 ## Product
 ### BloomFilter
 Contains the implementation of Bloom Filter for efficient data filtering with using *python*.
+- It should be linked with the [BloomFilterMD](../BloomFilter/Bloomfilter.md) in previous
 
 ### Database
 Contains the implementation of connecting *TimmyDatabase* for accessing database using *python*.
@@ -19,7 +20,7 @@ Contains the implementation of Accesing ElasticSearch for data storing after scr
 ### Log
 Contains the scraping log file
 
-### Product
+### Product (Main scrapy implementation)
 Contains the implementation of Scrapy for scraping items from web using *python*.
 
 ### TermCompare
@@ -100,3 +101,4 @@ Check the log file for responding datetime that you start scraping in `\Log\.log
 
 
 ---
+Built and designed by AngusTan 2024

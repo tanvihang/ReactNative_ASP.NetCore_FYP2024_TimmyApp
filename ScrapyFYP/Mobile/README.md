@@ -1,4 +1,7 @@
 # Mobile
+
+![alt text](assets/image-1.png)
+
 ---
 # Installation
 https://docs.expo.dev/router/installation/
@@ -10,6 +13,8 @@ https://www.nativewind.dev/quick-starts/expo
 ---
 
 # Folders
+![alt text](assets/前端包图.png)
+
 ## app
 Contains the pages in the application for example: home, profile page etc.
 
@@ -30,3 +35,6 @@ Custom react native hook like fetching api
 
 ## test
 A folder that contain test code during development state
+
+---
+Built and designed by AngusTan 2024
