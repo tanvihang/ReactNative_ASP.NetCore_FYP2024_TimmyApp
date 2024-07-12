@@ -65,11 +65,11 @@ The main tasks and results of this paper are as follows:
 
 
 ## Manager Interface
-![alt text](assets/image.png)
+![alt text](./Assets/image.png)
 
-![alt text](assets/image-1.png)
+![alt text](./Assets/image-1.png)
 
-![alt text](assets/image-2.png)
+![alt text](./Assets/image-2.png)
 
 ---
 
@@ -79,7 +79,7 @@ The main tasks and results of this paper are as follows:
 
 Stores images, icon etc for this repo.
 
-### [ScrapyFYP](ScrapyFYP\README.md) <- learn more
+### [ScrapyFYP](./ScrapyFYP/README.md) <- learn more
 
 Stores all project-related codes, including server, react-native, elastic search, bloomfilter and scrapy.
 
@@ -104,8 +104,8 @@ Stores all project-related codes, including server, react-native, elastic search
 | C#            | <image src = "./Assets/TechStackIcon/CS.svg" height="40"/>            |
 | Docker        | <image src = "./Assets/TechStackIcon/Docker.svg" height="40"/>        |
 | SQL Server    | <image src = "./Assets/TechStackIcon/SqlServer.png" height="40"/>     |
-| ElasticSearch | <image src = "./Assets/TechStackIcon/ElasticSearch.svg" height="40"/> |
-| Scrapy        | <image src = "./Assets/TechStackIcon/scrapy.png" height="40"/>        |
+| ElasticSearch | <image src = "./Assets/TechStackIcon/elasticsearch.svg" height="40"/> |
+| Scrapy        | <image src = "./Assets/TechStackIcon/Scrapy.png" height="40"/>        |
 | Python        | <image src = "./Assets/TechStackIcon/Python.svg" height="40"/>        |
 
 ---
